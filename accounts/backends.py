@@ -11,7 +11,7 @@ class CaseSensitiveAuth:
     updating your User model to save usernames as lower case entries to
     the database.
     This will ensure all usernames have unique spellings, and as a result,
-    our case insensitive query will return a single result only.
+    our case sensitive query will return a single result only.
     """
     def authenticate(self, username_or_email=None, password=None):
         """
