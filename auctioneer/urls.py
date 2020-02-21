@@ -24,5 +24,4 @@ urlpatterns = [
     url(r'^$', index, name="index"),
     url(r'^accounts/', include(urls_accounts)),
     url(r'^antiques/', include(urls_antiques)),
-    
 ]
