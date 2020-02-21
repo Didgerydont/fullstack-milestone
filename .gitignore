@@ -1,5 +1,6 @@
 env.py
 .gitpod.dockerfile
-__pycach__
+__pycach__/
 .gitpod.yml
 db.sqlite3
+db.sqlite3-journal
