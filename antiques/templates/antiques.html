@@ -9,9 +9,9 @@
 {% for antique in antiques %}
 <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
     <div class="panel-body">
-        <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ antique.image }}');"></div>
+        <div class="antique" style="background-image: url('{{ MEDIA_URL }}{{ antique.image }}');"></div>
         <h3>{{antique.name}}</h3>
-        <p class="product-description">{{ antique.description }}</p>
+        <p class="antique-description">{{ antique.description }}</p>
         <p>{{ antique.price  }}</p>
         <form method="post" action="#">
             {% csrf_token %}
