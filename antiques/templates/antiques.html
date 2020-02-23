@@ -15,10 +15,20 @@
         <p>{{ antique.price  }}</p>
         <form method="post" action="#">
             {% csrf_token %}
+            <div class="buy-now">
+                <div class="purchase-box">
+                    <h5 class="purchase-header">Secure this item now for </h5><span class="current-bid">€{{  antique.buy_now_price }}<button class="buy-now btn btn-success" type="submit">Buy Now</button></span>
+                </div>   
+            </div>
+            <div class="bid-box">
+                <div class="purchase-box">
+                    <h5 class="purchase-header">Our current highest bid is</h5><span class="current-bid">€{{  antique.current_bid }}</span>
+                </div>                
+            </div>
             <div class="input-group">
-                <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">
+                <input name="quantity" type="number" min="{{  antique.current  }} + 1" class="form-control" placeholder="€">
                 <span class="input-group-btn">
-                    <button class="btn btn-success" type="submit">Add</button>
+                    <button class="btn btn-success" type="submit">Bid</button>
                 </span>
             </div>
         </form>

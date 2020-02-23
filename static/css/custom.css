@@ -50,6 +50,10 @@ caption p {
     word-wrap: break-word;
 }
 
+.buy-now{
+    margin-left: 15px;
+}
+
 .row.row-flex{
     display: flex;
     flex-wrap: wrap;
