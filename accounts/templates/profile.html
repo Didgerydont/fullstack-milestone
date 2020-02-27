@@ -8,16 +8,26 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-            <h3>Welcome to your profile page {{ user }}</h3>
+            <h2 class="text-center">Welcome to your profile page {{ user }}</h2>
         </div>        
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="offset-sm-3 col-sm-9">
-            <p>You can use this page to manage your personal details on your account.</p>
-            <p>Check out the information below and try to keep this up to date for us</p>
+        <div class="col-sm-12">
+            <h4 class="text-center">You can use this page to manage your personal details on your account.</h4>
+            <h4 class="text-center">Check out the information below and try to keep this up to date for us</h4>
         </div>        
     </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <form method="POST"  action="{% url 'profile' %}">
+            {% csrf_token %}
+            {{ UserProfileForm | as_bootstrap}}
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+
 </div>
 {% endblock %}

@@ -45,14 +45,8 @@ class UserRegistrationForm(UserCreationForm):
 
         return password2
 
-class UserProfileForm(UserDetails):
-    firstname = forms.CharField(max_length=50, required=True)
-    lastname = forms.CharField(max_length=50, required=True)
-    phone = PhoneField(blank=True, help_text='Contact phone number')
-    address = forms.CharField(max_length=255, required=True)
-    town = forms.CharField(max_length=45, required=True)
-    post_code = forms.CharField(max_length=45, required=True)
-    country = forms.CharField(max_length=45, required=True)
+
+class UserProfileForm(forms.ModelForm):
 
     class Meta:
         model = UserDetails
