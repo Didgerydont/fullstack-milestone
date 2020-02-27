@@ -11,8 +11,17 @@
     <div class="panel-body">
         <div class="antique" style="background-image: url('{{ MEDIA_URL }}{{ antique.image }}');"></div>
         <h3>{{antique.name}}</h3>
-        <p class="antique-description">{{ antique.description }}</p>
-        <p>{{ antique.price  }}</p>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#anitque-description" aria-expanded="false" aria-controls="collapseExample">
+            About the Item
+        </button>
+        <div class="collapse" id="anitque-description">
+            <div class="card card-body">
+                <p class="antique-description">{{ antique.description }}</p>
+            </div>
+        </div>
+        <h5 class="date-posted">Last update on site <strong>{{ antique.date_posted }}</strong></h5>
+        
+        <p>{{ antique.price }}</p>
         <form method="post" action="#">
             {% csrf_token %}
             <div class="buy-now">
@@ -22,11 +31,11 @@
             </div>
             <div class="bid-box">
                 <div class="purchase-box">
-                    <h5 class="purchase-header">Our current highest bid is</h5><span class="current-bid">€{{  antique.current_bid }}</span>
+                    <h5 class="purchase-header">Our current highest bid is <span class="current-bid">€{{  antique.current_bid }}</span></h5>
                 </div>                
             </div>
             <div class="input-group">
-                <input name="quantity" type="number" min="{{  antique.current  }} + 1" class="form-control" placeholder="€">
+                <input name="quantity" type="number" min="{{  antique.current_bid  }}" class="form-control" placeholder="€">
                 <span class="input-group-btn">
                     <button class="btn btn-success" type="submit">Bid</button>
                 </span>

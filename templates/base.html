@@ -30,9 +30,11 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-sm-2">
                 {% if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'antiques' %}">Products</a></li>
                 <li class="nav-item" ><a class="nav-link" href="{% url 'profile' %}"><i></i> Profile</a></li>
                 <li class="nav-item" ><a class="nav-link" href="{% url 'logout' %}"><i></i> Log Out</a></li>
                 {%  else %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'antiques' %}">Products</a></li>
                 <li class="nav-item"><a class="nav-link"  href="{% url 'register' %}"><i></i> Register</a></li>
                 <li class="nav-item"><a class="nav-link"  href="{% url 'login' %}"><i></i> Log In</a></li>
                 {% endif %}
