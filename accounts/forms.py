@@ -50,7 +50,14 @@ class UserProfileForm(forms.ModelForm):
 
     class Meta:
         model = UserDetails
-        fields = ['firstname', 'lastname', 'phone', 'address', 'town',
-                  'post_code', 'country']
+        fields = [
+            'firstname',
+            'lastname', 
+            'phone',
+            'address',
+            'town',
+            'post_code',
+            'country'
+        ]
 
     

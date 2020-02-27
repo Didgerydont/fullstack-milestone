@@ -28,7 +28,7 @@ def login(request):
         if login_form.is_valid():
             user = auth.authenticate(username=request.POST['username'],
                                      password=request.POST['password'])
-            if user:
+            if User:
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfully logged in!")
                 return redirect(reverse('index'))
@@ -72,25 +72,10 @@ def user_profile(request):
 
 def update_user_information(request):
     """ Update the users personal details """
-    if request.user.is_authenticated:
-        return redirect(reverse('profile'))
-
-    if request.method == "POST":
-        update_information_form = UserProfileForm(request.POST)
-
-        if update_information_form.is_valid():
-            update_information_form.save()
-            user = auth.authenticate(username=request.POST['username'],
-                                     password=request.POST['password1'])
-
-            if user:
-                auth.login(user=user, request=request)
-                messages.success(request, "You have successfully updated your info")
-                return redirect(reverse('profile'))
-            else:
-                messages.error(request, "We were unable to update your account at this time")
-
-    else:
-        update_information_form = UserProfileForm()
-    return render(request, 'profile.html',
-                  {'update_information_form': update_information_form})
+    form = UserProfileForm(request.POST or None)
+    if form.is_valid:
+        form.save()
+        context = {
+            'form': form
+        }
+    return render(request, 'profile.html', context)
