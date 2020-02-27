@@ -45,7 +45,7 @@ class UserRegistrationForm(UserCreationForm):
 
         return password2
 
-class UserProfileForm(forms.Form):
+class UserProfileForm(UserDetails):
     firstname = forms.CharField(max_length=50, required=True)
     lastname = forms.CharField(max_length=50, required=True)
     phone = PhoneField(blank=True, help_text='Contact phone number')
@@ -56,5 +56,7 @@ class UserProfileForm(forms.Form):
 
     class Meta:
         model = UserDetails
-        fields = ['firstname', 'lastname', 'phone', 'address', 'town', 
+        fields = ['firstname', 'lastname', 'phone', 'address', 'town',
                   'post_code', 'country']
+
+    

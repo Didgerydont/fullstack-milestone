@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'accounts',
     'antiques',
     'storages',
-    'phone_field'
+    'phone_field',
 ]
 
 MIDDLEWARE = [
