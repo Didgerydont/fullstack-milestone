@@ -73,7 +73,7 @@ def user_profile(request):
 def update_user_information(request):
     """ Update the users personal details """
     if request.user.is_authenticated:
-        return redirect(reverse('index'))
+        return redirect(reverse('profile'))
 
     if request.method == "POST":
         update_information_form = UserProfileForm(request.POST)
