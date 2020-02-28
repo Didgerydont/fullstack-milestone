@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserChangeForm
 from accounts.forms import UserLoginForm, UserRegistrationForm
 # Create your views here.
 
@@ -22,7 +23,7 @@ def logout(request):
 def login(request):
     """ Return a login page """
     if request.user.is_authenticated:
-        return redirect(reverse('index'))
+        return redirect(reverse('profile'))
     if request.method == "POST":
         login_form = UserLoginForm(request.POST)
         if login_form.is_valid():
@@ -31,7 +32,7 @@ def login(request):
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfully logged in!")
-                return redirect(reverse('index'))
+                return redirect(reverse('profile'))
             else:
                 login_form.add_error(None, "Your username or password is incorrect")
     else:
@@ -69,3 +70,17 @@ def user_profile(request):
     """ The users profile page """
     user = User.objects.get(email=request.user.email)
     return render(request, 'profile.html', {"profile": user})
+
+
+def edit_profile(request):
+    """ Allow the user to update their own details """
+    if request.method == 'POST':
+        form = UserChangeForm(request.POST, instance=request.user)
+
+        if form.isvalid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = UserChangeForm(instance=request.user)
+        args = {'form': form}
+        return render(request, 'userdetails.html', args)

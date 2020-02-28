@@ -3,8 +3,6 @@ from django.contrib.admin.widgets import AdminDateWidget
 from django.db.models.fields import DateField, DateTimeField
 from datetime import date, datetime
 
-
-
 class Antiques(models.Model):
     name = models.CharField(max_length=254, default='')
     date_posted = models.DateTimeField(auto_now_add=True, blank=True)
@@ -16,5 +14,3 @@ class Antiques(models.Model):
 
     def __str__(self):
         return self.name
-
-
