@@ -17,21 +17,28 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-            <h4 class="text-center">These are the details that we have stored on file for you</h4>
-            <h4 class="text-center">Check out the information below and try to keep this up to date for us</h4>
-            <h4 class="text-center">You can also <a href="{% url 'edit_profile' %}">update these details here</a></h4>
+            <h3 class="text-center">These are the details that we have stored on file for you</h3>
+            <h3 class="text-center">Check out the information below and try to keep this up to date for us</h3>
+            <h3 class="text-center">You can also <a href="{% url 'edit_profile' %}">update these details here</a></h3>
         </div>        
     </div>
 </div>
-{% for userdetail in User %}
-<p>{{ user.email }}</p>
-<p>{{ userdetail.username }}</p>
-<p>{{ userdetail.firstname }} {{ user.lastname}}</p>
-<p>{{ userdetail.phone }}</p>
-<p>{{ userdetail.address }}</p>
-<p>{{ userdetail.town }}</p>
-<p>{{ userdetail.postcode }}</p>
-<p>{{ userdetail.country}} </p>
-{% endfor %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="text-left">Profile</h4>
+            <p class="text-left">Username: {{ user }}</p>
+            <p class="text-left">First name: {{ user.firstname }}</p>
+            <p class="text-left">Last name: {{ user.lastname }}</p>
+            <p class="text-left">Email: {{ user.email }}</p>
+            <p class="text-left">Phone: {{ user.phone }}</p>
+            <p class="text-left">Address: {{ user.address }}</p>
+            <p class="text-left">Town: {{ user.town }}</p>
+            <p class="text-left">Country: {{ user.country }}</p>
+            <p class="text-left">Post Code: {{ user.post_code }}</p>
+        </div>
+    </div>
+</div>
+
 
 {% endblock %}
