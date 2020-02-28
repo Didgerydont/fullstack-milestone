@@ -47,7 +47,6 @@ class UserRegistrationForm(UserCreationForm):
 
 
 class UserProfileForm(forms.ModelForm):
-
     class Meta:
         model = UserDetails
         fields = [
@@ -59,5 +58,3 @@ class UserProfileForm(forms.ModelForm):
             'post_code',
             'country'
         ]
-
-    
