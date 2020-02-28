@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'accounts',
     'antiques',
     'storages',
-    'phone_field',
+    
 ]
 
 MIDDLEWARE = [
@@ -111,7 +111,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'accounts.backends.CaseSensitiveAuth']
+    'accounts.backends.CaseSensitiveAuth',
+    ]
    
 
 # Internationalization

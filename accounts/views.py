@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from accounts.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
+from accounts.forms import UserLoginForm, UserRegistrationForm
 # Create your views here.
 
 
@@ -28,7 +28,7 @@ def login(request):
         if login_form.is_valid():
             user = auth.authenticate(username=request.POST['username'],
                                      password=request.POST['password'])
-            if User:
+            if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfully logged in!")
                 return redirect(reverse('index'))
@@ -64,15 +64,8 @@ def registration(request):
     return render(request, 'registration.html',
                   {'registration_form': registration_form})
 
-@login_required
+
 def user_profile(request):
     """ The users profile page """
     user = User.objects.get(email=request.user.email)
-    form = UserProfileForm(request.POST or None)
-    if form.is_valid:
-        form.save()
-        login(request, user, backend='accounts.backends.CaseSensitiveAuth')
-        context = {
-            'form': form
-        }
-    return render(request, 'profile.html', context, {'profile': user})
+    return render(request, 'profile.html', {"profile": user})
