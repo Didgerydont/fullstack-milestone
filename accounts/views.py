@@ -68,14 +68,10 @@ def registration(request):
 def user_profile(request):
     """ The users profile page """
     user = User.objects.get(email=request.user.email)
-    return render(request, 'profile.html', {"profile": user})
-
-def update_user_information(request):
-    """ Update the users personal details """
     form = UserProfileForm(request.POST or None)
     if form.is_valid:
         form.save()
         context = {
             'form': form
         }
-    return render(request, 'profile.html', context)
+    return render(request, 'profile.html', context, {'profile': user})
