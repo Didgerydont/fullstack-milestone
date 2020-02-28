@@ -71,6 +71,7 @@ def user_profile(request):
     form = UserProfileForm(request.POST or None)
     if form.is_valid:
         form.save()
+        login(request, user, backend='accounts.backends.CaseSensitiveAuth')
         context = {
             'form': form
         }
