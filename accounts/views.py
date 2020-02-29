@@ -75,17 +75,20 @@ def user_profile(request):
 
 @login_required
 @transaction.atomic
-def edit_profile(request):
+def edit_profile(request, user_id):
     if request.method == 'POST':
         profile_form = UserDetailsForm(request.POST, instance=request.user.Profile)
         if profile_form.is_valid():
             profile_form.save()
-            messages.success(request, _('Your profile was successfully updated!'))
+            messages.success('Your profile was successfully updated!')
             return redirect('profile')
         else:
-            messages.error(request, _('Please correct the error below.'))
+            messages.error('Please correct the error below.')
     else:
         profile_form = UserDetailsForm(instance=request.user.Profile)
     return render(request, 'userdetails.html', {
         'profile_form': profile_form
     })
+
+def fucking_views(request):
+    return render(request, 'userdetails.html')

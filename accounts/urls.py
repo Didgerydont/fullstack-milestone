@@ -1,5 +1,5 @@
 from django.conf.urls import url, include
-from accounts.views import index, logout, login, registration, user_profile, edit_profile
+from accounts.views import index, logout, login, registration, user_profile, edit_profile, fucking_views
 from accounts import url_reset
 
 urlpatterns = [
@@ -7,7 +7,8 @@ urlpatterns = [
     url(r'^login/', login, name="login"),
     url(r'^register/', registration, name="register"),
     url(r'^profile/', user_profile, name="profile"),
-    url(r'^profile/edit/$', edit_profile, name="edit_profile"),
+    url(r'^profile/edit/', edit_profile, name="edit_profile"),
+    url(r'^test$', fucking_views, name="fucking_views"),
     url(r'password-reset/', include(url_reset))
     
 ]
