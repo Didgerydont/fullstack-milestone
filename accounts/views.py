@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm
 from accounts.forms import UserLoginForm, UserRegistrationForm, UserDetailsForm
+from django.db import transaction
 # Create your views here.
 
 
@@ -72,16 +73,19 @@ def user_profile(request):
     return render(request, 'profile.html', {"profile": user})
 
 
+@login_required
+@transaction.atomic
 def edit_profile(request):
-    """ Allow the user to update their own details """
     if request.method == 'POST':
-        change_details_form = UserDetailsForm(request.POST, instance=request.user)
-        #change_details_form = UserChangeForm(request.POST, instance=request.user)
-
-        if change_details_form.is_valid():
-            change_details_form.save()
+        profile_form = UserDetailsForm(request.POST, instance=request.user.Profile)
+        if profile_form.is_valid():
+            profile_form.save()
+            messages.success(request, _('Your profile was successfully updated!'))
             return redirect('profile')
+        else:
+            messages.error(request, _('Please correct the error below.'))
     else:
-        change_details_form = UserDetailsForm(request.POST, instance=request.user)
-        args = {'change_details_form': change_details_form}
-        return render(request, 'userdetails.html', args)
+        profile_form = UserDetailsForm(instance=request.user.Profile)
+    return render(request, 'userdetails.html', {
+        'profile_form': profile_form
+    })

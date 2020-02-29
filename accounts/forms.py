@@ -1,8 +1,10 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.forms import ModelForm
 from django.core.exceptions import ValidationError
 from .models import Profile
+
 
 class UserLoginForm(forms.Form):
     """ Form to be used to log users in"""
@@ -42,7 +44,8 @@ class UserRegistrationForm(UserCreationForm):
 
         return password2
 
-class UserDetailsForm(UserChangeForm):
+
+class UserDetailsForm(forms.ModelForm):
     firstname = forms.CharField(max_length=56,
         label="First Name", required=True)
     lastname = forms.CharField(max_length=45,
