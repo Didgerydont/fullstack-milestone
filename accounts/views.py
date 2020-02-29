@@ -75,13 +75,13 @@ def user_profile(request):
 def edit_profile(request):
     """ Allow the user to update their own details """
     if request.method == 'POST':
-        form = UserDetailsForm
-        form = UserChangeForm(request.POST, instance=request.user)
+        change_details_form = UserDetailsForm(request.POST, instance=request.user)
+        #change_details_form = UserChangeForm(request.POST, instance=request.user)
 
-        if form.is_valid():
-            form.save()
+        if change_details_form.is_valid():
+            change_details_form.save()
             return redirect('profile')
     else:
-        form = UserChangeForm(instance=request.user)
-        args = {'form': form}
+        change_details_form = UserDetailsForm(request.POST, instance=request.user)
+        args = {'change_details_form': change_details_form}
         return render(request, 'userdetails.html', args)
