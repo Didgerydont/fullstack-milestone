@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.core.exceptions import ValidationError
-
+from .models import Profile
 
 class UserLoginForm(forms.Form):
     """ Form to be used to log users in"""
@@ -18,24 +18,10 @@ class UserRegistrationForm(UserCreationForm):
     password2 = forms.CharField(
         label="Password Confirmation",
         widget=forms.PasswordInput)
-    firstname = forms.CharField(max_length=56,
-        label="First Name", required=True)
-    lastname = forms.CharField(max_length=45,
-        label="Second Name", required=True)
-    phone = forms.CharField(max_length=14,
-        label="Phone", required=False)
-    address = forms.CharField(max_length=255,
-        label="Full Address", widget=forms.Textarea, required=False)
-    town = forms.CharField(max_length=45,
-        label="Town", required=False)
-    post_code = forms.CharField(max_length=45,
-        label="Post Code", required=False)
-    country = forms.CharField(max_length=45,
-        label="Country", required=False)
 
     class Meta:
         model = User
-        fields = ['email', 'username', 'password1', 'password2', 'firstname', 'lastname', 'phone', 'address', 'town', 'post_code','country']
+        fields = ['email', 'username', 'password1', 'password2']
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -56,4 +42,22 @@ class UserRegistrationForm(UserCreationForm):
 
         return password2
 
+class UserDetailsForm(UserChangeForm):
+    firstname = forms.CharField(max_length=56,
+        label="First Name", required=True)
+    lastname = forms.CharField(max_length=45,
+        label="Second Name", required=True)
+    phone = forms.CharField(max_length=14,
+        label="Phone", required=False)
+    address = forms.CharField(max_length=255,
+        label="Full Address", widget=forms.Textarea, required=False)
+    town = forms.CharField(max_length=45,
+        label="Town", required=False)
+    post_code = forms.CharField(max_length=45,
+        label="Post Code", required=False)
+    country = forms.CharField(max_length=45,
+        label="Country", required=False)
 
+    class Meta:
+        model = Profile
+        fields = ['firstname', 'lastname', 'phone', 'address', 'town', 'post_code','country']

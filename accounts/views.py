@@ -3,7 +3,7 @@ from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm
-from accounts.forms import UserLoginForm, UserRegistrationForm
+from accounts.forms import UserLoginForm, UserRegistrationForm, UserDetailsForm
 # Create your views here.
 
 
@@ -75,6 +75,7 @@ def user_profile(request):
 def edit_profile(request):
     """ Allow the user to update their own details """
     if request.method == 'POST':
+        form = UserDetailsForm
         form = UserChangeForm(request.POST, instance=request.user)
 
         if form.is_valid():
