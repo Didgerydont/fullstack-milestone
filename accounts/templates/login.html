@@ -10,7 +10,7 @@
     <div class="row">
         <form method="POST"  action="{% url 'login' %}">
             {% csrf_token %}
-            {{ login_form | as_bootstrap}}
+            {{ login_form | crispy }}
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
     </div>
