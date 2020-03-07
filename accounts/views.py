@@ -77,7 +77,7 @@ def user_profile(request):
 @transaction.atomic
 def edit_profile(request, user_id):
     if request.method == 'POST':
-        profile_form = UserDetailsForm(request.POST, instance=request.user.Profile)
+        profile_form = UserDetailsForm(request.POST, instance=request.user.profile)
         if profile_form.is_valid():
             profile_form.save()
             messages.success('Your profile was successfully updated!')
