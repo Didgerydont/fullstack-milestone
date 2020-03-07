@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm
 from accounts.forms import UserLoginForm, UserRegistrationForm, UserDetailsForm
+from django.views.decorators.csrf import csrf_protect
 from django.db import transaction
 # Create your views here.
 
@@ -20,7 +21,7 @@ def logout(request):
     messages.success(request, "You have successfully been logged out!")
     return redirect(reverse('index'))
 
-
+@csrf_protect
 def login(request):
     """ Return a login page """
     if request.user.is_authenticated:
@@ -40,7 +41,7 @@ def login(request):
         login_form = UserLoginForm()
     return render(request, 'login.html', {"login_form": login_form})
 
-
+@csrf_protect
 def registration(request):
     """ render the registration page """
     if request.user.is_authenticated:
@@ -72,7 +73,7 @@ def user_profile(request):
     user = User.objects.get(email=request.user.email)
     return render(request, 'profile.html', {"profile": user})
 
-
+@csrf_protect
 @login_required
 @transaction.atomic
 def edit_profile(request, user_id):

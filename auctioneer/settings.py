@@ -115,6 +115,8 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'accounts.backends.CaseSensitiveAuth',
     ]
+
+CSRF_COOKIE_SECURE = False
    
 
 # Internationalization

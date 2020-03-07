@@ -15,6 +15,7 @@ class Profile(models.Model):
     country = models.CharField(max_length=45)
     birth_date = models.DateField(null=True, blank=True)
     AUTH_PROFILE_MODULE = 'app.profile'
+    
     def __str__(self):
         return self.user.username
 
