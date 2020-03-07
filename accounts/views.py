@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm
 from accounts.forms import UserLoginForm, UserRegistrationForm, UserDetailsForm
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.db import transaction
 # Create your views here.
 
@@ -13,7 +13,7 @@ def index(request):
     """Return the index.html file """
     return render(request, 'index.html')
 
-
+@csrf_exempt
 @login_required
 def logout(request):
     """Log the user out """
@@ -78,7 +78,7 @@ def user_profile(request):
 @transaction.atomic
 def edit_profile(request, user_id):
     if request.method == 'POST':
-        profile_form = UserDetailsForm(request.POST, instance=request.user.profile)
+        profile_form = UserDetailsForm(request.POST, instance=request.user.userprofile)
         if profile_form.is_valid():
             profile_form.save()
             messages.success('Your profile was successfully updated!')
@@ -86,7 +86,7 @@ def edit_profile(request, user_id):
         else:
             messages.error('Please correct the error below.')
     else:
-        profile_form = UserDetailsForm(instance=request.user.Profile)
+        profile_form = UserDetailsForm(instance=request.user.userprofile)
     return render(request, 'userdetails.html', {
         'profile_form': profile_form
     })
