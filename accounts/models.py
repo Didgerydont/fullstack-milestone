@@ -17,14 +17,10 @@ class Profile(models.Model):
     AUTH_PROFILE_MODULE = 'app.Profile'
     
     def __str__(self):
-        return self.user.username
+        return self.user
 
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        userprofile.objects.create(user=instance)
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.userprofile.save()
+        Profile.userprofile.objects.create(user=instance)

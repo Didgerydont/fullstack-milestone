@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -76,20 +76,26 @@ def user_profile(request):
 @csrf_protect
 @login_required
 @transaction.atomic
-def edit_profile(request, user_id):
+def edit_profile(request, pk):
+
+    user = User.objects.get(pk)
     if request.method == 'POST':
-        profile_form = UserDetailsForm(request.POST, instance=request.user.userprofile)
+        profile_form = UserDetailsForm(request.POST, instance=request.profile.userprofile)
         if profile_form.is_valid():
             profile_form.save()
+            user.save()
             messages.success('Your profile was successfully updated!')
             return redirect('profile')
         else:
             messages.error('Please correct the error below.')
     else:
-        profile_form = UserDetailsForm(instance=request.user.userprofile)
+        profile_form = UserDetailsForm(instance=request.profile.userprofile)
     return render(request, 'userdetails.html', {
         'profile_form': profile_form
     })
 
 def fucking_views(request):
-    return render(request, 'userdetails.html')
+    profile_form = UserDetailsForm(instance=request.user.userprofile)
+    return render(request, 'userdetails.html', {
+        'profile_form': profile_form
+    })
