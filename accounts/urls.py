@@ -7,7 +7,7 @@ urlpatterns = [
     url(r'login$', login, name="login"),
     url(r'register$', registration, name="register"),
     url(r'profile$', user_profile, name="profile"),
-    url(r'<pk>/profile_edit/$', edit_profile, name="edit_profile"),
+    url(r'<pk>/profile_edit/', edit_profile, name="edit_profile"),
     url(r'test$', fucking_views, name="fucking_views"),
     url(r'password-reset/', include(url_reset))
 ]

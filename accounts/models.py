@@ -15,9 +15,9 @@ class Profile(models.Model):
     country = models.CharField(max_length=45)
     birth_date = models.DateField(null=True, blank=True)
     AUTH_PROFILE_MODULE = 'app.Profile'
-    
+
     def __str__(self):
-        return self.user
+        return self.user.username
 
 
 @receiver(post_save, sender=User)

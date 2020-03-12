@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from accounts.models import Profile
 from django.contrib.auth.forms import UserChangeForm
 from accounts.forms import UserLoginForm, UserRegistrationForm, UserDetailsForm
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
@@ -71,14 +72,23 @@ def registration(request):
 def user_profile(request):
     """ The users profile page """
     user = User.objects.get(email=request.user.email)
-    return render(request, 'profile.html', {"profile": user})
+    userprofile = Profile.objects.get(firstname=request.firstname,
+                                      lastname=request.lastname,
+                                      phone=request.phone,
+                                      address=request.address,
+                                      town=request.town,
+                                      post_code=request.post_code,
+                                      country=request.country,
+                                      birth_date=request.birth_date
+                                      )
+    return render(request, 'profile.html', {"profile": user, "userprofile": userprofile})
 
 @csrf_protect
 @login_required
 @transaction.atomic
 def edit_profile(request, pk):
 
-    user = User.objects.get(pk)
+    user = User.objects.get(pk=id)
     if request.method == 'POST':
         profile_form = UserDetailsForm(request.POST, instance=request.profile.userprofile)
         if profile_form.is_valid():
@@ -91,8 +101,10 @@ def edit_profile(request, pk):
     else:
         profile_form = UserDetailsForm(instance=request.profile.userprofile)
     return render(request, 'userdetails.html', {
-        'profile_form': profile_form
+        'profile_form': profile_form,
+        'pk': pk
     })
+
 
 def fucking_views(request):
     profile_form = UserDetailsForm(instance=request.user.userprofile)
