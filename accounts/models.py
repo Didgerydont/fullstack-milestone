@@ -17,7 +17,7 @@ class Profile(models.Model):
     AUTH_PROFILE_MODULE = 'app.Profile'
 
     def __str__(self):
-        return self.user.username
+        return '{self.user.username} Profile'
 
 
 @receiver(post_save, sender=User)

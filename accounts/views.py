@@ -40,7 +40,11 @@ def login(request):
                 login_form.add_error(None, "Your username or password is incorrect")
     else:
         login_form = UserLoginForm()
-    return render(request, 'login.html', {"login_form": login_form})
+
+    context = {
+        "login_form": login_form
+    }
+    return render(request, 'login.html', context)
 
 @csrf_protect
 def registration(request):
@@ -65,23 +69,30 @@ def registration(request):
 
     else:
         registration_form = UserRegistrationForm()
-    return render(request, 'registration.html',
-                  {'registration_form': registration_form})
+
+    context = {
+        'registration_form': registration_form
+    }
+    return render(request, 'registration.html', context)
 
 
 def user_profile(request):
     """ The users profile page """
     user = User.objects.get(email=request.user.email)
-    userprofile = Profile.objects.get(firstname=request.firstname,
-                                      lastname=request.lastname,
-                                      phone=request.phone,
-                                      address=request.address,
-                                      town=request.town,
-                                      post_code=request.post_code,
-                                      country=request.country,
-                                      birth_date=request.birth_date
-                                      )
-    return render(request, 'profile.html', {"profile": user, "userprofile": userprofile})
+    userprofile = user.profile.objects.get(firstname=request.firstname,
+                                           lastname=request.lastname,
+                                           phone=request.phone,
+                                           address=request.address,
+                                           town=request.town,
+                                           post_code=request.post_code,
+                                           country=request.country,
+                                           birth_date=request.birth_date
+                                          )
+    context = { 
+        "profile": user,
+        "userprofile": userprofile
+    }
+    return render(request, 'profile.html', context)
 
 @csrf_protect
 @login_required
@@ -100,10 +111,11 @@ def edit_profile(request, pk):
             messages.error('Please correct the error below.')
     else:
         profile_form = UserDetailsForm(instance=request.profile.userprofile)
-    return render(request, 'userdetails.html', {
-        'profile_form': profile_form,
-        'pk': pk
-    })
+    
+    context = {
+        'profile_form': profile_form
+    }
+    return render(request, 'userdetails.html', context)
 
 
 def fucking_views(request):
