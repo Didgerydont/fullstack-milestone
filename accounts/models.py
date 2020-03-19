@@ -5,7 +5,7 @@ from django.dispatch import receiver
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, related_name='userprofile', on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     firstname = models.CharField(max_length=56)
     lastname = models.CharField(max_length=45)
     phone = models.CharField(max_length=14)
@@ -18,6 +18,9 @@ class Profile(models.Model):
 
     def __str__(self):
         return '{self.user.username} Profile'
+
+    def save(self):
+        Profile.save()
 
 
 @receiver(post_save, sender=User)

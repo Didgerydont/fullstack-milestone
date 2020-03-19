@@ -79,15 +79,15 @@ def registration(request):
 def user_profile(request):
     """ The users profile page """
     user = User.objects.get(email=request.user.email)
-    userprofile = user.profile.objects.get(firstname=request.firstname,
-                                           lastname=request.lastname,
-                                           phone=request.phone,
-                                           address=request.address,
-                                           town=request.town,
-                                           post_code=request.post_code,
-                                           country=request.country,
-                                           birth_date=request.birth_date
-                                          )
+    userprofile = Profile.objects.get(firstname=request.user.profile.firstname,
+                                      lastname=request.user.profile.lastname,
+                                      phone=request.user.profile.phone,
+                                      address=request.user.profile.address,
+                                      town=request.user.profile.town,
+                                      post_code=request.user.profile.post_code,
+                                      country=request.user.profile.country,
+                                      birth_date=request.user.profile.birth_date
+                                     )
     context = { 
         "profile": user,
         "userprofile": userprofile
@@ -101,7 +101,7 @@ def edit_profile(request, pk):
 
     user = User.objects.get(pk=id)
     if request.method == 'POST':
-        profile_form = UserDetailsForm(request.POST, instance=request.profile.userprofile)
+        profile_form = UserDetailsForm(request.POST, instance=request.User.Profile)
         if profile_form.is_valid():
             profile_form.save()
             user.save()
@@ -110,7 +110,7 @@ def edit_profile(request, pk):
         else:
             messages.error('Please correct the error below.')
     else:
-        profile_form = UserDetailsForm(instance=request.profile.userprofile)
+        profile_form = UserDetailsForm(instance=request.User.Profile)
     
     context = {
         'profile_form': profile_form
@@ -119,7 +119,7 @@ def edit_profile(request, pk):
 
 
 def fucking_views(request):
-    profile_form = UserDetailsForm(instance=request.user.userprofile)
+    profile_form = UserDetailsForm(instance=request.User.Profile)
     return render(request, 'userdetails.html', {
         'profile_form': profile_form
     })
