@@ -17,7 +17,7 @@ class Profile(models.Model):
     AUTH_PROFILE_MODULE = 'app.Profile'
 
     def __str__(self):
-        return '{self.user.username} Profile'
+        return self.user.username
 
     def save(self):
         Profile.save()

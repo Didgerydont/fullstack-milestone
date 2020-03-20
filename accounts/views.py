@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import auth, messages
+from django.urls import reverse
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from accounts.models import Profile
@@ -38,6 +40,7 @@ def login(request):
                 return redirect(reverse('profile'))
             else:
                 login_form.add_error(None, "Your username or password is incorrect")
+                return redirect(reverse('login'))
     else:
         login_form = UserLoginForm()
 
@@ -97,24 +100,26 @@ def user_profile(request):
 @csrf_protect
 @login_required
 @transaction.atomic
-def edit_profile(request, pk):
-
+def edit_profile(self, request, pk):
     user = User.objects.get(pk=id)
+    profile = get_object_or_404(models.Profile, user=user)
     if request.method == 'POST':
-        profile_form = UserDetailsForm(request.POST, instance=request.User.Profile)
+        profile_form = UserDetailsForm(request.POST, instance=profile)
         if profile_form.is_valid():
             profile_form.save()
-            user.save()
             messages.success('Your profile was successfully updated!')
-            return redirect('profile')
+            return HttpResponseRedirect(
+                        reverse('profile')
+                    )
         else:
             messages.error('Please correct the error below.')
     else:
-        profile_form = UserDetailsForm(instance=request.User.Profile)
+        profile_form = UserDetailsForm(instance=profile)
     
     context = {
         'profile_form': profile_form
     }
+
     return render(request, 'userdetails.html', context)
 
 
