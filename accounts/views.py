@@ -28,7 +28,7 @@ def logout(request):
 def login(request):
     """ Return a login page """
     if request.user.is_authenticated:
-        return redirect(reverse('profile'))
+        return redirect(reverse('accounts:profile'))
     if request.method == "POST":
         login_form = UserLoginForm(request.POST)
         if login_form.is_valid():
@@ -37,10 +37,9 @@ def login(request):
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfully logged in!")
-                return redirect(reverse('profile'))
+                return redirect(reverse('accounts:profile'))
             else:
                 login_form.add_error(None, "Your username or password is incorrect")
-                return redirect(reverse('login'))
     else:
         login_form = UserLoginForm()
 
@@ -100,27 +99,27 @@ def user_profile(request):
 @csrf_protect
 @login_required
 @transaction.atomic
-def edit_profile(self, request, pk):
-    user = User.objects.get(pk=id)
+def edit_profile(request, pk):
+    user = User.objects.get()
     profile = get_object_or_404(models.Profile, user=user)
     if request.method == 'POST':
         profile_form = UserDetailsForm(request.POST, instance=profile)
         if profile_form.is_valid():
             profile_form.save()
             messages.success('Your profile was successfully updated!')
-            return HttpResponseRedirect(
-                        reverse('profile')
+            return redirect(
+                        reverse('accounts:profile', pk=pk)
                     )
         else:
             messages.error('Please correct the error below.')
     else:
         profile_form = UserDetailsForm(instance=profile)
-    
+
     context = {
         'profile_form': profile_form
     }
 
-    return render(request, 'userdetails.html', context)
+    return render(request, 'userdetails.html', context, pk=pk)
 
 
 def fucking_views(request):
