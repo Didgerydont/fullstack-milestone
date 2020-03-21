@@ -21,6 +21,7 @@ from antiques import urls as urls_antiques
 from django.views import static
 from .settings import MEDIA_ROOT
 
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name="index"),

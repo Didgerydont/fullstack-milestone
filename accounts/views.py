@@ -19,7 +19,7 @@ def index(request):
 @csrf_exempt
 @login_required
 def logout(request):
-    """Log the user out """
+    """Log the user out"""
     auth.logout(request)
     messages.success(request, "You have successfully been logged out!")
     return redirect(reverse('index'))
@@ -28,7 +28,7 @@ def logout(request):
 def login(request):
     """ Return a login page """
     if request.user.is_authenticated:
-        return redirect(reverse('accounts:profile'))
+        return redirect(reverse('index'))
     if request.method == "POST":
         login_form = UserLoginForm(request.POST)
         if login_form.is_valid():
