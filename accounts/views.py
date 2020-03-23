@@ -105,10 +105,10 @@ def edit_profile(request, pk):
             profile_form = UserDetailsForm(request.POST, instance=profile)
             if profile_form.is_valid():
                 profile = profile_form.save()
-                messages.success('Your profile was successfully updated!')
+                messages.success(request, 'Your profile was successfully updated!')
                 return redirect('accounts:profile')
             else:
-                messages.error('Please correct the error below.')
+                messages.error(request, 'Please correct the error below.')
         else:
             profile_form = UserDetailsForm(instance=profile)
     else:
