@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import auth, messages
 from django.urls import reverse
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, HttpResponseForbidden
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from accounts.models import Profile
@@ -90,40 +90,32 @@ def user_profile(request):
                                       country=request.user.profile.country,
                                       birth_date=request.user.profile.birth_date
                                      )
-    context = { 
+    context = {
         "profile": user,
         "userprofile": userprofile
     }
     return render(request, 'profile.html', context)
 
 @csrf_protect
-@login_required
 @transaction.atomic
 def edit_profile(request, pk):
-    user = User.objects.get()
-    profile = get_object_or_404(models.Profile, user=user)
-    if request.method == 'POST':
-        profile_form = UserDetailsForm(request.POST, instance=profile)
-        if profile_form.is_valid():
-            profile_form.save()
-            messages.success('Your profile was successfully updated!')
-            return redirect(
-                        reverse('accounts:profile', pk=pk)
-                    )
+    profile = get_object_or_404(Profile, pk=pk)
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            profile_form = UserDetailsForm(request.POST, instance=profile)
+            if profile_form.is_valid():
+                profile = profile_form.save()
+                messages.success('Your profile was successfully updated!')
+                return redirect('accounts:profile')
+            else:
+                messages.error('Please correct the error below.')
         else:
-            messages.error('Please correct the error below.')
+            profile_form = UserDetailsForm(instance=profile)
     else:
-        profile_form = UserDetailsForm(instance=profile)
+        return HttpResponseForbidden()
 
     context = {
         'profile_form': profile_form
     }
 
-    return render(request, 'userdetails.html', context, pk=pk)
-
-
-def fucking_views(request):
-    profile_form = UserDetailsForm(instance=request.User.Profile)
-    return render(request, 'userdetails.html', {
-        'profile_form': profile_form
-    })
+    return render(request, 'userdetails.html', context)
