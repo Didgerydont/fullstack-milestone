@@ -1,12 +1,36 @@
 {% extends 'base.html' %}
 {% block page_title %}Time Gavel{% endblock %}
 {% block content %}
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Album example</h1>
+        <p class="lead text-muted">Your one-stop auction site for rare antiquities and collectables. Items so rare you wont see them anywhere else.</p>
+        <p>
+        <a href="{% url 'products:antiques' %}" class="btn btn-primary my-2">Current Products</a>
+        <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+        </p>
+    </div>
+</section>
+
 <div class="container">
     <div class="row">
         <div class="col-xs-12 text-center center-block">
             <h1 class="heading">Time Gavel</h1>
-            <p>Your one-stop auction site for rare antiquities</p>
+            <p></p>
         </div>
     </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-lg-4 past-items">
+            
+        </div>
+        
+        
+    
+       
+    </div>
+
 </div>
 {% endblock %}
