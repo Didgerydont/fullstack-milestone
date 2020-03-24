@@ -2,12 +2,22 @@ body {
     font-family: Arial;
 }
 
+
+/* Nav and footer              */
+/* Nav */
+.navbar{
+    margin-bottom: 5%;
+}
+
 .navbar-nav {
     float: right!important;
 }
 
+
+
+/* Footer */
 footer {
-    margin-top: 40px;
+    margin-top: 10%;
     padding-top: 20px;
     padding-bottom: 20px;
     border-top: 1px solid #ededed;
@@ -76,3 +86,35 @@ caption p {
     min-height: 40px;
 
 }
+
+/*    Profile       */
+/* Gen layout */
+
+.profile-header{
+    margin-bottom: 5%;
+}
+
+.profile-intro{
+    margin-bottom: 2.5%;
+}
+
+.profile-information-parent{
+    text-align: left;
+    margin-left: 10%;
+}
+
+.profile-information-child{
+    display: inline-block;
+    
+}
+
+
+/* forms */
+.profile-form-parent{
+    text-align: left;
+    margin-left: 10%;
+}
+.profile-form-child{
+    display: inline-block;
+}
+

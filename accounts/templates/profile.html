@@ -8,33 +8,37 @@
 {% block content %}
 
 <div class="container-fluid">
-    <div class="row">
+	<div class="row">
         <div class="col-sm-12">
-            <h2 class="text-center">Welcome to your profile page {{ user }}</h2>
+            <h2 class="text-center profile-header">Welcome to your profile page {{ user }}</h2>
         </div>        
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-12">
-            <h3 class="text-center">These are the details that we have stored on file for you</h3>
-            <h3 class="text-center">Check out the information below and try to keep this up to date for us</h3>
-            <h3 class="text-center">You can also update these details<a href="{% url 'accounts:edit_profile' userprofile.id %}"> here</a></h3>
+        <div class="profile-intro col-sm-12">
+            <h4 class="text-center">Below you will see the details that we currently have stored on file for you.</h4>
+            <h4 class="text-center">Check out the information below and try to keep this up to date for us</h4>
+            <h4 class="text-center">If you want to update these details, you can do that<a href="{% url 'accounts:edit_profile' userprofile.id %}"> here</a></h4>
         </div>        
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-12">
-            <h4 class="text-left">Profile</h4>
-            <p class="text-left">First name:  {{ userprofile.firstname }}</p>
-            <p class="text-left">Last name:  {{ userprofile.lastname }}</p>
-            <p class="text-left">Email:  {{ user.email }}</p>
-            <p class="text-left">Phone:  {{ userprofile.phone }}</p>
-            <p class="text-left">Address:  {{ userprofile.address }}</p>
-            <p class="text-left">Town:  {{ userprofile.town }}</p>
-            <p class="text-left">Country:  {{ userprofile.country }}</p>
-            <p class="text-left">Post Code:  {{ userprofile.post_code }}</p>
+        <div class="col-sm-6">
+            <div class="profile-form-parent">
+                <div class="profile-form-child">
+					<h4 class="text-left">Profile</h4>
+					<p class="text-left">First name: {{ userprofile.firstname}}</p>
+					<p class="text-left">Last name: {{ userprofile.lastname }}</p>
+					<p class="text-left">Email: {{ user.email }}</p>
+					<p class="text-left">Phone: {{ userprofile.phone }}</p>
+					<p class="text-left">Address: {{ userprofile.address }}</p>
+					<p class="text-left">Town: {{ userprofile.town }}</p>
+					<p class="text-left">Country: {{ userprofile.country }}</p>
+					<p class="text-left">Post Code: {{ userprofile.post_code }}</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
