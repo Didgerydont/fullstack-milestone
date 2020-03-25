@@ -14,5 +14,3 @@ class Antiques(models.Model):
 
     def __str__(self):
         return self.name
-
-#class PastSold(models.Model):
