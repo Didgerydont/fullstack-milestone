@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import date, datetime
 
+
 class PastSold(models.Model):
     name = models.CharField(max_length=254, default='')
     date_sold = models.DateTimeField(auto_now_add=True, blank=True)
@@ -12,11 +13,13 @@ class PastSold(models.Model):
     def __str__(self):
         return self.name
 
+
 class ItemRequest(models.Model):
-    name = models.CharField(max_length=254, default='')
-    description = models.TextField()
-    budget = models.IntegerField()
-    image = models.ImageField(upload_to='images')
+    name = models.CharField(max_length=254, default='', required=True)
+    description = models.TextField(max_length=999, required=True)
+    budget = models.IntegerField(required=True)
+    image = models.ImageField(upload_to='images', required=False)
+    contact = models.EmailField(default='', required=True)
     request_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

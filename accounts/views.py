@@ -99,6 +99,7 @@ def user_profile(request):
 @csrf_protect
 @transaction.atomic
 def edit_profile(request, pk):
+    """ Allow the user to edit their personal details within their profile """
     profile = get_object_or_404(Profile, pk=pk)
     if request.user.is_authenticated:
         if request.method == 'POST':
