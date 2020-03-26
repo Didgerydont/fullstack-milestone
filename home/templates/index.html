@@ -4,23 +4,29 @@
 
 <section class="jumbotron text-center">
     <div class="container">
-        <h1 class="jumbotron-heading">Album example</h1>
-        <p class="lead text-muted">Your one-stop auction site for rare antiquities and collectables. Items so rare you wont see them anywhere else.</p>
+        <h1 class="jumbotron-heading my-2 mx-2">Time Gavel</h1>
+        <p class="lead text-muted my-2 mx-2">Your one-stop auction site for rare antiquities and collectables. Items so rare you wont see them anywhere else.</p>
         <p>
-        <a href="{% url 'products:antiques' %}" class="btn btn-primary my-2">Current Products</a>
-        <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+        <a href="{% url 'products:antiques' %}" class="btn btn-primary my-2 mx-2">Current Products</a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'accounts:profile' %}" class="btn btn-primary my-2 mx-2 bg-success">Profile</a>
+        {% else %}
+        <a href="{% url 'accounts:register' %}" class="btn btn-primary my-2 mx-2 bg-success">Register</a>
+        {% endif %}
         </p>
     </div>
 </section>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-xs-12 text-center center-block">
-            <h1 class="heading">Time Gavel</h1>
-            <p></p>
+        <div class="col-sm-12 text-center">
+            <h2>Check out some of our previously sold items</h2>
         </div>
+        
     </div>
+
 </div>
+
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-lg-4 past-items">
