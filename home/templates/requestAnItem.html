@@ -5,11 +5,33 @@
 
 <div class="container">
     <div class="row">
-        <form method="POST">
-            {% csrf_token %}
-            {{ request_form | crispy }}
-            <button type="submit" class="btn btn-primary">Save</button> 
-        </form>
+        <div class="offset-4 col-xs-4">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ request_form.name|as_crispy_field }}
+                    
+                </div>
+                <div class="form-group">
+                    {{ request_form.description|as_crispy_field }}
+                    
+                
+                </div>
+                <div class="form-group">
+                    {{ request_form.budget|as_crispy_field }}
+        
+                </div>
+                <div class="form-group">
+                    {{ request_form.image|as_crispy_field }}
+                </div>
+                <div class="form-group">
+                    {{ request_form.contact|as_crispy_field }}
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Save</button> 
+            </form>
+
+        </div>
     </div>
 </div>
 

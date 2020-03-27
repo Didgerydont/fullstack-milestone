@@ -13,4 +13,4 @@ class RequestItemForm(forms.ModelForm):
 
     class Meta:
         model = ItemRequest
-        fields = ['name', 'description', 'budget', 'image']
+        fields = ['name', 'description', 'budget', 'image', 'contact']

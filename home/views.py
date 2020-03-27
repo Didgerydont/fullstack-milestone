@@ -21,7 +21,7 @@ def requestAnItem(request):
     if request.method == 'POST':
         request_form = RequestItemForm(request.POST)
         if request_form.is_valid():
-            request = request_form.save()
+            request_form.save()
             messages.success(request, 'Your request was successfully updated!')
             return redirect('home:index')
         else:
