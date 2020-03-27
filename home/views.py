@@ -19,7 +19,7 @@ def displayPastProducts(request):
 def requestAnItem(request):
     """ Allows the user to place a request for an item not already listed on the site """
     if request.method == 'POST':
-        request_form = RequestItemForm(request.POST, instance=request)
+        request_form = RequestItemForm(request.POST)
         if request_form.is_valid():
             request = request_form.save()
             messages.success(request, 'Your request was successfully updated!')
@@ -27,7 +27,7 @@ def requestAnItem(request):
         else:
             messages.error(request, 'Please correct the error below.')
     else:
-        request_form = RequestItemForm(instance=request)
+        request_form = RequestItemForm(request.POST)
     context = {
         'request_form': request_form
     }
