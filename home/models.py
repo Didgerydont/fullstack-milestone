@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import date, datetime
+from django.contrib import admin
 
 
 class PastSold(models.Model):
@@ -24,3 +25,21 @@ class ItemRequest(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class RequestView(models.Model):
+    item_request = models.ForeignKey(ItemRequest)
+
+
+class InlineImage(admin.TabularInline):
+    model = RequestView
+
+
+class RequestedItemAdmin(admin.ModelAdmin):
+    inlines = [
+        InlineImage,
+    ]
+
+
+
+    
