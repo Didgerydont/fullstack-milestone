@@ -8,7 +8,7 @@ class RequestItemForm(forms.ModelForm):
     name = forms.CharField(max_length=254, required=True)
     description = forms.CharField(max_length=999, required=True)
     budget = forms.IntegerField(required=True)
-    image = forms.ImageField(required=False)
+    image = forms.ImageField(required=True)
     contact = forms.EmailField(required=True)
 
     class Meta:

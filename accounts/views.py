@@ -22,13 +22,13 @@ def logout(request):
     """Log the user out"""
     auth.logout(request)
     messages.success(request, "You have successfully been logged out!")
-    return redirect(reverse('index'))
+    return redirect(reverse('home:index'))
 
 @csrf_protect
 def login(request):
     """ Return a login page """
     if request.user.is_authenticated:
-        return redirect(reverse('index'))
+        return redirect(reverse('home:index'))
     if request.method == "POST":
         login_form = UserLoginForm(request.POST)
         if login_form.is_valid():
@@ -52,7 +52,7 @@ def login(request):
 def registration(request):
     """ render the registration page """
     if request.user.is_authenticated:
-        return redirect(reverse('index'))
+        return redirect(reverse('home:index'))
 
     if request.method == "POST":
         registration_form = UserRegistrationForm(request.POST)
@@ -65,7 +65,7 @@ def registration(request):
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfully registered")
-                return redirect(reverse('index'))
+                return redirect(reverse('home:index'))
             else:
                 messages.error(request, "Unable to register your account at this time")
 

@@ -19,27 +19,9 @@ class ItemRequest(models.Model):
     name = models.CharField(max_length=254, default='')
     description = models.TextField(max_length=999)
     budget = models.IntegerField()
-    image = models.ImageField(upload_to='images')
+    image = models.ImageField(upload_to='media')
     contact = models.EmailField()
     request_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
-
-
-class RequestView(models.Model):
-    item_request = models.ForeignKey(ItemRequest)
-
-
-class InlineImage(admin.TabularInline):
-    model = RequestView
-
-
-class RequestedItemAdmin(admin.ModelAdmin):
-    inlines = [
-        InlineImage,
-    ]
-
-
-
-    
