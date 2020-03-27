@@ -5,12 +5,11 @@ from .models import ItemRequest
 
 
 class RequestItemForm(forms.ModelForm):
-    name = forms.CharField(max_length=254, default='')
-    description = forms.TextField()
-    budget = forms.IntegerField()
-    image = forms.ImageField(upload_to='images')
-    request_date = forms.DateTimeField(auto_now_add=True)
-    contact = forms.EmailField(default='', required=True)
+    name = forms.CharField(max_length=254, required=True)
+    description = forms.CharField(max_length=999, required=True)
+    budget = forms.IntegerField(required=True)
+    image = forms.ImageField(required=False)
+    contact = forms.EmailField(required=True)
 
     class Meta:
         model = ItemRequest

@@ -1,8 +1,17 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block page_title %}Request an Item{% endblock %}
 {% block content %}
 
-
+<div class="container">
+    <div class="row">
+        <form method="POST">
+            {% csrf_token %}
+            {{ request_form | crispy }}
+            <button type="submit" class="btn btn-primary">Save</button> 
+        </form>
+    </div>
+</div>
 
 
 {% endblock %}
