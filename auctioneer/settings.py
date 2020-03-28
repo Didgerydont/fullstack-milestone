@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'accounts',
     'antiques',
     'storages',
-    
+    'auction',
 ]
 
 MIDDLEWARE = [
@@ -133,6 +133,12 @@ USE_L10N = True
 USE_TZ = True
 
 
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
+
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
@@ -143,9 +149,3 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
-STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
-
-
-MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
