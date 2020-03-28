@@ -23,7 +23,8 @@ def requestAnItem(request):
         if request_form.is_valid():
             request_form.save()
             messages.success(request, 'Your request was successfully updated!')
-            return redirect('home:index')
+            print('success')
+            return redirect(reverse('home:index'))
         else:
             messages.error(request, 'Please correct the error below.')
     else:
