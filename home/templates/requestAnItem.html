@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="offset-4 col-xs-4">
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-group">
                     {{ request_form.name|as_crispy_field }}

@@ -1,7 +1,10 @@
+import os
 from django.db import models
 from datetime import date, datetime
 from django.utils.html import format_html
 from django.contrib import admin
+from django.conf import settings
+from django.utils.safestring import mark_safe
 
 
 class PastSold(models.Model):
@@ -20,12 +23,24 @@ class ItemRequest(models.Model):
     name = models.CharField(max_length=254, default='')
     description = models.TextField(max_length=999)
     budget = models.IntegerField()
-    image = models.ImageField(upload_to='media/images', blank=True, null=True)
+    image = models.ImageField(upload_to='images', blank=True)
+    externalURL = models.URLField(blank=True)
     contact = models.EmailField()
     request_date = models.DateTimeField(auto_now_add=True)
 
-    def image_tag(self, obj):
-        return format_html('<img src="{}" />'.format(obj.image.url))
+    #some of the code above and below is from https://teamtreehouse.com/community/django-display-imagefield-with-adminsiteregistermodelmymodel-trick
+
+    def url(self):
+        # returns a URL for either internal stored or external image url
+        if self.externalURL:
+            return self.externalURL
+        else:
+            # is this the best way to do this??
+            return os.path.join('/', settings.MEDIA_URL, os.path.basename(str(self.image)))
+
+    def image_tag(self):
+        # used in the admin site model as a "thumbnail"
+        return mark_safe('<img src="{}" width="150" height="150" />'.format(self.url()))
 
     image_tag.short_description = 'Image'
 
