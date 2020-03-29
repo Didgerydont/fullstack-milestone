@@ -13,7 +13,7 @@ class Auction(models.Model):
         return "AUCTION_ID:" + str(self.pk) + " ITEM_ID:" + str(self.auction_id)
 
 
-class Watchlist(models.Model):
+class WatchList(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     auction_id = models.ForeignKey(Auction, on_delete=models.CASCADE)
 
