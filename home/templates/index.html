@@ -18,6 +18,14 @@
         <div class="col-sm-12 text-center">
             <h2>Check out some of our previously sold items</h2>
         </div>
+        <div class="col-sm-12 text-center">
+            <form action="{% url 'search:search_pastitems' %}" method="get">
+                <input type="text" name="q">
+                <button class="btn btn-primary" type="search">Search Previously Sold Items</button>
+            </form>
+        </div>
+    </div>
+</div>
         
     </div>
 
