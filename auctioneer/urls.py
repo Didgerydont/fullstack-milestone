@@ -21,6 +21,7 @@ from antiques import urls as urls_antiques
 from auction import urls as urls_auction
 from search import urls as urls_search
 from shopping_cart import urls as urls_cart
+from auction import urls as urls_auction
 from django.views import static
 from . import settings
 from .settings import MEDIA_ROOT
@@ -32,5 +33,6 @@ urlpatterns = [
     url(r'^accounts/', include(urls_accounts)),
     url(r'^antiques/', include(urls_antiques)),
     url(r'^search/', include(urls_search)),
+    url(r'^auction/', include(urls_auction)),
     url(r'media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
 ]
