@@ -1,35 +1,34 @@
-<img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
+# Time Gavel
+### Final Full Stack Project for Code Institute using Django
 
-Welcome Will Prendergast,
+#### Requirements
+Project Example Idea 2
+Build an auction place to sell historical artifacts
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project.
+#####External user’s goal:
+Find, learn about and acquire artifacts they are interested in
 
-## Gitpod Reminders
+#####Site owner's goal:
+Earn money on selling the artifacts (the site owner is the seller)
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+#####Potential features to include:
+Create an online store focused on selling unique historical artifacts, such as The Holy Grail to the highest bidder.
 
-`python3 -m http.server`
+Allow users to search for artifacts based on various fields.
 
-A blue button should appear to click: *Expose*,
+Allow users to see the price, image and other basic details about an artifact.
 
-Another blue button should appear to click: *Open Browser*.
+Users would be able to learn about the historical details of each artifact, the culture it came from, the way it was created and its journey across different owners in the past.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+For example, you might want to include information about "events" that took place in the past and that one or more artifacts took place in, or originated from.
 
-A blue button should appear to click: *Expose*,
+Allow users to bid on items, or pay a higher price to purchase them immediately. Users have to be registered for this.
 
-Another blue button should appear to click: *Open Browser*.
+#####Advanced potential feature (nice-to-have)
+Allow registered users to write reviews about the artifacts, only if they purchased them.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the backend lessons.
+Expand the search functionality to allow users to sort results based on price, age and other parameters in both ascending and descending order.
 
-## Updates Since The Instructional Video
+Include pagination and/or other dynamic display actions using javascript.
 
-We continually tweak and adjust this template to help give you the best experience. Here are the updates since the original video was made:
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
---------
-
-Happy coding!
+Use javascript polling to update the page whenever there's a new bid.
