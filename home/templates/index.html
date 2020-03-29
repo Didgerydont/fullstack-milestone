@@ -37,11 +37,17 @@
                 </button>
                 <div class="collapse p-3" id="antique-description">
                     <div class="card card-body">
+                        <strong><h5 class="p-3">Description</h5></strong>
                         <p class="antique-description p-3">{{ sold.description }}</p>
                         <br>
                         <strong><h5 class="p-3">Learn more about the items background</h5></strong>
                         <a class="p-3" href="{{ sold.edu_info }}">Wiki</a>
                     </div>
+                </div>
+                <div>
+                    <p><strong>Date Sold:</strong> {{sold.date_sold}}</p>
+                    <p><strong>Starting Price:</strong> {{sold.starting_price}}</p>
+                    <p><strong>Finishing Price:</strong> {{sold.finishing_price}}</p>
                 </div>
             </div>
         </div>

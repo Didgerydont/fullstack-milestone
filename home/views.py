@@ -7,23 +7,9 @@ from home.models import PastSold
 
 def index(request):
     """
-    A view that displays the Index page
+    A view that displays the Index page with past sold products
     """
-    return render(request, "index.html")
-
-
-def displayPastProducts(request):
-    """ Will display previously sold items on the home page """
-    past_sold = PastSold.objects.get(
-        name=request.pastsold.name,
-        date_sold=request.pastsold.date_sold,
-        description=request.pastsold.description,
-        starting_price=request.pastsold.starting_price,
-        finish_price=request.pastsold.finish_price,
-        image=request.pastsold.image,
-        edu_info=request.pastsold.edu_info,
-    )
-
+    past_sold = PastSold.objects.all()
     context = {
         'past_sold': past_sold
     }
