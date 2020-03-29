@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from home.forms import RequestItemForm
+from home.models import PastSold
 # Create your views here.
 
 
@@ -13,7 +14,20 @@ def index(request):
 
 def displayPastProducts(request):
     """ Will display previously sold items on the home page """
-    return render(request, "index.html")
+    past_sold = PastSold.objects.get(
+        name=request.pastsold.name,
+        date_sold=request.pastsold.date_sold,
+        description=request.pastsold.description,
+        starting_price=request.pastsold.starting_price,
+        finish_price=request.pastsold.finish_price,
+        image=request.pastsold.image,
+        edu_info=request.pastsold.edu_info,
+    )
+
+    context = {
+        'past_sold': past_sold
+    }
+    return render(request, "index.html", context)
 
 
 def requestAnItem(request):
