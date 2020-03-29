@@ -1,25 +1,7 @@
 {% extends 'base.html' %}
-{% block page_title %}Time Gavel{% endblock %}
+{% block page_title %}Search Results{% endblock %}
 {% block content %}
 
-<section class="jumbotron text-center">
-    <div class="container">
-        <h1 class="jumbotron-heading my-2 mx-2">Time Gavel</h1>
-        <p class="lead text-muted my-2 mx-2">Your one-stop auction site for rare antiquities and collectables. Items so rare you wont see them anywhere else.</p>
-        <p>
-        <a href="{% url 'products:antiques' %}" class="btn btn-primary my-2 mx-2">Current Products</a>
-        <a href="{% url 'home:requestAnItem' %}" class="btn btn-primary my-2 mx-2 bg-success">Request an item</a>
-        </p>
-    </div>
-</section>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-12 text-center">
-            <h2>Check out some of our previously sold items</h2>
-        </div>    
-    </div>
-</div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12 text-center">
@@ -33,29 +15,29 @@
 
 <div class="container">
     <div class="row row-flex">
-        {% for sold in past_sold %}
+        {% for found in found_pastitems %}
         <div class="col-xs-12 col-md-6 m-3 p-3 display panel panel-default">
             <div class="panel-body p-3">
                 <div class="image-container m-1">
-                    <img src="{{ MEDIA_URL }}{{ sold.image }}" alt="Product Image" height="100%" width="100%">
+                    <img src="{{ MEDIA_URL }}{{ found.image }}" alt="Product Image" height="100%" width="100%">
                 </div>
-                <h3 class="p-3">{{sold.name}}</h3>
+                <h3 class="p-3">{{found.name}}</h3>
                 <button class="btn btn-primary m-3" type="button" data-toggle="collapse" data-target="#antique-description" aria-expanded="false" aria-controls="collapseExample">
                     About the Item
                 </button>
                 <div class="collapse p-3" id="antique-description">
                     <div class="card card-body">
                         <strong><h5 class="p-3">Description</h5></strong>
-                        <p class="antique-description p-3">{{ sold.description }}</p>
+                        <p class="antique-description p-3">{{ found.description }}</p>
                         <br>
                         <strong><h5 class="p-3">Learn more about the items background</h5></strong>
-                        <a class="p-3" href="{{ sold.edu_info }}">Wiki</a>
+                        <a class="p-3" href="{{ found.edu_info }}">Wiki</a>
                     </div>
                 </div>
                 <div>
-                    <p><strong>Date Sold:</strong> {{sold.date_sold}}</p>
-                    <p><strong>Starting Price:</strong> {{sold.starting_price}}</p>
-                    <p><strong>Finishing Price:</strong> {{sold.finishing_price}}</p>
+                    <p><strong>Date Sold:</strong> {{found.date_sold}}</p>
+                    <p><strong>Starting Price:</strong> {{found.starting_price}}</p>
+                    <p><strong>Finishing Price:</strong> {{found.finishing_price}}</p>
                 </div>
             </div>
         </div>
