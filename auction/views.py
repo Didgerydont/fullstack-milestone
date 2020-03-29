@@ -3,7 +3,7 @@ from .models import Auction, WatchList, Bid
 
 
 def watch_list(request):
-
+    
     return render(request, "mywatchlist.html")
 
 def bids(request):
