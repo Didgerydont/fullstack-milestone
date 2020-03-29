@@ -118,3 +118,14 @@ caption p {
     display: inline-block;
 }
 
+
+
+/*   Responsive images    */
+.image-container > img:hover {    
+    width: 175%;
+    height: 175%;
+    position:absolute; 
+    z-index:99;
+    
+}
+

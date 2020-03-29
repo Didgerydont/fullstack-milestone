@@ -26,27 +26,26 @@
 <div class="container">
     <div class="row row-flex">
         {% for sold in past_sold %}
-        <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 ml-3 display panel panel-default">
-            <div class="panel-body">
-                <div class="antique" style="background-image: url('{{ MEDIA_URL }}{{ sold.image }}');"></div>
-                <h3>{{sold.name}}</h3>
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#anitque-description" aria-expanded="false" aria-controls="collapseExample">
+        <div class="col-xs-12 col-md-6 m-3 p-3 display panel panel-default">
+            <div class="panel-body p-3">
+                <div class="image-container m-1">
+                    <img src="{{ MEDIA_URL }}{{ sold.image }}" alt="Product Image" height="100%" width="100%">
+                </div>
+                <h3 class="p-3">{{sold.name}}</h3>
+                <button class="btn btn-primary m-3" type="button" data-toggle="collapse" data-target="#antique-description" aria-expanded="false" aria-controls="collapseExample">
                     About the Item
                 </button>
-                <div class="collapse" id="anitque-description">
+                <div class="collapse p-3" id="antique-description">
                     <div class="card card-body">
-                        <p class="antique-description">{{ sold.description }}</p>
+                        <p class="antique-description p-3">{{ sold.description }}</p>
                         <br>
-                        <strong><h5>Learn more about the items background</h5></strong>
-                        <a href="{{ sold.edu_info }}">Wiki</a>
+                        <strong><h5 class="p-3">Learn more about the items background</h5></strong>
+                        <a class="p-3" href="{{ sold.edu_info }}">Wiki</a>
                     </div>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
-        
-
-       
 </div>
 {% endblock %}
