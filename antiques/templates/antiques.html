@@ -41,11 +41,6 @@
                 <p>{{ antique.price }}</p>
                 <form method="post" action="#">
                     {% csrf_token %}
-                    <div class="buy-now">
-                        <div class="purchase-box">
-                            <h5 class="purchase-header">Secure this item now for </h5><span class="current-bid">€{{  antique.buy_now_price }}<button class="buy-now btn btn-success" type="submit">Buy Now</button></span>
-                        </div>   
-                    </div>
                     <div class="bid-box">
                         <div class="purchase-box">
                             <h5 class="purchase-header">Our current highest bid is <span class="current-bid">€{{  antique.current_bid }}</span></h5>
@@ -57,7 +52,28 @@
                             <button class="btn btn-success" type="submit">Bid</button>
                         </span>
                     </div>
+                    <div class="buy-now">
+                        <div class="purchase-box">
+                            <h5 class="purchase-header">Secure this item now for </h5><span class="current-bid">€{{  antique.buy_now_price }}<button class="buy-now btn btn-success" type="submit">Buy Now</button></span>
+                        </div>   
+                    </div>
                 </form>
+                <div class="watch input-group">
+                    <span class="input-group-btn">
+                        <button class="btn-info" onclick="location.href='/auction/add_to_watch_list/{{auction.id}}'">
+                            {% if watchlist %}
+                                {% if watchlist && auction.id%}
+                                Unwatch
+                                {% else %}
+                                Watch
+                                {% endif %}
+                            {% else %}
+                                Watch
+                            {% endif %}
+                        
+                        </button>
+                    </span>
+                </div>
             </div>
         </div>
         {% endfor %}
