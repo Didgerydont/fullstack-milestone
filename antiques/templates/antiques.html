@@ -4,49 +4,49 @@
 {% block title %}Current Items{% endblock %}
 
 {% block content %}
-
-<div class="row row-flex">
-{% for antique in antiques %}
-<div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 ml-3 display panel panel-default">
-    <div class="panel-body">
-        <div class="antique" style="background-image: url('{{ MEDIA_URL }}{{ antique.image }}');"></div>
-        <h3>{{antique.name}}</h3>
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#anitque-description" aria-expanded="false" aria-controls="collapseExample">
-            About the Item
-        </button>
-        <div class="collapse" id="anitque-description">
-            <div class="card card-body">
-                <p class="antique-description">{{ antique.description }}</p>
-                <br>
-                <strong><h5>Learn more about the items background</h5></strong>
-                <a href="{{ antique.edu_info }}">Wiki</a>
+<div class="container">
+    <div class="row row-flex">
+        {% for antique in antiques %}
+        <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 ml-3 p-3 display panel panel-default">
+            <div class="panel-body p-3">
+                <div class="antique" style="background-image: url('{{ MEDIA_URL }}{{ antique.image }}');"></div>
+                <h3 class="p-3">{{antique.name}}</h3>
+                <button class="btn btn-primary m-3" type="button" data-toggle="collapse" data-target="#antique-description" aria-expanded="false" aria-controls="collapseExample">
+                    About the Item
+                </button>
+                <div class="collapse p-3" id="antique-description">
+                    <div class="card card-body">
+                        <p class="antique-description p-3">{{ antique.description }}</p>
+                        <br>
+                        <strong><h5 class="p-3">Learn more about the items background</h5></strong>
+                        <a class="p-3" href="{{ antique.edu_info }}">Wiki</a>
+                    </div>
+                </div>
+                <h5 class="date-posted">Last update on site <strong>{{ antique.date_posted }}</strong></h5>
+                
+                <p>{{ antique.price }}</p>
+                <form method="post" action="#">
+                    {% csrf_token %}
+                    <div class="buy-now">
+                        <div class="purchase-box">
+                            <h5 class="purchase-header">Secure this item now for </h5><span class="current-bid">€{{  antique.buy_now_price }}<button class="buy-now btn btn-success" type="submit">Buy Now</button></span>
+                        </div>   
+                    </div>
+                    <div class="bid-box">
+                        <div class="purchase-box">
+                            <h5 class="purchase-header">Our current highest bid is <span class="current-bid">€{{  antique.current_bid }}</span></h5>
+                        </div>                
+                    </div>
+                    <div class="input-group">
+                        <input name="quantity" type="number" min="{{  antique.current_bid  }}" class="form-control" placeholder="€">
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" type="submit">Bid</button>
+                        </span>
+                    </div>
+                </form>
             </div>
         </div>
-        <h5 class="date-posted">Last update on site <strong>{{ antique.date_posted }}</strong></h5>
-        
-        <p>{{ antique.price }}</p>
-        <form method="post" action="#">
-            {% csrf_token %}
-            <div class="buy-now">
-                <div class="purchase-box">
-                    <h5 class="purchase-header">Secure this item now for </h5><span class="current-bid">€{{  antique.buy_now_price }}<button class="buy-now btn btn-success" type="submit">Buy Now</button></span>
-                </div>   
-            </div>
-            <div class="bid-box">
-                <div class="purchase-box">
-                    <h5 class="purchase-header">Our current highest bid is <span class="current-bid">€{{  antique.current_bid }}</span></h5>
-                </div>                
-            </div>
-            <div class="input-group">
-                <input name="quantity" type="number" min="{{  antique.current_bid  }}" class="form-control" placeholder="€">
-                <span class="input-group-btn">
-                    <button class="btn btn-success" type="submit">Bid</button>
-                </span>
-            </div>
-        </form>
+        {% endfor %}
     </div>
 </div>
-{% endfor %}
-</div>
-
 {% endblock %}
