@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'antiques',
     'storages',
     'auction',
+    'search',
+    'shopping_cart',
 ]
 
 MIDDLEWARE = [

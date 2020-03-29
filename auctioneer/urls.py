@@ -18,6 +18,9 @@ from django.contrib import admin
 from accounts import urls as urls_accounts
 from home import urls as urls_home
 from antiques import urls as urls_antiques
+from auction import urls as urls_auction
+from seach import urls as urls_search
+from shopping_cart import urls as urls_cart
 from django.views import static
 from . import settings
 from .settings import MEDIA_ROOT

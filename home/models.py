@@ -13,7 +13,7 @@ class PastSold(models.Model):
     description = models.TextField()
     starting_price = models.DecimalField(max_digits=15, decimal_places=2)
     finish_price = models.DecimalField(max_digits=15, decimal_places=2)
-    image = models.ImageField(upload_to='images')
+    image = models.ImageField(upload_to='media')
 
     def __str__(self):
         return self.name
