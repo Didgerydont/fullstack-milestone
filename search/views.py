@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from antiques.models import Antiques
 from home.models import PastSold
 from django.db.models import Q
@@ -16,21 +16,10 @@ def search_pastitems(request):
     """
     Search through past sold items
     """
-    if request.method == 'GET':
-        items_search = request.GET.get('q')
+    query = request.GET.get('q')
 
-        items_search = []
+    results = PastSold.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
 
-        if items_search is False or items_search == "":
-            messages.error(request, 'You must enter a term to search')
-            return redirect('index')
+    
 
-        else:
-            check_for_matches = PastSold.objects.filter(Q(description__icontains=items_search))
-            for item in check_for_matches:
-                items_search.append(item)
-            
-    context = {
-        'items_search': items_search
-    }
-    return render(request, "search_past.html", context)
+    return render(request, "index.html", context)
