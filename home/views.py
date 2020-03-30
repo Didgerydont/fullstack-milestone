@@ -19,11 +19,10 @@ def index(request):
 def requestAnItem(request):
     """ Allows the user to place a request for an item not already listed on the site """
     if request.method == 'POST':
-        request_form = RequestItemForm(request.POST)
+        request_form = RequestItemForm(request.POST, request.FILES)
         if request_form.is_valid():
             request_form.save()
             messages.success(request, 'Your request was successfully updated!')
-            print('success')
             return redirect(reverse('home:index'))
         else:
             messages.error(request, 'Please correct the error below.')

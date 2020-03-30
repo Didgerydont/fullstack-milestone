@@ -29,7 +29,7 @@ class ItemRequest(models.Model):
 
     def image_tag(self):
 
-        return mark_safe('<img src="%s" width="150" height="150" />' % (self.image))
+        return mark_safe('<img src="media/%s" width="150" height="150" />' % (self.image))
 
     image_tag.short_description = 'Image'
     image_tag.allow_tags = True
