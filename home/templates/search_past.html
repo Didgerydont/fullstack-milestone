@@ -5,8 +5,8 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12 text-center">
-            <form action="{% url 'search:search_pastitems' %}" method="get">
-                <input type="text" name="q">
+            <form action="{% url 'search:search_pastitems' %}" method="GET" value="{{ request.GET.q }}">
+                <input type="text" value="{{ request.GET.q }}">
                 <button class="btn btn-primary" type="search">Search Previously Sold Items</button>
             </form>
         </div>
@@ -15,7 +15,7 @@
 
 <div class="container">
     <div class="row row-flex">
-        {% for found in found_pastitems %}
+        {% for found in items_search %}
         <div class="col-xs-12 col-md-6 m-3 p-3 display panel panel-default">
             <div class="panel-body p-3">
                 <div class="image-container m-1">

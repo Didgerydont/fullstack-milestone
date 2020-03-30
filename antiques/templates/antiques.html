@@ -8,8 +8,8 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="display">
-                <form class="md-form active-cyan-2 mb-3" action="{% url 'search:search_antiques' %}" method="get">
-                    <input class="input-block-level mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
+                <form class="md-form active-cyan-2 mb-3" action="{% url 'search:search_antiques' %}" method="GET" value="{{ request.GET.q }}">
+                    <input class="input-block-level mr-sm-2" type="search" placeholder="Search" aria-label="Search" value="{{ request.GET.q }}">
                     <button class="btn btn-primary" type="search">Search Current Items</button>
                 </form>
             </div>
@@ -61,16 +61,7 @@
                 <div class="watch input-group">
                     <span class="input-group-btn">
                         <button class="btn-info" onclick="location.href='/auction/add_to_watch_list/{{auction.id}}'">
-                            {% if watchlist %}
-                                {% if watchlist && auction.id%}
-                                Unwatch
-                                {% else %}
-                                Watch
-                                {% endif %}
-                            {% else %}
-                                Watch
-                            {% endif %}
-                        
+                            Watch
                         </button>
                     </span>
                 </div>
