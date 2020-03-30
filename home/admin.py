@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import PastSold, ItemRequest
-from django.utils.safestring import mark_safe
+
 
 
 class ItemRequestAdmin(admin.ModelAdmin):  
@@ -24,6 +24,9 @@ class ItemRequestAdmin(admin.ModelAdmin):
         'budget',
         'contact',
         'request_date',
+    )
+    exclude = (
+        'image',
     )
 
 

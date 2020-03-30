@@ -1,9 +1,8 @@
 import os
 from django.db import models
 from datetime import date, datetime
-from django.utils.html import format_html
+from django.utils.html import mark_safe
 from django.contrib import admin
-from django.utils.html import escape
 
 
 
@@ -24,14 +23,13 @@ class ItemRequest(models.Model):
     name = models.CharField(max_length=254, default='')
     description = models.TextField(max_length=999)
     budget = models.IntegerField()
-    image = models.ImageField(upload_to='images', blank=True)
-    externalURL = models.URLField(blank=True)
+    image = models.ImageField(upload_to='images', blank=True, null=True)
     contact = models.EmailField()
     request_date = models.DateTimeField(auto_now_add=True)
 
     def image_tag(self):
 
-        return u'<img src="%s" />' % escape('images')
+        return mark_safe('<img src="%s" width="150" height="150" />' % (self.image))
 
     image_tag.short_description = 'Image'
     image_tag.allow_tags = True

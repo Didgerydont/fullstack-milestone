@@ -34,16 +34,16 @@
 <div class="container">
     <div class="row row-flex">
         {% for sold in past_sold %}
-        <div class="col-xs-12 col-md-6 m-3 p-3 display panel panel-default">
+        <div class="col-xs-12 col-md-6 display panel panel-default">
             <div class="panel-body p-3">
                 <div class="image-container m-1">
-                    <img src="{{ MEDIA_URL }}{{ sold.image }}" alt="Product Image" height="100%" width="100%">
+                    <img src="{{ MEDIA_URL }}{{ sold.image }}" alt="Product Image" height="90%" width="90%">
                 </div>
                 <h3 class="p-3">{{sold.name}}</h3>
-                <button class="btn btn-primary m-3" type="button" data-toggle="collapse" data-target="#antique-description" aria-expanded="false" aria-controls="collapseExample">
+                <button class="btn btn-primary m-3" type="button" data-toggle="collapse" data-target="#{{ sold.description }}" aria-expanded="false" aria-controls="collapseExample">
                     About the Item
                 </button>
-                <div class="collapse p-3" id="antique-description">
+                <div class="collapse p-3" id="{{ sold.description }}">
                     <div class="card card-body">
                         <strong><h5 class="p-3">Description</h5></strong>
                         <p class="antique-description p-3">{{ sold.description }}</p>
