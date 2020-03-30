@@ -3,24 +3,18 @@ from .models import PastSold, ItemRequest
 from django.utils.safestring import mark_safe
 
 
-class ItemRequestAdmin(admin.ModelAdmin):
-    # explicitly reference fields to be shown, note image_tag is read-only
-    def image_tag(self):
-        # used in the admin site model as a "thumbnail"
-        return mark_safe('<img src="{}" width="150" height="150" />'.format(self.url()))
-
-    image_tag.short_description = 'Image'
-    
+class ItemRequestAdmin(admin.ModelAdmin):  
     fields = (
         'name',
         'description',
-        'image',
+        'image_tag',
+        'contact',
     )
     readonly_fields = (
         'image_tag',
         'name',
         'description',
-        'image',
+        'image_tag',
         'contact',
     )
     list_display = (

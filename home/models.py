@@ -30,9 +30,9 @@ class ItemRequest(models.Model):
     request_date = models.DateTimeField(auto_now_add=True)
 
     def image_tag(self):
-    
-        return u'<img src="%s" />' % escape('media/images')
-    
+
+        return u'<img src="%s" />' % escape('images')
+
     image_tag.short_description = 'Image'
     image_tag.allow_tags = True
 
