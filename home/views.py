@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from home.forms import RequestItemForm
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from auctioneer.config import pagination
 from home.models import PastSold
 # Create your views here.
 
@@ -10,9 +12,13 @@ def index(request):
     A view that displays the Index page with past sold products
     """
     past_sold = PastSold.objects.all()
+    pages = pagination(request, past_sold, 4)
+
     context = {
-        'past_sold': past_sold
+        'items': pages[0],
+        'page_range': pages[1]
     }
+
     return render(request, "index.html", context)
 
 

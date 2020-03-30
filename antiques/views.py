@@ -1,22 +1,19 @@
 from django.shortcuts import render
 from .models import Antiques
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from auctioneer.config import pagination
+
 
 def all_antiques(request):
     """
     Displays all products for sale that are currently active in the database
     """
     antiques = Antiques.objects.all()
-    paginator = Paginator(antiques, 10)
-    page = request.GET.get('page')
-
-    try:
-        items = paginator.page(page)
-    except PageNotAnInteger:
-        items
+    pages = pagination(request, antiques, 4)
 
     context = {
-        'antiques': antiques
+        'items': pages[0],
+        'page_range': pages[1]
     }
 
     return render(request, 'antiques.html', context)
