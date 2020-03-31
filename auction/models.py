@@ -8,13 +8,13 @@ class Auction(models.Model):
     number_of_bids = models.IntegerField()
     time_starting = models.DateTimeField()
     time_ending = models.DateTimeField()
-    current_leader = models.DecimalField(max_digits=15, decimal_places=2)
+    current_leader = models.DecimalField(max_digits=15, decimal_places=2, default=0.01)
     winning_bidder = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     money_collected = models.BooleanField(default=False)
     auction_expired = models.BooleanField(default=False)
 
     def __str__(self):
-        return "AUCTION_ID:" + str(self.pk) + " ITEM_ID:" + str(self.auction_id)
+        return "AUCTION_ID:" + str(self.pk)
 
 
 class WatchList(models.Model):
@@ -25,10 +25,10 @@ class WatchList(models.Model):
         return "USER_ID:" + str(self.user_id) + " AUCTION_ID:" + str(self.auction_id)
 
 class Bid(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id = models.OneToOneField(User, on_delete=models.CASCADE)
     auction_id = models.ForeignKey(Auction, on_delete=models.CASCADE)
     bid_time = models.DateTimeField()
-    bid_amount = models.DecimalField(max_digits=15, decimal_places=2)
+    bid_amount = models.DecimalField(max_digits=15, decimal_places=2, default=0.01)
 
     def __str__(self):
         return "USER_ID:" + str(self.user_id) + " AUCTION_ID:" + \
