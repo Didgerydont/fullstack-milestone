@@ -5,8 +5,8 @@
 
 {% block content %}
 
-<div class="container">
-    <div class="col-xs-12">
+<div class="container mb-5 mt-5">
+    <div class="col-xs-12 text-center">
         <h2>Our Current Range of Antiques</h2>
     </div>
 </div>
@@ -30,7 +30,7 @@
 <div class="container">
     <div class="row row-flex">
         {% for antique in items %}
-        <div class="col-xs-12 col-md-6 display panel panel-default">
+        <div class="col-xs-12 offset-md-1 col-md-5 display panel panel-default">
             <div class="panel-body p-3">
                 <div class="image-container m-1">
                     <img src="{{ MEDIA_URL }}{{ antique.image }}" alt="Product Image" height="100%" width="100%">
@@ -47,22 +47,9 @@
                         <a class="p-3" href="{{ antique.edu_info }}">Wiki</a>
                     </div>
                 </div>
-                <h5 class="date-posted">Last update on site <strong>{{ antique.date_posted }}</strong></h5>
-                
-                <p>{{ antique.price }}</p>
+                <h5 class="date-posted">First appeared on site <strong>{{ antique.date_posted }}</strong></h5>
                 <form method="post" action="#">
                     {% csrf_token %}
-                    <div class="bid-box">
-                        <div class="purchase-box">
-                            <h5 class="purchase-header">Our current highest bid is <span class="current-bid">€{{  antique.current_bid }}</span></h5>
-                        </div>                
-                    </div>
-                    <div class="input-group">
-                        <input name="quantity" type="number" min="{{  antique.current_bid  }}" class="form-control" placeholder="€">
-                        <span class="input-group-btn">
-                            <button class="btn btn-success" type="submit">Bid</button>
-                        </span>
-                    </div>
                     <div class="buy-now">
                         <div class="purchase-box">
                             <h5 class="purchase-header">Secure this item now for </h5><span class="current-bid">€{{  antique.buy_now_price }}<button class="buy-now btn btn-success" type="submit">Buy Now</button></span>

@@ -1,0 +1,55 @@
+  {% extends 'base.html' %}
+
+{% block title %}The Auction{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <h2>Auction Details for {{ antiques.name }}</h2>
+        </div>
+    </div>
+</div>
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-xs-6 offset-3 display panel panel-default">
+            <div class="image-container m-1">
+                <img src="{{ MEDIA_URL }}{{ antiques.image }}" alt="Product Image" height="100%" width="100%">
+            </div>
+        </div>
+        <div class="card card-body">
+            <p class="antique-description p-3">{{ antique.description }}</p>
+            <br>
+            <strong><h5 class="p-3">Learn more about the items background</h5></strong>
+            <a class="p-3" href="{{ antiques.edu_info }}">Wiki</a>
+        </div>
+        <form class="bid-box" method="post" action="#">
+            {% csrf_token %}
+            <div>
+                <div class="purchase-box">
+                    <h5 class="purchase-header">Our current highest bid is <span class="current-bid">€{{  auction.current_leader }}</span></h5>
+                </div>                
+            </div>
+
+            <div class="input-group">
+                <input name="quantity" type="number" min="{{  antiques.current_bid  }}" class="form-control" placeholder="€">
+                <span class="input-group-btn">
+                    <button class="btn btn-success" type="submit">Bid</button>
+                </span>
+            </div>
+            <div class="buy-now">
+                <div class="purchase-box">
+                    <h5 class="purchase-header">Secure this item now for </h5><span class="current-bid">€{{  antiques.buy_now_price }}<button class="buy-now btn btn-success" type="submit">Buy Now</button></span>
+                </div>   
+            </div>
+        </form>
+    </div>
+    
+</div>
+
+
+
+
+
+{% endblock %}

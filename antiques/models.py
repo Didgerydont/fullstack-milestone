@@ -10,7 +10,6 @@ class Antiques(models.Model):
     description = models.TextField(default='')
     starting_price = models.DecimalField(max_digits=10, decimal_places=2)
     buy_now_price = models.DecimalField(max_digits=10, decimal_places=2)
-    current_bid = models.DecimalField(max_digits=10, decimal_places=2)
     edu_info = models.TextField(default='')
     image = models.ImageField(upload_to='images')
 

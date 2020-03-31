@@ -22,13 +22,13 @@ class WatchList(models.Model):
     auction_id = models.ForeignKey(Auction, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "USER_ID:" + str(self.user_id) + " AUCTION_ID:" + str(self.auction_id)
+        return "USER_ID:" + str(self.user_id)
 
 class Bid(models.Model):
     user_id = models.OneToOneField(User, on_delete=models.CASCADE)
     auction_id = models.ForeignKey(Auction, on_delete=models.CASCADE)
     bid_time = models.DateTimeField()
-    bid_amount = models.DecimalField(max_digits=15, decimal_places=2, default=0.01)
+    new_bid = models.DecimalField(max_digits=15, decimal_places=2, default=0.01)
 
     def __str__(self):
         return "USER_ID:" + str(self.user_id) + " AUCTION_ID:" + \

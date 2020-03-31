@@ -122,8 +122,8 @@ caption p {
 
 /*   Responsive images    */
 .image-container > img:hover {    
-    width: 175%;
-    height: 175%;
+    width: 125%;
+    height: 125%;
     position:absolute; 
     z-index:99;
     
