@@ -9,13 +9,16 @@ from django.contrib import messages
 def search_antiques(request):
     query = request.GET.get('q')
 
-    results = Antiques.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
-
+    if query:
+        results = Antiques.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
+    else:
+        results = Antiques.objects.all()
     pages = pagination(request, results, num=4)
 
     context = {
         'items': pages[0],
-        'page_range': pages[1]
+        'page_range': pages[1],
+        'query': query,
     }
 
     return render(request, "antiques.html", context)
