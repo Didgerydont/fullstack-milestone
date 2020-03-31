@@ -1,18 +1,27 @@
 from django.shortcuts import render, redirect, reverse
+from django.db.models import Q
 from antiques.models import Antiques
 from home.models import PastSold
-from django.db.models import Q
+from auctioneer.config import pagination
 from django.contrib import messages
 
 
 def search_antiques(request):
-    """
-    Search through current antiques
-    """
-    return render(request, "search_current.html")
+    query = request.GET.get('q')
+
+    results = Antiques.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
+
+    pages = pagination(request, results, num=4)
+
+    context = {
+        'items': pages[0],
+        'page_range': pages[1]
+    }
+
+    return render(request, "antiques.html", context)
 
 
-def search_pastitems(request):
+def search_past_items(request):
     """
     Search through past sold items
     """
@@ -20,6 +29,11 @@ def search_pastitems(request):
 
     results = PastSold.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
 
-    
+    pages = pagination(request, results, num=4)
+
+    context = {
+        'items': pages[0],
+        'page_range': pages[1]
+    }
 
     return render(request, "index.html", context)

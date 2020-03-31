@@ -15,21 +15,27 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-12 text-center">
+        <div class="col-sm-12 text-center mb-3">
             <h2>Check out some of our previously sold items</h2>
         </div>    
     </div>
 </div>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-12 text-center">
-            <form action="{% url 'search:search_pastitems' %}" method="GET" value="{{ request.GET.q }}">
-                <input type="text" value="{{ request.GET.q }}" placeholder="Search">
-                <button class="btn btn-primary" type="search">Search Previously Sold Items</button>
-            </form>
-        </div>
+
+<nav aria-label="search-bar" class="navbar navbar-expand-md navbar-dark bg-dark mb-2">
+    <div class="d-flex flex-grow-1">
+        <form method="GET" action="{% url 'search:search_past_items' %}" class="mr-2 my-auto w-100 d-inline-block order-1">
+            <div class="input-group">
+                <input name="q" value="{{ request.GET.Q }}" type="text" class="form-control border m-2 border-right-0" placeholder="Search...">
+                <span class="input-group-append">
+                    
+                    <button class="btn btn-success" type="submit">
+                        <span class="material-icons">search</span>
+                    </button>
+                </span>
+            </div>
+        </form>
     </div>
-</div>
+</nav>
 
 <div class="container">
     <div class="row row-flex">
@@ -61,5 +67,6 @@
         </div>
         {% endfor %}
     </div>
+    {% include 'pagination.html' %}    
 </div>
 {% endblock %}

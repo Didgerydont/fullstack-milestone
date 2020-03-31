@@ -1,0 +1,19 @@
+<div class="container">   
+    <div class="col-xs-12 d-flex justify-content-center">  
+        <div class="pagination text-center">
+            <span class="step-links">
+                {% if items.has_previous %}
+                    <a href="?page={{ items.previous_page_number }}"><span class="material-icons">chevron_left</span></a>
+                {% endif %}
+        
+                <span class="current">
+                    Page {{ items.number }} of {{ items.paginator.num_pages }}
+                </span>
+        
+                {% if items.has_next %}
+                    <a href="?page={{ items.next_page_number }}"><span class="material-icons">right</span></a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+</div>
