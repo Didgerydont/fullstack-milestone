@@ -36,18 +36,13 @@
                     <img src="{{ MEDIA_URL }}{{ antique.image }}" alt="Product Image" height="100%" width="100%">
                 </div>
                 <h3 class="p-3">{{antique.name}}</h3>
-                <button class="btn btn-primary m-3" type="button" data-toggle="collapse" data-target="#antique-description" aria-expanded="false" aria-controls="collapseExample">
-                    About the Item
-                </button>
-                <div class="collapse p-3" id="antique-description">
-                    <div class="card card-body">
-                        <p class="antique-description p-3">{{ antique.description }}</p>
-                        <br>
-                        <strong><h5 class="p-3">Learn more about the items background</h5></strong>
-                        <a class="p-3" href="{{ antique.edu_info }}">Wiki</a>
-                    </div>
+                <div class="card card-body">
+                    <p class="antique-description p-3">{{ antique.description }}</p>
+                    <br>
+                    <strong><h5 class="p-3">Learn more about the items background</h5></strong>
+                    <a class="p-3" href="{{ antique.edu_info }}">Wiki</a>
                 </div>
-                <h5 class="date-posted">First appeared on site <strong>{{ antique.date_posted }}</strong></h5>
+                <p class="date-posted">First appeared on site <strong>{{ antique.date_posted }}</strong></p>
                 <form method="post" action="#">
                     {% csrf_token %}
                     <div class="buy-now">
@@ -56,16 +51,22 @@
                         </div>   
                     </div>
                 </form>
-                <div class="watch input-group">
+                <div class="watch-box">
                     <span class="input-group-btn">
                         <button class="btn-info" onclick="location.href='/auction/add_to_watch_list/{{auction.id}}'">
                             Watch
                         </button>
                     </span>
                 </div>
+                <div class="auction-information">
+                    <h5>Auction Information:</h5>
+                    <p>Auction starts:   {{auction.time_starting}}</p>
+                    <p>Auction ends:   {{auction.time_ending}}</p>
+                </div>
             </div>
         </div>
         {% endfor %}
+
     </div>
     {% include 'pagination.html' %}
 </div>

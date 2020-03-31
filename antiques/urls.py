@@ -6,5 +6,5 @@ from antiques.views import all_antiques
 app_name = 'products'
 
 urlpatterns = [
-    url(r'^$', views.all_antiques, name='antiques'),
+    url(r'antiques$', views.all_antiques, name='antiques'),
 ]
