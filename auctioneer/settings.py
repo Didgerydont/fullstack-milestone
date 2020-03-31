@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'auction',
     'search',
     'shopping_cart',
+    'checkout',
 ]
 
 MIDDLEWARE = [
