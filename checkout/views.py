@@ -16,7 +16,7 @@ import stripe
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 @login_required()
-def checkout(request, pk):
+def checkout_auction(request, pk):
     auction = get_object_or_404(Auction, pk=pk)
 
     if request.method == "POST":
@@ -63,6 +63,7 @@ def checkout(request, pk):
 
     context = {
         'auction': auction,
+        'total': total,
         'order_form': order_form,
         'payment_form': payment_form,
         'publishable': settings.STRIPE_PUBLISHABLE_KEY,
@@ -118,6 +119,7 @@ def buy_now_checkout(request, pk):
 
     context = {
         'antiques': antiques,
+        'total': total,
         'order_form': order_form,
         'payment_form': payment_form,
         'publishable': settings.STRIPE_PUBLISHABLE_KEY,
