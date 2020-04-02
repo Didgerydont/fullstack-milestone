@@ -43,7 +43,7 @@ def auction(request, auction_id):
                 'get_auction': get_auction,
                 'antique': antique,
                 'bid_form': bid_form
-            } 
+            }
         else:
             context = {
                     'get_auction': get_auction,
