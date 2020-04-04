@@ -4,7 +4,7 @@ from antiques.models import Antiques
 
 
 class Auction(models.Model):
-    antiques = models.OneToOneField(Antiques, on_delete=models.CASCADE)
+    antiques = models.OneToOneField(Antiques, on_delete=models.CASCADE, primary_key=True)
     number_of_bids = models.IntegerField()
     time_starting = models.DateTimeField()
     time_ending = models.DateTimeField()
