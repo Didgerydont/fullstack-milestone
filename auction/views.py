@@ -26,43 +26,35 @@ def get_all_auctions(request):
     return render(request, "showallauctions.html", context)
 
 @login_required
-def auction(request):
+def auction(request, pk):
     """
     Allow the user to join the Auction
     """
     if request.method == "POST":
         if request.user.is_authenticated:
+            antiques = get_object_or_404(Antiques, pk=id)
             auction_id = request.POST['auction_id']
-            auction = Auction.objects.get(antiques=auction_id)
+            auction = Auction.objects.get(antiques)
             if timezone.now() >= auction.start_time and timezone.now() < auction.end_time:
                
                 antiques = Antiques.objects.get(id=auction_id)
                 bid = Bid()
-                
-                if request.method == "POST":
-                    user_bid = BidForm(request.POST)
-                    auction.current_leader = int(request.POST['bid'])
+                auction.current_leader = int(request.POST['bid'])
                     
-                if user_bid.is_valid():
-                    
-                    if auction.current_leader >= user_bid:
-                        messages.error(request, "This bid is not high enough")
+                if auction.current_leader >= bid:
+                    messages.error(request, "This bid is not high enough")
 
-                    else:
-                        user_bid = bid.new_bid.request.POST['new_bid']
-                        bid.antiques_id = antiques
-                        bid.auction_id = auction
-                        bid.user_id = request.user
-                        bid.number_of_bids += 1
-                        bid.bid_time = timezone.now()
-                        bid.save()
-                        auction.save()
-                        messages.success(request, "Your bid amount has been updated!")
+                else:
+                    bid = bid.new_bid.request.POST['new_bid']
+                    bid.antiques_id = antiques
+                    bid.auction_id = auction
+                    bid.user_id = request.user
+                    bid.number_of_bids += 1
+                    bid.bid_time = timezone.now()
+                    bid.save()
+                    auction.save()
+                    messages.success(request, "Your bid amount has been updated!")
 
-                        context = {
-                            'user_bid': user_bid
-                        }
-                        return render(request, 'showallauctions.html', context)
             else:
                 messages.error(request, "Sorry, this item is either no longer up for auction or hasnt been put up yet")
    

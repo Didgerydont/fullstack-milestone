@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
 {% block title %}All Current Auctions{% endblock %}
 
 {% block content %}
@@ -69,9 +68,12 @@
                         </button>
                     </span>
                 </div>
-                <form method="post" action="{% url 'auction:auction' %}">
+                <form method="post" action="{% url 'auction:auction' auction.antiques.id %}">
                     {% csrf_token %}
-                    {{ user_bid | crispy }}
+                    <div class="form-group">
+                        <input type="hidden" name="bid" value="{{ auction.antiques.id }}" />
+                        <input name="Bid" type="number" class="form-control" placeholder="Bid">
+                    </div>
                     <button type="submit" class="btn btn-primary">Bid</button>
                 </form>
             </div>
