@@ -5,6 +5,8 @@ from antiques.models import Antiques
 from django.contrib.auth.decorators import login_required
 from .models import Auction, WatchList, Bid
 from antiques.models import Antiques
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from auctioneer.config import pagination
 from .forms import BidForm
 
 
@@ -12,11 +14,14 @@ def get_all_auctions(request):
     """
     Show all current auctions
     """
-    auctions = Auction.objects.filter()
-    context = {
-        "auctions": auctions
-    }
+    auction = Auction.objects.all()
+    pages = pagination(request, auction, 4)
 
+    context = {
+        'items': pages[0],
+        'page_range': pages[1],
+        'auction': auction
+    }
     return render(request, "showallauctions.html", context)
 
 
@@ -25,7 +30,7 @@ def auction(request, auction_id):
     Display the item up for auction and the bidding form
     """
     get_auction = get_object_or_404(Auction, id=auction_id)
-    antique = Auction.antiques.objects.get(
+    antique = Auction.antiques_id.objects.get(
         name=request.antiques.auction.name,
         date_posted=request.antiques.auction.date_posted,
         description=request.antiques.auction.description,

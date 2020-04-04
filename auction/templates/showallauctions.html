@@ -25,5 +25,48 @@
     </div>
 </nav>
 
-
+<div class="container">
+    <div class="row row-flex">
+        {% for auction in items %}
+        <div class="col-xs-12 offset-md-1 col-md-5 display panel panel-default">
+            <div class="panel-body p-3">
+                <div class="image-container m-1">
+                    <img src="{{ MEDIA_URL }}{{ auction.auction_id.image }}" alt="Product Image" height="100%" width="100%">
+                </div>
+                <h3 class="p-3">{{auction.antique_id.name}}</h3>
+                <div class="card card-body">
+                    <p class="auction-info p-3">Time Started: {{ auction.time_starting }}</p>
+                    <p class="auction-info p-3">Time Ending: {{ auction.time_ending }}</p>
+                </div>
+                <div class="card card-body">
+                    <p class="auction-info p-3">Current number of bids: {{ auction.number_of_bids }}</p>
+                    <p class="auction-info p-3">Current highest bid: {{ auction.current_leader }}</p>
+                    
+                </div>
+                <p class="date-posted">First appeared on site <strong>{{ auction.auction_id.date_posted }}</strong></p>
+                <form method="post" action="#">
+                    {% csrf_token %}
+                    <div class="buy-now">
+                        <div class="purchase-box">
+                            <h5 class="purchase-header">Secure this item presale now for </h5><span class="current-bid">€{{  auction.buy_now_price }}<button class="buy-now btn btn-success" type="submit">Buy Now</button></span>
+                        </div>   
+                    </div>
+                </form>
+                <div class="watch-box">
+                    <span class="input-group-btn">
+                        <button class="btn-info" onclick="location.href='/auction/add_to_watch_list/{{auction.id}}'">
+                            Watch
+                        </button>
+                    </span>
+                </div>
+                <div class="to-the-auction">
+                    <h5>Auction Information for this item can be found <a href="">here</a></h5>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+</div>
+{% include 'pagination.html' %}
 {% endblock %}

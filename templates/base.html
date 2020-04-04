@@ -28,11 +28,13 @@
 			<ul class="navbar-nav mr-auto">
                 {% if user.is_authenticated %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'products:antiques' %}">Products</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'auction:get_all_auctions' %}">Auctions</a></li>
                 <li class="nav-item" ><a class="nav-link" href="{% url 'accounts:profile' %}"><i></i> Profile</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Watching</a></li>
                 <li class="nav-item" ><a class="nav-link" href="{% url 'accounts:logout' %}"><i></i> Log Out</a></li>
                 {%  else %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'products:antiques' %}">Products</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'auction:get_all_auctions' %}">Auctions</a></li>
                 <li class="nav-item"><a class="nav-link"  href="{% url 'accounts:register' %}"><i></i> Register</a></li>
                 <li class="nav-item"><a class="nav-link"  href="{% url 'accounts:login' %}"><i></i> Log In</a></li>
                 {% endif %}
