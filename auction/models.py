@@ -14,7 +14,7 @@ class Auction(models.Model):
     auction_expired = models.BooleanField(default=False)
 
     def __str__(self):
-        return "AUCTION_ID:" + str(self.pk)
+        return "Antique:" + self.antiques.name
 
 
 class WatchList(models.Model):

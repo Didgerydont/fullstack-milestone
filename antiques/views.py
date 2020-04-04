@@ -11,6 +11,7 @@ def all_antiques(request):
     """
     Displays all products for sale that are currently active in the database
     """
+
     antiques = Antiques.objects.all()
     pages = pagination(request, antiques, 4)
 
