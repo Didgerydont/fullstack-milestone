@@ -25,7 +25,7 @@
     <div class="d-flex flex-grow-1">
         <form method="GET" action="{% url 'search:search_past_items' %}" class="mr-2 my-auto w-100 d-inline-block order-1">
             <div class="input-group">
-                <input name="q" value="{{ request.GET.Q }}" type="text" class="form-control border m-2 border-right-0" placeholder="Search...">
+                <input name="q" value="{{ request.GET.Q }}" type="text" class="form-control border m-2 border-right-0" placeholder="Search through previously sold items">
                 <span class="input-group-append">
                     
                     <button class="btn btn-success" type="submit">

@@ -8,6 +8,18 @@ from antiques.models import Antiques
 from .forms import BidForm
 
 
+def get_all_auctions(request):
+    """
+    Show all current auctions
+    """
+    auctions = Auction.objects.filter()
+    context = {
+        "auctions": auctions
+    }
+
+    return render(request, "showallauctions.html", context)
+
+
 def auction(request, auction_id):
     """
     Display the item up for auction and the bidding form
