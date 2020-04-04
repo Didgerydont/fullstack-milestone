@@ -71,6 +71,7 @@ def checkout_auction(request, pk):
         
     return render(request, "checkout.html", context)
 
+
 @login_required()
 def buy_now_checkout(request, pk):
     antiques = get_object_or_404(Antiques, pk=pk)
@@ -104,9 +105,9 @@ def buy_now_checkout(request, pk):
                 messages.error(request, "Your card was declined!")
 
             if customer.paid:
-                messages.error(request, "You have successfully paid") = True
-                auction.bought = True
-                auction.save()
+                messages.error(request, "You have successfully paid")
+                antiques.bought = True
+                antiques.save()
                 return redirect(reverse('products:antiques'))
             else:
                 messages.error(request, "Unable to take payment")

@@ -5,14 +5,14 @@ from django.dispatch import receiver
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    firstname = models.CharField(max_length=56)
-    lastname = models.CharField(max_length=45)
-    phone = models.CharField(max_length=14)
-    address = models.CharField(max_length=255)
-    town = models.CharField(max_length=45)
-    post_code = models.CharField(max_length=45)
-    country = models.CharField(max_length=45)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, default='')
+    firstname = models.CharField(max_length=56, default='')
+    lastname = models.CharField(max_length=45, default='')
+    phone = models.CharField(max_length=14, default='')
+    address = models.CharField(max_length=255, default='')
+    town = models.CharField(max_length=45, default='')
+    post_code = models.CharField(max_length=45, default='')
+    country = models.CharField(max_length=45, default='')
     birth_date = models.DateField(null=True, blank=True)
     AUTH_PROFILE_MODULE = 'app.Profile'
     
