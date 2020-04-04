@@ -42,6 +42,12 @@
                     <strong><h5 class="p-3">Learn more about the items background</h5></strong>
                     <a class="p-3" href="{{ antique.edu_info }}">Wiki</a>
                 </div>
+                <div class="card card-body">
+                    <p class="antique-description p-3">{{ auction.antique_id.date_posted }}</p>
+                    <br>
+                    <strong><h5 class="p-3">Learn more about the items background</h5></strong>
+                    <a class="p-3" href="{{ antique.edu_info }}">Wiki</a>
+                </div>
                 <p class="date-posted">First appeared on site <strong>{{ antique.date_posted }}</strong></p>
                 <form method="post" action="#">
                     {% csrf_token %}

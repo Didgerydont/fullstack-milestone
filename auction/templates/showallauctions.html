@@ -43,7 +43,7 @@
                     <p class="auction-info p-3">Current highest bid: {{ auction.current_leader }}</p>
                     
                 </div>
-                <p class="date-posted">First appeared on site <strong>{{ auction.auction_id.date_posted }}</strong></p>
+                <p class="date-posted">First appeared on site <strong>{{ auction.date_posted }}</strong></p>
                 <form method="post" action="#">
                     {% csrf_token %}
                     <div class="buy-now">
