@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib.auth.models import User
+from django.contrib import auth, messages
 from django.utils import timezone
 from antiques.models import Antiques
 from django.contrib.auth.decorators import login_required
@@ -24,54 +25,51 @@ def get_all_auctions(request):
     }
     return render(request, "showallauctions.html", context)
 
-
-def auction(request, auction_id):
+@login_required
+def auction(request):
     """
-    Display the item up for auction and the bidding form
+    Allow the user to join the Auction
     """
-    get_auction = get_object_or_404(Auction, id=auction_id)
-    antique = Auction.antiques_id.objects.get(
-        name=request.antiques.auction.name,
-        date_posted=request.antiques.auction.date_posted,
-        description=request.antiques.auction.description,
-        starting_price=request.antiques.auction.starting_price,
-        buy_now_price=request.antiques.auction.buy_now_price,
-        edu_info=request.antiques.auction.edu_info,
-        image=request.antiques.auction.image,
-    )
-    bid = Bid.objects.filter(auction=auction_id)
-    bid_form = BidForm()
+    if request.method == "POST":
+        if request.user.is_authenticated:
+            auction_id = request.POST['auction_id']
+            auction = Auction.objects.get(antiques=auction_id)
+            if timezone.now() >= auction.start_time and timezone.now() < auction.end_time:
+               
+                antiques = Antiques.objects.get(id=auction_id)
+                bid = Bid()
+                
+                if request.method == "POST":
+                    user_bid = BidForm(request.POST)
+                    auction.current_leader = int(request.POST['bid'])
+                    
+                if user_bid.is_valid():
+                    
+                    if auction.current_leader >= user_bid:
+                        messages.error(request, "This bid is not high enough")
 
-    if auction.time_ending > timezone.now():
-        if bid:
-            new_bid = bid[0]
-        
-        else:
-            bid_obj = Bid()
-            bid_obj.user = get_object_or_404(User, id=1)
-            bid_obj.get_auction = get_auction
-            bid_obj.bid_time = get_auction.time_starting
-            bid_obj.new_bid = 0.01
-            bid_obj.save()
-            new_bid = bid_obj
+                    else:
+                        user_bid = bid.new_bid.request.POST['new_bid']
+                        bid.antiques_id = antiques
+                        bid.auction_id = auction
+                        bid.user_id = request.user
+                        bid.number_of_bids += 1
+                        bid.bid_time = timezone.now()
+                        bid.save()
+                        auction.save()
+                        messages.success(request, "Your bid amount has been updated!")
 
-        if auction.time_starting < timezone.now():
-            context = {
-                'get_auction': get_auction,
-                'antique': antique,
-                'bid_form': bid_form
-            }
+                        context = {
+                            'user_bid': user_bid
+                        }
+                        return render(request, 'showallauctions.html', context)
+            else:
+                messages.error(request, "Sorry, this item is either no longer up for auction or hasnt been put up yet")
+   
         else:
-            context = {
-                    'get_auction': get_auction,
-                    'new_bid': new_bid
-                }
-        return render(request, 'antiques.html', context)
-    else:
-        context = {
-            'get_auction': get_auction
-        }
-    return render(request, 'auction.html', context)
+            messages.error(request, "You must be registered to bid")
+            
+    return redirect(reverse('auction:get_all_auctions'))
 
 
 @login_required

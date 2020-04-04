@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 {% block title %}All Current Auctions{% endblock %}
 
 {% block content %}
@@ -59,7 +59,7 @@
                         </div>   
                     </div>
                 </form>
-                <div class="div">
+                <div class="card card-body">
                     <strong><p>Bid button will here once set up</p></strong>
                 </div>
                 <div class="watch-box">
@@ -69,9 +69,11 @@
                         </button>
                     </span>
                 </div>
-                <div class="to-the-auction">
-                    <h5>Auction Information for this item can be found <a href="">here</a></h5>
-                </div>
+                <form method="post" action="{% url 'auction:auction' %}">
+                    {% csrf_token %}
+                    {{ user_bid | crispy }}
+                    <button type="submit" class="btn btn-primary">Bid</button>
+                </form>
             </div>
         </div>
         {% endfor %}
