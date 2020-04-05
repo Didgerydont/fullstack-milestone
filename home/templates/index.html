@@ -15,13 +15,13 @@
 <!-- The index page shows previously sold items as a showcase for items that might be available for auction-->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-12 text-center mb-3">
+        <div class="col-sm-12 text-center pt-5 pb-5 mb-5">
             <h2>Check out some of our previously sold items</h2>
         </div>    
     </div>
 </div>
 <!--Search Bar linked to /search-->
-<nav aria-label="search-bar" class="navbar navbar-expand-md navbar-dark bg-dark mb-2">
+<nav aria-label="search-bar" class="navbar navbar-expand-md navbar-dark bg-dark mt-2 pt-2">
     <div class="d-flex flex-grow-1">
         <form method="GET" action="{% url 'search:search_past_items' %}" class="mr-2 my-auto w-100 d-inline-block order-1">
             <div class="input-group">
@@ -46,10 +46,10 @@
                     <img src="{{ MEDIA_URL }}{{ sold.image }}" alt="Product Image" height="90%" width="90%">
                 </div>
                 <h3 class="p-3">{{sold.name}}</h3>
-                <button class="btn btn-primary m-3" type="button" data-toggle="collapse" data-target="#{{ sold.description }}" aria-expanded="false" aria-controls="collapseExample">
+                <button class="btn btn-primary m-3 hide-descriptio" type="button" data-toggle="collapse"  aria-expanded="false">
                     About the Item
                 </button>
-                <div class="collapse p-3" id="{{ sold.description }}">
+                <div class="collapse item-description p-3" >
                     <div class="card card-body">
                         <strong><h5 class="p-3">Description</h5></strong>
                         <p class="antique-description p-3">{{ sold.description }}</p>
@@ -58,7 +58,7 @@
                         <a class="p-3" href="{{ sold.edu_info }}">Wiki</a>
                     </div>
                 </div>
-                <div> 
+                <div>
                     <p><strong>Date Sold:</strong> {{sold.date_sold}}</p>
                     <p><strong>Starting Price:</strong> {{sold.starting_price}}</p>
                     <p><strong>Finishing Price:</strong> {{sold.finishing_price}}</p>
@@ -67,6 +67,8 @@
         </div>
         {% endfor %}
     </div>
-    {% include 'pagination.html' %}    
+     
 </div>
+    {% include 'pagination.html' %}    
+
 {% endblock %}
