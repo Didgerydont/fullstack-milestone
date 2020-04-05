@@ -1,5 +1,6 @@
-$(function(){
-    $('hide-description').click(function() {
-        $('item-description' ).toggleslide(1500);
-  });
+$(document).ready(function(){
+    // Hide antique descriptions on pages showing items.
+    $('.hide-description').click(function() {
+        $(this).next(".item-description").toggle(1000);
+    });
 });
