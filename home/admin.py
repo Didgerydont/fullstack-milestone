@@ -4,6 +4,9 @@ from .models import PastSold, ItemRequest
 
 
 class ItemRequestAdmin(admin.ModelAdmin):  
+    """
+    Item request admin allows us to view the image that the user uploads with their request. 
+    """
     fields = (
         'name',
         'description',

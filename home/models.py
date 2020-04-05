@@ -7,6 +7,9 @@ from django.contrib import admin
 
 
 class PastSold(models.Model):
+    """
+    Model for our past sold items to be displayed on the home page
+    """
     name = models.CharField(max_length=254, default='')
     date_sold = models.DateTimeField(blank=True)
     description = models.TextField()
@@ -20,6 +23,9 @@ class PastSold(models.Model):
 
 
 class ItemRequest(models.Model):
+    """
+    Item request model with function to allow us to see the picture in the admin panel
+    """
     name = models.CharField(max_length=254, default='')
     description = models.TextField(max_length=999)
     budget = models.IntegerField()

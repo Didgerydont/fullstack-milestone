@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 {% block page_title %}Time Gavel{% endblock %}
 {% block content %}
-
+<!--Index / Homepag. Showcases items that were previously sold on the site-->
 <section class="jumbotron text-center">
     <div class="container">
         <h1 class="jumbotron-heading my-2 mx-2">Time Gavel</h1>
         <p class="lead text-muted my-2 mx-2">Your one-stop auction site for rare antiquities and collectables. Items so rare you wont see them anywhere else.</p>
         <p>
         <a href="{% url 'products:antiques' %}" class="btn btn-primary my-2 mx-2">Current Products</a>
-        <a href="{% url 'home:requestAnItem' %}" class="btn btn-primary my-2 mx-2 bg-success">Request an item</a>
+        <a href="{% url 'home:requestAnItem' %}" class="btn btn-primary my-2 mx-2 bg-success">Request an item</a> <!-- The jumbotron shows the request an item feature-->
         </p>
     </div>
 </section>
-
+<!-- The index page shows previously sold items as a showcase for items that might be available for auction-->
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12 text-center mb-3">
@@ -20,7 +20,7 @@
         </div>    
     </div>
 </div>
-
+<!--Search Bar linked to /search-->
 <nav aria-label="search-bar" class="navbar navbar-expand-md navbar-dark bg-dark mb-2">
     <div class="d-flex flex-grow-1">
         <form method="GET" action="{% url 'search:search_past_items' %}" class="mr-2 my-auto w-100 d-inline-block order-1">
@@ -58,7 +58,7 @@
                         <a class="p-3" href="{{ sold.edu_info }}">Wiki</a>
                     </div>
                 </div>
-                <div>
+                <div> 
                     <p><strong>Date Sold:</strong> {{sold.date_sold}}</p>
                     <p><strong>Starting Price:</strong> {{sold.starting_price}}</p>
                     <p><strong>Finishing Price:</strong> {{sold.finishing_price}}</p>

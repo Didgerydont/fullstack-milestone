@@ -8,6 +8,9 @@ from django.contrib import messages
 
 
 def search_antiques(request):
+    """
+    Search through current items in stock, includes pagination
+    """
     query = request.GET.get('q')
 
     if query:
@@ -27,7 +30,7 @@ def search_antiques(request):
 
 def search_past_items(request):
     """
-    Search through past sold items
+    Search through past sold items, includes pagination
     """
     query = request.GET.get('q')
 
@@ -45,7 +48,7 @@ def search_past_items(request):
 
 def search_current_auctions(request):
     """
-    Search through past sold items
+    Search through current items up for auction, includes pagination
     """
     query = request.GET.get('q')
 

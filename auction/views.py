@@ -67,7 +67,7 @@ def auction(request, pk):
 @login_required
 def add_to_watch_list(request, auction_id):
     """
-    Adds an auction to the users watchlist
+    Adds an auction to the users watchlist, not working currently
     """
     user = User.objects.filter(username=request.session['username'])
     auction = Auction.objects.filter(id=auction_id)
