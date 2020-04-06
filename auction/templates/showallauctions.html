@@ -33,7 +33,10 @@
                     <img src="{{ MEDIA_URL }}{{ auction.antiques.image }}" alt="Product Image" height="100%" width="100%">
                 </div>
                 <h3 class="p-3">{{auction.antiques.name}}</h3>
-                <div class="card card-body">
+                <button class="btn btn-primary m-3 hide-description" type="button" data-toggle="collapse"  aria-expanded="false">
+                    Description
+                </button>
+                <div class="card card-body item-description collapse">
                     <p class="item-description p-3">{{ auction.antiques.description }}</p>
                     <br>
                     <strong><h5 class="p-3">Learn more about the items background</h5></strong>
@@ -72,7 +75,15 @@
                     {% csrf_token %}
                     <div class="form-group">
                         <input type="hidden" name="bid" value="{{ auction.antiques.id }}" />
-                        <input name="Bid" type="number" class="form-control" placeholder="Bid">
+                        <input name="bid" type="number" class="form-control" placeholder="bid">
+                        {% if messages %}
+                            <div class="message-box text center">
+                            {% for message in messages %}
+                                <strong><p style="color: red"> {{ messages }} </p></strong>
+                            {% endfor %}
+                            </div>
+                        {% endif %}
+                    
                     </div>
                     <button type="submit" class="btn btn-primary">Bid</button>
                 </form>

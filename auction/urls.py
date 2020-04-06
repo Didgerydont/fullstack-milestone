@@ -1,7 +1,7 @@
 from django.conf.urls import url, include
 from .models import Auction, WatchList, Bid
 from . import views
-from .views import auction, add_to_watch_list, get_all_auctions, bid
+from .views import auction, add_to_watch_list, get_all_auctions
 
 
 app_name = "auction"

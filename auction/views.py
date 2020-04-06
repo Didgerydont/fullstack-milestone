@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib.auth.models import User
 from django.contrib import auth, messages
 from django.utils import timezone
-from antiques.models import Antiques
+from decimal import Decimal
 from django.contrib.auth.decorators import login_required
 from .models import Auction, WatchList, Bid
 from antiques.models import Antiques
@@ -25,31 +25,30 @@ def get_all_auctions(request):
     }
     return render(request, "showallauctions.html", context)
 
-@login_required
+
 def auction(request, pk):
     """
     Allow the user to join the Auction
     """
     if request.method == "POST":
         if request.user.is_authenticated:
-            antiques = get_object_or_404(Antiques, pk=id)
-            auction_id = request.POST['auction_id']
-            auction = Auction.objects.get(antiques)
-            if timezone.now() >= auction.start_time and timezone.now() < auction.end_time:
-               
-                antiques = Antiques.objects.get(id=auction_id)
+            auction = get_object_or_404(Auction, pk=pk)
+            if timezone.now() >= auction.time_starting and timezone.now() < auction.time_ending:
                 bid = Bid()
-                auction.current_leader = int(request.POST['bid'])
+                the_bid = Decimal(request.POST.get('bid'))
                     
-                if auction.current_leader >= bid:
+                if auction.current_leader >= the_bid:
+                    print('This bid is not high enough')
                     messages.error(request, "This bid is not high enough")
 
                 else:
-                    bid = bid.new_bid.request.POST['new_bid']
-                    bid.antiques_id = antiques
+                    auction.current_leader = the_bid
+                    auction.winning_bidder = request.user
+                    bid.new_bid = the_bid
+                    bid.antiques_id = auction.antiques
                     bid.auction_id = auction
                     bid.user_id = request.user
-                    bid.number_of_bids += 1
+                    bid.auction_id.number_of_bids += 1
                     bid.bid_time = timezone.now()
                     bid.save()
                     auction.save()
@@ -80,7 +79,3 @@ def add_to_watch_list(request, auction_id):
     else:
         watching.delete()
     return render(request, "mywatchlist.html")
-
-def bid(request):
-
-    return render(request, "mybids.html")
