@@ -65,13 +65,12 @@
                 {% if messages %}
                 <div class="message-box text center">
                     {% for message in messages %}
-                    <strong><p style="color: red"> {{ messages }} </p></strong>
+                    <strong><p style="color: red"> {{ message }} </p></strong>
                     {% endfor %}
                 </div>
                 {% endif %}
-                    
             </div>
-            <button name="bid" type="submit" class="btn btn-primary"> Bid</button>
+            <button name="bid-button" type="submit" class="btn btn-primary"> Bid</button>
         </form>
     </div>
     

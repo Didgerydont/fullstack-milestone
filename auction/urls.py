@@ -9,5 +9,5 @@ app_name = "auction"
 urlpatterns = [
     url(r'get_all_auctions/', views.get_all_auctions, name='get_all_auctions'),
     url(r'get_specific_auction/(?P<pk>\d+)/$', views.get_specific_auction, name='get_specific_auction'),
-    url(r'(?P<pk>\d+)/bid/', views.bid, name='bid'),
+    url(r'bid/(?P<pk>\d+)$', views.bid, name='bid'),
 ]
