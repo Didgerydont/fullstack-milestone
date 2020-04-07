@@ -19,11 +19,9 @@
                     <img src="{{ MEDIA_URL }}{{ auction.antiques.image }}" alt="Product Image" height="100%" width="100%">
                 </div>
                 <h3 class="p-3">Auction: #{{ auction.pk }}</h3>
-                <div class="card card-body item-description ">
-                    <button class="btn btn-primary m-3 hide-description" type="button" data-toggle="collapse"  aria-expanded="false">
-                        Description
-                    </button>
-                </div>
+                <button class="btn btn-primary m-3 hide-description" type="button" data-toggle="collapse"  aria-expanded="false">
+                    Description
+                </button>
                 <div class="card card-body item-description collapse">
                     <p class="item-description p-3">{{ auction.antiques.description }}</p>
                     <br>
