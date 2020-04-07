@@ -7,42 +7,73 @@
 <div class="container mt-5 mb-5">
     <div class="row">
         <div class="col-xs-12 text-center">
-            <h2>Auction Details for {{ get_auction.name }}</h2>
+            <h2>Auction Details for {{ auction.name }}</h2>
         </div>
     </div>
 </div>
 <div class="container mt-5 mb-5">
     <div class="row">
-        <div class="col-xs-6 offset-3 display panel panel-default">
-            <div class="image-container m-1">
-                <img src="{{ MEDIA_URL }}{{ get_auction.image }}" alt="Product Image" height="100%" width="100%">
-            </div>
-        </div>
-        <div class="card card-body">
-            <p class="antique-description p-3">{{ antique.description }}</p>
-            <br>
-            <strong><h5 class="p-3">Learn more about the items background</h5></strong>
-            <a class="p-3" href="{{ get_auction.edu_info }}">Wiki</a>
-        </div>
-        <form class="bid-box" method="post" action="#">
+        <div class="col-xs-10 offset-1 display panel panel-default mb-3">
+            <div class="panel-body p-3">
+                <div class="image-container m-1">
+                    <img src="{{ MEDIA_URL }}{{ auction.antiques.image }}" alt="Product Image" height="100%" width="100%">
+                </div>
+                <h3 class="p-3">Auction: #{{ auction.pk }}</h3>
+                <div class="card card-body item-description ">
+                    <button class="btn btn-primary m-3 hide-description" type="button" data-toggle="collapse"  aria-expanded="false">
+                        Description
+                    </button>
+                </div>
+                <div class="card card-body item-description collapse">
+                    <p class="item-description p-3">{{ auction.antiques.description }}</p>
+                    <br>
+                    <strong><h5 class="p-3">Learn more about the items background</h5></strong>
+                    <a class="p-3" href="http://{{ auction.antiques.edu_info }}">Wiki</a>
+                </div>
+                <div class="card card-body">
+                    <p class="auction-info p-3">Bidding Start: {{ auction.time_starting }}</p>
+                    <p class="auction-info p-3">Bidding End: {{ auction.time_ending }}</p>
+                </div>
+                <div class="card card-body">
+                    <p class="auction-info p-3">Current number of bids: {{ auction.number_of_bids }}</p>
+                    <p class="auction-info p-3">Current highest bid: {{ auction.current_leader }}</p>    
+                </div>
+                <div class="card card-body">
+                    <p class="date-posted">First appeared on site <strong>{{ auction.date_posted }}</strong></p>
+                </div>
+                <form method="post" action="#">
+                    {% csrf_token %}
+                    <div class="buy-now">
+                        <div class="purchase-box">
+                            <h5 class="purchase-header">Secure this item presale now for </h5><span class="current-bid">€{{  auction.buy_now_price }}<button class="buy-now btn btn-success" type="submit">Buy Now</button></span>
+                        </div>   
+                    </div>
+                </form>
+                <div class="card card-body">
+                    <strong><p>Bid button will here once set up</p></strong>
+                </div>
+                <div class="watch-box">
+                    <span class="input-group-btn">
+                        <button class="btn-info" onclick="location.href='/auction/add_to_watch_list/{{auction.id}}'">
+                            Watch
+                        </button>
+                    </span>
+                </div>
+        <form method="post" action="{% url 'auction:bid' auction.antiques.id %}">
             {% csrf_token %}
-            <div>
-                <div class="purchase-box">
-                    <h5 class="purchase-header">Our current highest bid is <span class="current-bid">€{{  auction.current_leader }}</span></h5>
-                </div>                
+            <div class="form-group">
+                <input type="hidden" name="bid" value="{{ auction.antiques.id }}" />
+                <input name="bid" type="number" class="form-control" placeholder="bid">
+                {% if messages %}
+                <div class="message-box text center">
+                    {% for message in messages %}
+                    <strong><p style="color: red"> {{ messages }} </p></strong>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                    
             </div>
-
-            <div class="input-group">
-                <input name="quantity" type="number" min="{{  get_auction.current_bid  }}" class="form-control" placeholder="€">
-                <span class="input-group-btn">
-                    <button class="btn btn-success" type="submit">Bid</button>
-                </span>
-            </div>
-            <div class="buy-now">
-                <div class="purchase-box">
-                    <h5 class="purchase-header">Secure this item now for </h5><span class="buy-now">€{{  get_auction.buy_now_price }}<button class="buy-now btn btn-success" type="submit">Buy Now</button></span>
-                </div>   
-            </div>
+            <button name="bid" type="submit" class="btn btn-primary"> Bid</button>
         </form>
     </div>
     

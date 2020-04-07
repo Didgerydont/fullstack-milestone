@@ -25,8 +25,16 @@ def get_all_auctions(request):
     }
     return render(request, "showallauctions.html", context)
 
+def get_specific_auction(request, pk):
+    auction = get_object_or_404(Auction, pk=pk)
+    context = {
+        'auction': auction
+    }
 
-def auction(request, pk):
+    return render(request, 'auction.html', context)
+
+
+def bid(request, pk):
     """
     Allow the user to join the Auction
     """
