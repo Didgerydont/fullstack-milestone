@@ -87,4 +87,4 @@ def add_to_watch_list(request, auction_id):
         watchlist_item.save()
     else:
         watching.delete()
-    return render(request, "mywatchlist.html")
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

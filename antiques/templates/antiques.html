@@ -47,21 +47,20 @@
                 </div>
                 <p class="date-posted">First appeared on site <strong>{{ item.date_posted }}</strong></p>
                 <div class="card card-body">
-                    <p>Options to purchase an item will go here</p>
-                </div>
-                <div class="watch-box">
-                    <span class="input-group-btn">
-                        <button class="btn-info" onclick="location.href='/auction/add_to_watch_list/{{auction.id}}'">
-                            Watch
-                        </button>
-                    </span>
-                </div>
-                <div class="to-the-auction">
-                    <h5>Auction Information for this item can be found <a href="">here</a></h5>
-                    <h5>Or else you can join the auction <a href="">here</a></h5>
+                    <div class="to-the-auction">
+                        <a class="bg-success btn-lg" href="{% url 'auction:get_all_auctions' %}" style="color: white">Check out all off the auctions currently taking place</a>
+                        <a class="bg-success btn-lg" href="{% url 'auction:get_specific_auction' auction.pk %}" style="color: white">Go to the Auction page for this item</a>
                 
+                    </div>
+                    <div class="watch-box">
+                         <button class="input-group-btn btn-info" onclick="#">
+                            Watch
+                        </button>    
+                    </div>
                 </div>
             </div>
+                
+                
         </div>
         {% endfor %}
 

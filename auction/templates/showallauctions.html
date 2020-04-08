@@ -53,26 +53,26 @@
                 <div class="card card-body">
                     <p class="date-posted">First appeared on site <strong>{{ auction.date_posted }}</strong></p>
                 </div>
-                <form method="post" action="#">
-                    {% csrf_token %}
-                    <div class="buy-now">
-                        <div class="purchase-box">
-                            <h5 class="purchase-header">Secure this item presale now for </h5><span class="current-bid">€{{  auction.buy_now_price }}<button class="buy-now btn btn-success" type="submit">Buy Now</button></span>
-                        </div>   
-                    </div>
-                </form>
+                
                 <div class="card card-body">
-                    <strong><p>Bid button will here once set up</p></strong>
-                </div>
-                <div class="watch-box">
-                    <span class="input-group-btn">
-                        <button class="btn-info" onclick="location.href='/auction/add_to_watch_list/{{auction.id}}'">
-                            Watch
-                        </button>
-                    </span>
-                </div>
-                <div class="text-center">
-                    <a class="bg-success btn-lg" href="{% url 'auction:get_specific_auction' auction.pk %}" style="color: white">Go to the Auction page for this item</a>
+                    <div class="to-the-auction">
+                        <a class="bg-success btn-lg" href="{% url 'auction:get_all_auctions' %}" style="color: white">Check out all off the auctions currently taking place</a>
+                        <a class="bg-success btn-lg" href="{% url 'auction:get_specific_auction' auction.pk %}" style="color: white">Go to the Auction page for this item</a>
+                        <form method="post" action="#">
+                        {% csrf_token %}
+                            <div class="buy-now">
+                                <div class="purchase-box">
+                                    <h5 class="purchase-header">Secure this item presale now for <strong style="color: green">€{{  auction.antiques.buy_now_price }}</strong></h5><span class="current-bid"><button class="buy-now btn btn-success" type="submit">Buy Now</button></span>
+                                </div>   
+                            </div>
+                        </form>
+                        <div class="watch-box">
+                            <button class="input-group-btn btn-info" onclick="#">
+                                Watch
+                            </button>    
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
