@@ -1,9 +1,0 @@
-{% for auction in auctions %}
-    <div class="auction-information">
-        <h5>Auction Information</h5>
-        <p>Auction ID: <strong><a href="#">{{auction.auction_id}}</strong></a></p>
-        <p>Auction starts:   <strong>{{auction.time_starting}}</strong></p>
-        <p>Auction ends:   <strong>{{auction.time_ending}}</strong></p>
-        <p>Current highest bid: <strong>{{ auction.current_leader }}</strong></p>
-    </div>
-{% endfor %}
