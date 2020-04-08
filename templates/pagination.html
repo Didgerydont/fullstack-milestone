@@ -3,7 +3,7 @@
         <div class="pagination text-center">
             <span class="step-links">
                 {% if items.has_previous %}
-                    <a href="?page={{ items.previous_page_number }}{% if query %}&q={{query}}{% endif %}"><span class="material-icons">chevron_left</span></a>
+                    <a href="?page={{ items.previous_page_number }}{% if query %}&q={{query}}{% endif %}"><span class="material-icons green">chevron_left</span></a>
                 {% endif %}
         
                 <span class="current">
@@ -11,7 +11,7 @@
                 </span>
         
                 {% if items.has_next %}
-                    <a href="?page={{ items.next_page_number }}{% if query %}&q={{query}}{% endif %}"><span class="material-icons">right</span></a>
+                    <a href="?page={{ items.next_page_number }}{% if query %}&q={{query}}{% endif %}"><span class="material-icons green">chevron_right</span></a>
                 {% endif %}
             </span>
         </div>

@@ -36,11 +36,14 @@
                     <img src="{{ MEDIA_URL }}{{ item.image }}" alt="Product Image" height="100%" width="100%">
                 </div>
                 <h3 class="p-3">{{item.name}}</h3>
-                <div class="card card-body">
+                <button class="btn btn-primary m-3 hide-description" type="button" data-toggle="collapse"  aria-expanded="false">
+                    Description
+                </button>
+                <div class="card card-body item-description collapse">
                     <p class="item-description p-3">{{ item.description }}</p>
                     <br>
                     <strong><h5 class="p-3">Learn more about the items background</h5></strong>
-                    <a class="p-3" href="http://{{ item.edu_info }}">Wiki</a>
+                    <a class="p-3" href="http://{{ auction.antiques.edu_info }}">Wiki</a>
                 </div>
                 <p class="date-posted">First appeared on site <strong>{{ item.date_posted }}</strong></p>
                 <div class="card card-body">

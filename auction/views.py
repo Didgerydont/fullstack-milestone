@@ -68,7 +68,7 @@ def bid(request, pk):
         else:
             messages.error(request, "You must be registered to bid")
             
-    return redirect('{}/bid/'.format(pk))
+    return redirect(reverse('/get_specific_auction/{}'.format(pk)))
 
 
 @login_required
