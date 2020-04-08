@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib import auth, messages
 from django.utils import timezone
@@ -42,7 +43,7 @@ def bid(request, pk):
         if request.user.is_authenticated:
             auction = get_object_or_404(Auction, pk=pk)
             if timezone.now() >= auction.time_starting and timezone.now() < auction.time_ending:
-                bid = Bid()
+                bid = get_object_or_404(Bid, pk=pk)
                 the_bid = Decimal(request.POST.get('bid'))
                     
                 if auction.current_leader >= the_bid:
@@ -68,7 +69,7 @@ def bid(request, pk):
         else:
             messages.error(request, "You must be registered to bid")
             
-    return redirect(reverse('/get_specific_auction/{}'.format(pk)))
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 @login_required

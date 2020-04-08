@@ -57,10 +57,10 @@
                         </button>
                     </span>
                 </div>
-        <form method="post" action="{% url 'auction:bid' }">
+        <form method="post" action="{% url 'auction:bid' auction.pk %}">
             {% csrf_token %}
             <div class="form-group">
-                <input type="hidden" name="antiques_id" value="{{ auction.antiques.id }}" />
+                <input type="hidden" name="antiques_id" value="{{ auction.id }}" />
                 <input name="bid" type="number" class="form-control" placeholder="bid">
                 {% if messages %}
                 <div class="message-box text center">
