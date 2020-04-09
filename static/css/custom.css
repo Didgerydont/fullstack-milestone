@@ -13,6 +13,16 @@ body {
     float: right!important;
 }
 
+/* index */
+
+.jumbotron {
+    background-image: url('{% MEDIA_URL "static_images/jumbotron.jpg" %}');
+    
+}
+.jumbo-title{
+    margin: 5em;
+}
+
 
 
 /* Footer */
@@ -119,14 +129,16 @@ caption p {
 }
 
 
-
-/*   Responsive images    
-.image-container > img:hover {    
-    width: 125%;
-    height: 125%;
-    position:absolute; 
-    z-index:99;
-    
+/* responsive images 
+@media(min-width: 700px) {
+  .image-container{
+    max-
+  }
 }
 
-*/
+@media(min-width: 900px) {
+    .image-container{
+        display: absolute;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}*/
