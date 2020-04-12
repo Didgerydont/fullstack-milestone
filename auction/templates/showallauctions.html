@@ -51,34 +51,36 @@
                     <p class="auction-info p-3">Current highest bid: {{ auction.current_leader }}</p>    
                 </div>
                 <div class="card card-body">
-                    <p class="date-posted">First appeared on site <strong>{{ auction.date_posted }}</strong></p>
+                    <p class="date-posted">First appeared on site: <strong>  {{ auction.antiques.date_posted }}</strong></p>
                 </div>
                 
                 <div class="card card-body">
                     <div class="to-the-auction">
-                        <a class="bg-success btn-lg" href="{% url 'auction:get_all_auctions' %}" style="color: white">Check out all off the auctions currently taking place</a>
-                        <a class="bg-success btn-lg" href="{% url 'auction:get_specific_auction' auction.pk %}" style="color: white">Go to the Auction page for this item</a>
-                        <form method="post" action="#">
-                        {% csrf_token %}
-                            <div class="buy-now">
-                                <div class="purchase-box">
-                                    <h5 class="purchase-header">Secure this item presale now for <strong style="color: green">€{{  auction.antiques.buy_now_price }}</strong></h5><span class="current-bid"><button class="buy-now btn btn-success" type="submit">Buy Now</button></span>
-                                </div>   
-                            </div>
-                        </form>
-                        <div class="watch-box">
-                            <button class="input-group-btn btn-info" onclick="#">
-                                Watch
-                            </button>    
+                        <div class="direct-box">
+                            <a class="success" href="{% url 'auction:get_all_auctions' %}" style="color: orange">Check out all off the auctions currently taking place</a>
                         </div>
+                        <br>
+                        <div class="direct-box">
+                            <a class="success" href="{% url 'auction:get_specific_auction' auction.pk %}" style="color: orange">Go to the Auction page for this item</a>
+                        </div>
+                        <br>
                     </div>
-                    
                 </div>
+                <div class="card card-body">
+                    <div class="buy-now-watch">
+                        <div class="purchase-box">
+                            <h5 class="purchase-header">Secure this item now for <strong style="color: green">€{{  auction.antiques.buy_now_price }}</strong></h5>
+                            <br>
+                            <button class="btn btn-success" type="submit">Buy Now</button>
+                            <button class="btn btn-info" onclick="#">Watch</button>
+                        </div>   
+                    </div>
+                        
+                </div>   
             </div>
         </div>
-        {% endfor %}
+    {% endfor %}    
     </div>
-    
 </div>
 <!--Includes Page numbers, currently set to 4 items a page as the fields are quite large-->
 {% include 'pagination.html' %}

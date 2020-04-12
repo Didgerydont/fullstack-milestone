@@ -16,7 +16,7 @@ body {
 /* index */
 
 .jumbotron {
-    background-image: url('{% MEDIA_URL "static_images/jumbotron.jpg" %}');
+    background-image: url('{% static "static_images/jumbotron.jpg" %}');
     
 }
 .jumbo-title{
