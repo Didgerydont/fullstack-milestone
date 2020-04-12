@@ -1,7 +1,11 @@
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
+from django.contrib.auth.models import User
 from datetime import datetime
 from django.utils import timezone
-from django.shortcuts import render, get_object_or_404
-from .models import Antiques
+from django.contrib import auth, messages
+from .models import Antiques, Enquire
+from .forms import EnquiryForm
 from auction.models import Auction
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from auctioneer.config import pagination
@@ -24,15 +28,28 @@ def all_antiques(request):
     return render(request, 'antiques.html', context)
 
 
-def get_auction(request, pk):
+def enquiry(request, pk):
     """
-    Allows the user to go straight to the Auction for the specific item listed within the antiques page. 
+    Allows the user to make an enquiry on any of the items listed on the antiques page
     """
-    auction = get_object_or_404(Auction, pk=pk)
-    context = {
-        'auction': auction
-    }
+    if request.session['username']:
+        user = User.objects.filter(username=request.session['username'])
+        antiques = get_object_or_404(Antiques, pk=pk)
+        the_enquiry = request.POST.get('enquire-text')
+        if request.method == 'POST':
+            enquire = Enquire()
+            enquire.user_id = user
+            enquire.auction_id = antiques
+            enquire.enquiry = the_enquiry
+            enquire.time_sent = timezone.now()
+            enquire.save()
+            messages.success(request, "Your enquiry has been recieved!")
+    else:
+        messages.error(request, "You must register in order to enquire about this item")
 
-    return render(request, 'auction.html', context)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        
 
 
+
+    

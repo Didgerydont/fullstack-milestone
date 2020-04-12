@@ -3,4 +3,8 @@ $(document).ready(function(){
     $('.hide-description').click(function() {
         $(this).next(".item-description").toggle(1000);
     });
+    // Hide enquiry form when not being used
+    $('.enquire-button').click(function() {
+        $(this).next(".enquiry-field").toggle(1000);
+    });
 });

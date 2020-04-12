@@ -16,3 +16,12 @@ class Antiques(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Enquire(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    antiques = models.ForeignKey(Antiques, on_delete=models.CASCADE)
+    enquiry = models.TextField(default='')
+
+    def __str__(self):
+        return "User:  " + self.User + ", " + "Enquiry:  " + self.enquiry

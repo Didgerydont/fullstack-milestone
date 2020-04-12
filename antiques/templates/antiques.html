@@ -1,6 +1,6 @@
   
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 {% block title %}Current Items{% endblock %}
 
 {% block content %}
@@ -46,15 +46,19 @@
                     <strong><h5 class="p-3">Learn more about the items background</h5></strong>
                     <a class="p-3" href="http://{{ auction.antiques.edu_info }}">Wiki</a>
                 </div>
-                <div class="card card-body">
-                    <div class="buy-now-watch">
-                        <div class="purchase-box">
-                            <h5 class="purchase-header">Secure this item now for <strong style="color: green">€{{  auction.antiques.buy_now_price }}</strong></h5>
-                            <br>
-                            <button class="btn btn-success" type="submit">Buy Now</button>
-                            <button class="btn btn-info" onclick="#">Watch</button>
-                        </div>   
-                    </div>
+                <button class="btn btn-primary m-3 enquire-button" type="button" data-toggle="collapse"  aria-expanded="false">
+                    Make an Enquiry
+                </button>
+                <div class="card card-body enquiry-field collapse">
+                    <form method="post" action="{% url 'products:enquiry' antiques.pk %}">
+                    {% csrf_token %}
+                        <label for="enquire-text">Have a question about this item?</label>
+                        <label for="enquire-text">Leave us a message and we will get back to you</label>
+                        <input type="hidden" name="antiques_id" value="{{ antiques.id }}" />
+                        <textarea rows="2" cols="25" class="enquire-text" type="text" name="enquire-text"></textarea>
+                        <button name="enquiry-button" type="submit" class="btn btn-primary">Enquire</button>
+                    </form>
+                    
                 </div> 
             </div>
         </div>
