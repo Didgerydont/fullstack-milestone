@@ -24,3 +24,15 @@ def all_antiques(request):
     return render(request, 'antiques.html', context)
 
 
+def get_auction(request, pk):
+    """
+    Allows the user to go straight to the Auction for the specific item listed within the antiques page. 
+    """
+    auction = get_object_or_404(Auction, pk=pk)
+    context = {
+        'auction': auction
+    }
+
+    return render(request, 'auction.html', context)
+
+
