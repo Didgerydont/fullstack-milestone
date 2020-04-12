@@ -21,7 +21,9 @@ class Antiques(models.Model):
 class Enquire(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     antiques = models.ForeignKey(Antiques, on_delete=models.CASCADE)
-    enquiry = models.TextField(default='')
+    enquiry = models.CharField(max_length=999, default='')
+    time_requested = models.DateTimeField(auto_now=True)
+    solved = models.BooleanField(default=False)
 
     def __str__(self):
-        return "User:  " + self.User + ", " + "Enquiry:  " + self.enquiry
+        return "User :  " + self.user.username + ", " + "Enquiry :  " + self.enquiry

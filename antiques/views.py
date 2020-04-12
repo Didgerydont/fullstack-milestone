@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from datetime import datetime
@@ -32,20 +32,20 @@ def enquiry(request, pk):
     """
     Allows the user to make an enquiry on any of the items listed on the antiques page
     """
-    if request.session['username']:
-        user = User.objects.filter(username=request.session['username'])
-        antiques = get_object_or_404(Antiques, pk=pk)
-        the_enquiry = request.POST.get('enquire-text')
-        if request.method == 'POST':
-            enquire = Enquire()
-            enquire.user_id = user
-            enquire.auction_id = antiques
-            enquire.enquiry = the_enquiry
-            enquire.time_sent = timezone.now()
-            enquire.save()
-            messages.success(request, "Your enquiry has been recieved!")
-    else:
-        messages.error(request, "You must register in order to enquire about this item")
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            antiques = get_object_or_404(Antiques, pk=pk)
+            the_enquiry = request.POST.get('enquire-text')
+            if request.method == 'POST':
+                enquire = Enquire()
+                enquire.user = request.user
+                enquire.antiques = antiques
+                enquire.enquiry = the_enquiry
+                enquire.time_requested = timezone.now()
+                enquire.save()
+                messages.success(request, "Your enquiry has been recieved!")
+        else:
+            messages.error(request, "You must register in order to enquire about this item")
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         
