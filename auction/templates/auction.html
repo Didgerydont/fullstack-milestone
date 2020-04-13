@@ -51,14 +51,14 @@
     </div>
     <div class="row m-4">
         <div class="col-xs-12 col-md-6">
-            <form method="post" action="#">
-            {% csrf_token %}
-                <div class="buy-now">
-                    <div class="purchase-box">
-                        <h5 class="purchase-header">Secure this item presale now for </h5><span class="current-bid">€{{  auction.antiques.buy_now_price }}<button class="buy-now btn btn-success" type="submit">Buy Now</button></span>
-                    </div>   
-                </div>
-            </form>
+            <div class="buy-now">
+                <div class="purchase-box">
+                    <h5 class="purchase-header">Secure this item presale now for </h5>
+                    <span class="current-bid">€{{  auction.antiques.buy_now_price }}
+                        <a class="buy-now btn btn-success" href="{% url 'checkout:buy_now_checkout' pk=auction.antiques.pk %}">Buy Now</a>
+                    </span>
+                </div>   
+            </div>   
         </div>
         <div class="col-xs-12 col-md-6 m-4">
             <form method="post" action="{% url 'auction:bid' auction.pk %}">
