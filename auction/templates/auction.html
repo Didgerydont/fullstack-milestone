@@ -29,7 +29,7 @@
                 <p class="item-description p-3">{{ auction.antiques.description }}</p>
                 <br>
                 <p class="date-posted">First appeared on site <strong>{{ auction.antiques.date_posted }}</strong></p>    
-                <strong><h5 class="p-3"><a class="p-3" href="http://{{ auction.antiques.edu_info }}">Learn more about the items background</a></h5></strong>
+                <strong><p class="p-3"><a class="p-3" href="http://{{ auction.antiques.edu_info }}">Learn more about the items background</a></p></strong>
                 
             </div>
         </div>
@@ -54,7 +54,7 @@
             <div class="buy-now">
                 <div class="purchase-box">
                     <h5 class="purchase-header">Secure this item presale now for </h5>
-                    <span class="current-bid">€{{  auction.antiques.buy_now_price }}
+                    <span class="buy-now-price">€{{  auction.antiques.buy_now_price }}
                         <a class="buy-now btn btn-success" href="{% url 'checkout:buy_now_checkout' pk=auction.antiques.pk %}">Buy Now</a>
                     </span>
                 </div>   

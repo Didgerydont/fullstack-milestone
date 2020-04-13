@@ -19,11 +19,11 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 @login_required()
 def checkout_auction(request, pk):
     auction = get_object_or_404(Auction, pk=pk)
-    
+    total = []
     if request.method == "POST":
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
-        total = []
+        
         if order_form.is_valid() and payment_form.is_valid():
             order = order_form.save(commit=False)
             order.date = timezone.now()
@@ -70,17 +70,17 @@ def checkout_auction(request, pk):
         'payment_form': payment_form,
         'publishable': settings.STRIPE_PUBLISHABLE_KEY,
     }
-    return render(request, "checkout.html", context)
+    return render(request, "auction-checkout.html", context)
 
 
 @login_required()
 def buy_now_checkout(request, pk):
     auction = get_object_or_404(Auction, pk=pk)
-    
+    total = []
     if request.method == "POST":
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
-        total = []
+        
         if order_form.is_valid() and payment_form.is_valid():
             order = order_form.save(commit=False)
             order.date = timezone.now()
@@ -128,5 +128,4 @@ def buy_now_checkout(request, pk):
         'payment_form': payment_form,
         'publishable': settings.STRIPE_PUBLISHABLE_KEY,
     }
-        
-    return render(request, "buy-now-checkout.html", context)
+    return render(request, "buy-now.html", context)
