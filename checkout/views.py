@@ -19,7 +19,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 @login_required()
 def checkout_auction(request, pk):
     auction = get_object_or_404(Auction, pk=pk)
-    total = []
+    total = auction.winning_bid
     if request.method == "POST":
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
@@ -76,17 +76,16 @@ def checkout_auction(request, pk):
 @login_required()
 def buy_now_checkout(request, pk):
     auction = get_object_or_404(Auction, pk=pk)
-    total = []
+    total = auction.antiques.buy_now_price
     if request.method == "POST":
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
+        print('why arent you working')
         
         if order_form.is_valid() and payment_form.is_valid():
             order = order_form.save(commit=False)
             order.date = timezone.now()
             order.save()
-
-            total = auction.antiques.buy_now_price
             order_line_item = OrderLineItem(
                 order=order,
                 auction=auction,

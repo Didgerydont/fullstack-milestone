@@ -55,7 +55,7 @@
                 <div class="purchase-box">
                     <h5 class="purchase-header">Secure this item presale now for </h5>
                     <span class="buy-now-price">€{{  auction.antiques.buy_now_price }}
-                        <a class="buy-now btn btn-success" href="{% url 'checkout:buy_now_checkout' pk=auction.antiques.pk %}">Buy Now</a>
+                        <a class="buy-now btn btn-success" href="{% url 'checkout:buy_now_checkout' auction.antiques.pk %}">Buy Now</a>
                     </span>
                 </div>   
             </div>   
