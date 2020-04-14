@@ -132,6 +132,10 @@ caption p {
     height: 30vh;
 }
 
+/* checkout */
+.image-container-checkout{
+    height: 30vh;
+}
 
 /* responsive images 
 @media(min-width: 700px) {

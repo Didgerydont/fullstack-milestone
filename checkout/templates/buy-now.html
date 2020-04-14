@@ -1,7 +1,8 @@
 {% extends 'checkout.html' %}
 {% load crispy_forms_tags %}
+{% block checkout-form %}
 
-<form role="form" method="POST" id="payment-form" action="{% url 'checkout:buy_now_checkout' %}">
+<form role="form" method="POST" id="payment-form">
     {% csrf_token %}
     <legend>Payment Details</legend>
     <div id="credit-card-errors" style="display:none">
@@ -17,3 +18,5 @@
         <input class="btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
     </div>
 </form>
+
+{% endblock %}

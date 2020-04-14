@@ -1,5 +1,6 @@
 {% extends 'checkout.html' %}
 {% load crispy_forms_tags %}
+{% block checkout-form %}
 
 <form role="form" method="POST" id="payment-form" action="{% url 'checkout:checkout_auction' %}">
     {% csrf_token %}
@@ -17,3 +18,5 @@
         <input class="btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
     </div>
 </form>
+
+{% endblock %}
