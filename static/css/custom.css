@@ -15,12 +15,17 @@ body {
 
 /* index */
 
-.jumbotron {
-    background-image: url('{% static "static_images/jumbotron.jpg" %}');
+.jumbotron-image {
+    background-size: cover;
+    background-image: url('/static/static_images/jumbotron.jpg');
     
 }
 .jumbo-title{
     margin: 5em;
+}
+
+.lead{
+    color: #7DF9FF !important;
 }
 
 
