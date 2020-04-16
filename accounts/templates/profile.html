@@ -28,9 +28,12 @@
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xs-12 col-md-6">
-            <div class="profile-form-parent">
-                <div class="profile-form-child">
+        <div class="col-xs-12 d-md-none hide-profile">
+            <button class="hide-profile-button btn btn-primary m-3">Show/Hide Profile</button>
+        </div>
+        <div class="col-xs-12">
+            <div class="profile-parent">
+                <div class="profile-child">
                     <dl>
                         <dt>First name:</dt>
                         <dd>{{ userprofile.firstname}}</dd>
@@ -52,10 +55,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs-12 col-md-6">
-        <h2>Bids and watch will go here</h2>
-
-
+        <br>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>Watch and Bid list will go here</h3>
         </div>
     </div>
 </div>
