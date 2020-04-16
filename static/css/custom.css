@@ -1,6 +1,5 @@
-p, li, a, button, h1, h2, h3, h4, h5 {
+p, li, a, dt, dd, button, h1, h2, h3, h4, h5 {
     font-family: 'Cinzel Decorative', cursive;
-    color: white;
 }
 
 
@@ -44,6 +43,47 @@ p, li, a, button, h1, h2, h3, h4, h5 {
      color: #00bc8c;
      font-weight: 600;
  }
+
+ /* profile page */
+.profile-header{
+    margin-left: auto; 
+    margin-right: auto;
+    margin-top: 5%;
+    color: #00bc8c;
+    font-weight: 600;
+}
+
+.profile-intro{
+    margin-left: auto; 
+    margin-right: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.profile-information-parent{
+    text-align: left;
+    margin-left: 10%;
+}
+
+.profile-information-child{
+    display: inline-block;
+    
+}
+
+dt {
+    font-weight: 900;
+}
+
+dl > dd {
+    margin: 15px 60px;
+    
+}
+
+.address-box{
+    min-width: 150px;
+    max-width: 300px;
+    word-wrap: break-word;
+}
 
 
 /* Footer */
@@ -117,28 +157,6 @@ caption p {
     min-height: 40px;
 
 }
-
-/*    Profile       */
-/* Gen layout */
-
-.profile-header{
-    margin-bottom: 5%;
-}
-
-.profile-intro{
-    margin-bottom: 2.5%;
-}
-
-.profile-information-parent{
-    text-align: left;
-    margin-left: 10%;
-}
-
-.profile-information-child{
-    display: inline-block;
-    
-}
-
 
 /* forms */
 .profile-form-parent{

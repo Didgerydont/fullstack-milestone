@@ -19,27 +19,43 @@
     <div class="row">
         <div class="profile-intro col-sm-12">
             <h4 class="text-center">Below you will see the details that we currently have stored on file for you.</h4>
-            <h4 class="text-center">Check out the information below and try to keep this up to date for us</h4>
-            <h4 class="text-center">If you want to update these details, you can do that<a href="{% url 'accounts:edit_profile' userprofile.id %}"> here</a></h4>
+            <br>
+            <h4 class="text-center">This includes your current active bids and watch list</h4>
+            <br>
+            <h4 class="text-center">If you want to update your personal details, you can do that<a href="{% url 'accounts:edit_profile' user.profile.id %}"> here</a></h4>
         </div>        
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-xs-12 col-md-6">
             <div class="profile-form-parent">
                 <div class="profile-form-child">
-					<h4 class="text-left">Profile</h4>
-					<p class="text-left">First name: {{ userprofile.firstname}}</p>
-					<p class="text-left">Last name: {{ userprofile.lastname }}</p>
-					<p class="text-left">Email: {{ user.email }}</p>
-					<p class="text-left">Phone: {{ userprofile.phone }}</p>
-					<p class="text-left">Address: {{ userprofile.address }}</p>
-					<p class="text-left">Town: {{ userprofile.town }}</p>
-					<p class="text-left">Country: {{ userprofile.country }}</p>
-					<p class="text-left">Post Code: {{ userprofile.post_code }}</p>
+                    <dl>
+                        <dt>First name:</dt>
+                        <dd>{{ userprofile.firstname}}</dd>
+                        <dt>Last name:</dt>
+                        <dd>{{ userprofile.lastname }}</dd>
+                        <dt>Email:</dt>
+                        <dd>{{ user.email }}</dd>
+                        <dt>Phone:</dt>
+                        <dd>{{ userprofile.phone }}</dd>
+                        <dt>Address:</dt>
+                        <dd class="address-box">{{ userprofile.address }}</dd>
+                        <dt>Town:</dt>
+                        <dd>{{ userprofile.town }}</dd>
+                        <dt>Country:</dt>
+                        <dd>{{ userprofile.country }}</dd>
+                        <dt>Post Code:</dt>
+                        <dd>{{ userprofile.post_code }}</dd>
+                    </dl>
                 </div>
             </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+        <h2>Bids and watch will go here</h2>
+
+
         </div>
     </div>
 </div>
