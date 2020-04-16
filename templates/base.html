@@ -9,6 +9,8 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootswatch.min.css' %}">
     <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
@@ -20,13 +22,13 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg">
 		<a class="navbar-brand" href="{% url 'home:index' %}">Time Gavel</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
+			<ul class="navbar-nav justify-content-end ml-auto">
                 {% if user.is_authenticated %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'products:antiques' %}">Products</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'auction:get_all_auctions' %}">Auctions</a></li>
@@ -55,28 +57,11 @@
 	<footer class="page-footer font-small blue pt-4">
 		<div class="container-fluid text-center text-md-left">
 			<div class="row">
-				<div class="col-md-6 mt-md-0 mt-3">
-					<h5 class="text-uppercase">Footer Content</h5>
-					<p>Here you can use rows and columns to organize your footer content.</p>
+				<div class="col-md-6 mt-3">
+					<h5 class="text-uppercase">Helpful Links</h5>
+					<p>Below you can find links to other auctioneers and collect</p>
 				</div>
 				<hr class="clearfix w-100 d-md-none pb-3">
-				<div class="col-md-3 mb-md-0 mb-3">
-					<h5 class="text-uppercase">Links</h5>
-					<ul class="list-unstyled">
-						<li>
-							<a href="#!">Link 1</a>
-						</li>
-						<li>
-							<a href="#!">Link 2</a>
-						</li>
-						<li>
-							<a href="#!">Link 3</a>
-						</li>
-						<li>
-							<a href="#!">Link 4</a>
-						</li>
-					</ul>
-				</div>
 				<div class="col-md-3 mb-md-0 mb-3">
 					<h5 class="text-uppercase">Links</h5>
 					<ul class="list-unstyled">

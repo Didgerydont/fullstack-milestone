@@ -1,16 +1,21 @@
-body {
-    font-family: Arial;
+p, li, a, button, h1, h2, h3, h4, h5 {
+    font-family: 'Cinzel Decorative', cursive;
+    color: white;
 }
 
 
 /* Nav and footer              */
 /* Nav */
 .navbar{
-    margin-bottom: 5%;
+
 }
 
-.navbar-nav {
-    float: right!important;
+.navbar-nav{
+
+}
+
+.nav-item{
+    color: white;
 }
 
 /* index */
@@ -21,13 +26,24 @@ body {
     
 }
 .jumbo-title{
-    margin: 5em;
+    font-family: 'UnifrakturMaguntia', cursive;
+    color: #00bc8c;
+    
+}
+.jumbotron-heading{
+    margin: 25vh;
+    text-align: center;
 }
 
-.lead{
-    color: #7DF9FF !important;
+.site-title{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15%, 0;
 }
-
+ .lead{
+     color: #00bc8c;
+     font-weight: 600;
+ }
 
 
 /* Footer */
