@@ -2,7 +2,15 @@
 {% load static from staticfiles %}
 {% block title %}Checkout{% endblock %}
 
-
+{% block head_js %}
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+    //<![CDATA[
+    Stripe.publishableKey = '{{ publishable }}';
+    //]]>
+</script>
+<script type="text/javascript" src="{% static 'js/stripe.js' %}" ></script>
+{% endblock %}  
 {% block content %}
 <div class="row row-flex">
     <div class="col-xs-12 offset-md-2 col-md-8 display panel panel-default">
@@ -30,15 +38,5 @@
     </div>
 </div>
 
-
-{% block head_js %}
-<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-<script type="text/javascript">
-    //<![CDATA[
-    Stripe.publishableKey = '{{ publishable }}';
-    //]]>
-</script>
-<script type="text/javascript" src="{% static 'js/stripe.js' %}" ></script>
-{% endblock %}  
 
 {% endblock %}

@@ -33,7 +33,6 @@ def checkout_auction(request, pk):
             order_line_item = OrderLineItem(
                 order=order,
                 auction=auction,
-                quantity=1
             )
             order_line_item.save()
 
@@ -89,7 +88,6 @@ def buy_now_checkout(request, pk):
             order_line_item = OrderLineItem(
                 order=order,
                 auction=auction,
-                quantity=1
             )
             order_line_item.save()
             order_line_item.save()
