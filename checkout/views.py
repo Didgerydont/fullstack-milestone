@@ -76,10 +76,11 @@ def checkout_auction(request, pk):
 def buy_now_checkout(request, pk):
     auction = get_object_or_404(Auction, pk=pk)
     total = auction.antiques.buy_now_price
+    print('why arent you working1')
     if request.method == "POST":
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
-        print('why arent you working')
+        print('why arent you working2')
         
         if order_form.is_valid() and payment_form.is_valid():
             order = order_form.save(commit=False)
@@ -91,6 +92,7 @@ def buy_now_checkout(request, pk):
             )
             order_line_item.save()
             order_line_item.save()
+            print('why arent you working3')
 
             try:
                 customer = stripe.Charge.create(
@@ -99,6 +101,7 @@ def buy_now_checkout(request, pk):
                     description=request.user.email,
                     card=payment_form.cleaned_data['stripe_id'],
                 )
+                print('why arent you working4')
             except stripe.error.CardError:
                 messages.error(request, "Your card was declined!")
 
@@ -108,15 +111,18 @@ def buy_now_checkout(request, pk):
                 auction.antiques.bought = True
                 auction.auction_expired = True
                 auction.save()
+                print('why arent you working5')
                 return redirect(reverse('products:antiques'))
             else:
                 messages.error(request, "Unable to take payment")
+                
         else:
             print(payment_form.errors)
             messages.error(request, "We were unable to take a payment with that card!")
     else:
         payment_form = MakePaymentForm()
         order_form = OrderForm()
+        print('why arent you working6')
 
     context = {
         'auction': auction,
