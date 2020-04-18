@@ -73,18 +73,31 @@ def bid(request, pk):
 
 
 @login_required
-def add_to_watch_list(request, auction_id):
+def add_to_watch_list(request, pk):
     """
     Adds an auction to the users watchlist, not working currently
     """
-    user = User.objects.filter(username=request.session['username'])
-    auction = Auction.objects.filter(id=auction_id)
-    watching = WatchList.objects.filter(auction_id=auction_id)
+    auction = Auction.objects.filter(pk=pk)
+    watching = WatchList.objects.filter(pk=pk)
     if not watching:
         watchlist_item = WatchList()
         watchlist_item.auction_id = auction[0]
-        watchlist_item.user_id = user[0]
+        watchlist_item.user_id = request.user
         watchlist_item.save()
     else:
         watching.delete()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+def display_watchlist(request):
+    """
+    Display the watchlist on interests.html
+    """
+    user = request.user
+    watchlist = WatchList.objects.filter(user)
+
+    context = {
+        'watchlist': watchlist
+
+    }
+    return render(request, "interests.html", context)

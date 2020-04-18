@@ -80,17 +80,8 @@ def registration(request):
 
 def user_profile(request):
     """ The users profile page """
-    user = User.objects.get(email=request.user.email)
-    userprofile = Profile.objects.get(
-        firstname=request.user.profile.firstname,
-        lastname=request.user.profile.lastname,
-        phone=request.user.profile.phone,
-        address=request.user.profile.address,
-        town=request.user.profile.town,
-        post_code=request.user.profile.post_code,
-        country=request.user.profile.country,
-        birth_date=request.user.profile.birth_date
-    )
+    user = request.user
+    userprofile = request.user.profile
     context = {
         "profile": user,
         "userprofile": userprofile

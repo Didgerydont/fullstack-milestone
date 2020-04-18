@@ -1,5 +1,4 @@
 {% extends 'profile.html' %}
-
 {% block watch_bid %}
 
 <div class="row">
@@ -20,12 +19,41 @@
         </div>
     </div>
 </div>
-
-<div class="row">
-    <div class="col-xs-12 text-center">
-        <div class="watch-title">
-            <h5>Watching</h5>
-            <!-- Watchlist will be more or less the same above but wont include the users bid or information -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <div class="watch-title">
+                <h5>You are currently watching...</h5>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="watch-items">
+                <table class="watch-information">
+                    <tr>
+                        <th>Auction ID:</th>
+                        <th>Number of Bids</th>
+                        <th>Current Highest Bid</th>
+                        <th>Time Ending</th>
+                        <th>Auction Link</th>
+                    </tr>
+                    {% for watch in watchlist %}
+                    <tr>
+                        
+                        <td>{{ watch.auction_id.pk }}</td>
+                        <td>{{ watch.auction_id.number_of_bids }}</td>
+                        <td>{{ watch.auction_id.current_leader }}</td>
+                        <td>{{ watch.auction_id.time_ending }}</td>
+                        <td><a href="{% url 'auction:get_specific_auction' watch.auction_id.pk %}">Auction</a></td>
+                        
+                    </tr>
+                    {% endfor %}
+                </table>
+                
+            </div>
         </div>
     </div>
 </div>
