@@ -91,14 +91,12 @@ def add_to_watch_list(request, pk):
 
 def display_watchlist(request):
     """
-    Display the watchlist on interests.html
+    Display the watchlist on watchlist.html
     """
     user = request.user
-    watchlist = WatchList.objects.filter(user)
-
+    watchlist = WatchList.objects.filter(user_id=user)
     context = {
-        'watchlist': watchlist
-
+            'watchlist': watchlist
     }
     return render(request, "watchlist.html", context)
 
@@ -108,10 +106,11 @@ def show_bids(request):
     Display the watchlist on interests.html
     """
     user = request.user
-    bid = Bid.objects.filter(user)
-
-    context = {
-        'bid': bid
-
-    }
+    bid = Bid.objects.all()
+    if bid.user_id == user.id:
+        context = {
+            'bid': bid
+        }
+    else:
+        pass
     return render(request, "my-bids.html", context)

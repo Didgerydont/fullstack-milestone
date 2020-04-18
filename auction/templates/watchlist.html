@@ -8,22 +8,15 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="watch-items">
-            <table class="watch-information">
-                <tr>
-                    <th>Auction ID:</th>
-                    <th>Number of Bids</th>
-                    <th>Current Highest Bid</th>
-                    <th>Time Ending</th>
-                </tr>
+            
                 {% for w in watchlist %}
-                <tr>
-                    <td>{{ w.auction_id.pk }}</td>
-                    <td>{{ w.auction_id.number_of_bids }}</td>
-                    <td>{{ w.auction_id.current_leader }}</td>
-                    <td>{{ w.auction_id.time_ending }}</td>     
-                </tr>
+                
+                <p>{{ w.auction_id.number_of_bids }}</p>
+                    
+                     
+                
                 {% endfor %}
-            </table>
+          
                 
         </div>
     </div>
