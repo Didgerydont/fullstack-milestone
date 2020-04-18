@@ -18,11 +18,11 @@
 <div class="container-fluid">
     <div class="row">
         <div class="profile-intro col-sm-12">
-            <h4 class="text-center">Below you will see the details that we currently have stored on file for you.</h4>
+            <h5 class="text-center">Below you will see the details that we currently have stored on file for you.</h5>
             <br>
-            <h4 class="text-center">This includes your current active bids and watch list</h4>
+            <h5 class="text-center">This includes your current active bids and watch list</h5>
             <br>
-            <h4 class="text-center">If you want to update your personal details, you can do that<a href="{% url 'accounts:edit_profile' user.profile.id %}"> here</a></h4>
+            <h5 class="text-center">If you want to update your personal details, you can do that<a href="{% url 'accounts:edit_profile' user.profile.id %}"> here</a></h5>
         </div>        
     </div>
 </div>
@@ -57,11 +57,8 @@
         </div>
         <br>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <h3>Watch and Bid list will go here</h3>
-        </div>
-    </div>
+    {% block watch_bid %}
+    {% endblock %}
 </div>
 
 {% endblock %}
