@@ -100,4 +100,18 @@ def display_watchlist(request):
         'watchlist': watchlist
 
     }
-    return render(request, "interests.html", context)
+    return render(request, "watchlist.html", context)
+
+
+def show_bids(request):
+    """
+    Display the watchlist on interests.html
+    """
+    user = request.user
+    bid = Bid.objects.filter(user)
+
+    context = {
+        'bid': bid
+
+    }
+    return render(request, "my-bids.html", context)

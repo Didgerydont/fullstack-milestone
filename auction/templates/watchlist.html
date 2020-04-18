@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-xs-12 text-center">
+        <div class="watch-title">
+            <h5>You are currently watching...</h5>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="watch-items">
+            <table class="watch-information">
+                <tr>
+                    <th>Auction ID:</th>
+                    <th>Number of Bids</th>
+                    <th>Current Highest Bid</th>
+                    <th>Time Ending</th>
+                </tr>
+                {% for w in watchlist %}
+                <tr>
+                    <td>{{ w.auction_id.pk }}</td>
+                    <td>{{ w.auction_id.number_of_bids }}</td>
+                    <td>{{ w.auction_id.current_leader }}</td>
+                    <td>{{ w.auction_id.time_ending }}</td>     
+                </tr>
+                {% endfor %}
+            </table>
+                
+        </div>
+    </div>
+</div>

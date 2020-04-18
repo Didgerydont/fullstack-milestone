@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'logout$', views.logout, name="logout"),
     url(r'login$', views.login, name="login"),
     url(r'register$', views.registration, name="register"),
-    url(r'profile$', views.user_profile, name="profile"),
+    url(r'profile/', views.user_profile, name="profile"),
     url(r'(?P<pk>\d+)/profile_edit/$', views.edit_profile, name="edit_profile"),
     url(r'password-reset/', include(url_reset))
 ]
