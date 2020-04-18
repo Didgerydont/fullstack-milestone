@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 <div class="row">
     <div class="col-xs-12 text-center">
         <div class="watch-title">
@@ -8,9 +9,8 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="watch-items">
-            
+            <p>fuuuuck</p>
                 {% for w in watchlist %}
-                
                 <p>{{ w.auction_id.number_of_bids }}</p>
                     
                      
@@ -21,3 +21,4 @@
         </div>
     </div>
 </div>
+{% endblock %}

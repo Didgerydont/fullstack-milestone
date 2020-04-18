@@ -24,6 +24,7 @@ class WatchList(models.Model):
     def __str__(self):
         return "USER_ID:" + str(self.user_id)
 
+
 class Bid(models.Model):
     user_id = models.OneToOneField(User, on_delete=models.CASCADE)
     auction_id = models.ForeignKey(Auction, on_delete=models.CASCADE)

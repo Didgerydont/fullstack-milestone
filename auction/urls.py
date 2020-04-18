@@ -11,5 +11,5 @@ urlpatterns = [
     url(r'get_specific_auction/(?P<pk>\d+)/$', views.get_specific_auction, name='get_specific_auction'),
     url(r'bid/(?P<pk>\d+)$', views.bid, name='bid'),
     url(r'add_to_watch_list/(?P<pk>\d+)', views.add_to_watch_list, name='add_to_watch_list'),
-    url(r'watching/', views.display_watchlist, name='display_watchlist'),
+    url(r'watching/(?P<user>\d+)', views.display_watchlist, name='display_watchlist'),
 ]
