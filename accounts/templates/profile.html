@@ -56,15 +56,13 @@
 </div>
 
 <div class="container-fluid">
-<a href="{% url 'auction:display_watchlist' user.id %}">Watchlist</a>
-{% block watching %}
-{% endblock %}
+<a href="#">Watching</a>
+{% include 'watchlist.html' %}
 </div>
 
 
 <div class="container-fluid">
-<a href="#"></a>
-{% block bids %}
-{% endblock %}
+<a href="#">Bids</a>
+{% include 'my-bids.html' %}
 </div>
 {% endblock %}
