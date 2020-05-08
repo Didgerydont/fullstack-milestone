@@ -89,16 +89,17 @@ def add_to_watch_list(request, pk):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
-def display_watchlist(request, user):
+def display_watchlist(request):
     """
     Display the watchlist on watchlist.html
     """
     user = request.user
-    watchlist = WatchList.objects.filter(pk=user)
+    watchlist = WatchList.objects.filter(user_id=user)
     context = {
         'watchlist': watchlist
     }
     return render(request, "watchlist.html", context)
+
 
 
 def show_bids(request):

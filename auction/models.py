@@ -14,15 +14,15 @@ class Auction(models.Model):
     auction_expired = models.BooleanField(default=False)
 
     def __str__(self):
-        return "Antique:" + self.antiques.name
+        return "Antique:" + " " + self.antiques.name
 
 
 class WatchList(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    auction_id = models.ForeignKey(Auction, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    auction = models.ForeignKey(Auction, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "USER_ID:" + str(self.user_id)
+        return "USER_ID:" + " " + str(self.user_id)
 
 
 class Bid(models.Model):

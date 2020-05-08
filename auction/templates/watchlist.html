@@ -6,14 +6,21 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-md-6">
         <div class="watch-items">
-            <p>fuuuuck</p>
-            {% for w in watchlist %}
-            <p>{{ w.auction_id.number_of_bids }}</p>
-                    
-                     
-                
+            {% for watch in watchlist%}
+            <dl>
+                <dt>Antique name:</dt>
+                <dd>xxx</dd>
+                <dt>Number of bids:</dt>
+                <dd>xxx</dd>
+                <dt>Current Highest Bid:</dt>
+                <dd>xxx</dd>
+                <dt>Time ending:</dt>
+                <dd>xxx</dd>
+                <dt>Email:</dt>
+                <dd>xxx</dd>
+            </dl>
             {% endfor %}
           
                 
