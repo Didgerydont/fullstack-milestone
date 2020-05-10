@@ -23,8 +23,7 @@
 
 
 
-{% if bid.auction.winning_bidder == user %}
-    {% if bid.auction.auction_expired == True %}
+{% if bid.auction.winning_bidder == user and bid.auction.auction_expired %}
     <div class="row">
         <div class="col-xs-12">
             <h3><strong style="color:red">Congratulations!</strong></h3>
@@ -55,11 +54,9 @@
     <div class="row">
         <div class="col-xs-12">
             <a href="{% url 'checkout:checkout_auction' bid.auction.antiques.pk %}"><strong style="color:red">Please pay for your item here</strong></a>
-            <p>You have successfully one the following auction/s</p>
         </div>
     </div>
 
-    {% endif %}
 {% endif %}
 
 <div class="container-fluid m-5">

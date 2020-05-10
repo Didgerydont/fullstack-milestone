@@ -106,16 +106,12 @@ def display_watch_and_bids(request, user):
 
 
 
-def show_bids(request):
-    """
-    Display the users current bids
-    """
-    user = request.user
-    bid = Bid.objects.all()
-    if bid.user_id == user.id:
-        context = {
-            'bid': bid
-        }
+def set_expiration(request):
+    auction = Auction.objects.all()
+    if timezone.now > auction.time_ending:
+        auction.auction_expired == True
+    elif auction.money_collected == True:
+        auction.auction_expired == True
     else:
-        pass
-    return render(request, "my-bids.html", context)
+        auction.auction_expired == False
+    return set_expiration
