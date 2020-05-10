@@ -1,3 +1,12 @@
+{% extends 'base.html' %}
+
+{% block page_title %}{{ user }}'s Watchlist{% endblock %}
+
+{% block page_heading %}{{ user }}'s Watchlist{% endblock %}
+
+{% block content %}
+
+
 <div class="row">
     <div class="col-xs-12 text-center">
         <div class="watch-title">
@@ -5,13 +14,15 @@
         </div>
     </div>
 </div>
+
+{% if watchlist%}
 <div class="row">
     <div class="col-xs-12 col-md-6">
         <div class="watch-items">
-            {% for watch in watchlist%}
+            {% for watch in watchlist %}
             <dl>
                 <dt>Antique name:</dt>
-                <dd>xxx</dd>
+                <dd>nnn</dd>
                 <dt>Number of bids:</dt>
                 <dd>xxx</dd>
                 <dt>Current Highest Bid:</dt>
@@ -27,3 +38,13 @@
         </div>
     </div>
 </div>
+{% else %}
+<div class="row">
+    <div class="col-xs-12 col-md-6">
+        <h2>You are currently not watching any items</h2>
+    </div>
+
+</div>
+{% endif %}
+
+{% endblock %}

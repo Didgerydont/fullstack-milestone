@@ -79,22 +79,26 @@ def add_to_watch_list(request, pk):
     """
     auction = Auction.objects.filter(pk=pk)
     watching = WatchList.objects.filter(pk=pk)
+    antique = Antiques.objects.filter(pk=pk)
     if not watching:
         watchlist_item = WatchList()
-        watchlist_item.auction_id = auction[0]
-        watchlist_item.user_id = request.user
+        watchlist_item.auction = auction[0]
+        watchlist_item.user = request.user
+        watchlist_item.antique = antique[0]
         watchlist_item.save()
     else:
         watching.delete()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
-def display_watchlist(request):
+def display_watchlist(request, user):
     """
     Display the watchlist on watchlist.html
     """
+
     user = request.user
-    watchlist = WatchList.objects.filter(user_id=user)
+    watchlist = WatchList.objects.filter(user=user)
+
     context = {
         'watchlist': watchlist
     }
