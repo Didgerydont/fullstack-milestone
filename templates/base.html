@@ -33,7 +33,7 @@
                 <li class="nav-item"><a class="nav-link" href="{% url 'products:antiques' %}">Products</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'auction:get_all_auctions' %}">Auctions</a></li>
                 <li class="nav-item" ><a class="nav-link" href="{% url 'accounts:profile' %}"> Profile</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Bids & Watching</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'auction:display_watch_and_bids' user.id %}">Bids & Watching</a></li>
                 <li class="nav-item" ><a class="nav-link" href="{% url 'accounts:logout' %}"> Log Out</a></li>
                 {%  else %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'products:antiques' %}">Products</a></li>

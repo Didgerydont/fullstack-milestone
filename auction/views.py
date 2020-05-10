@@ -54,10 +54,10 @@ def bid(request, pk):
                     auction.current_leader = the_bid
                     auction.winning_bidder = request.user
                     bid.new_bid = the_bid
-                    bid.antiques_id = auction.antiques
-                    bid.auction_id = auction
-                    bid.user_id = request.user
-                    bid.auction_id.number_of_bids += 1
+                    bid.antiques = auction.antiques
+                    bid.auction = auction
+                    bid.user = request.user
+                    bid.auction.number_of_bids += 1
                     bid.bid_time = timezone.now()
                     bid.save()
                     auction.save()
@@ -79,28 +79,28 @@ def add_to_watch_list(request, pk):
     """
     auction = Auction.objects.filter(pk=pk)
     watching = WatchList.objects.filter(pk=pk)
-    antique = Antiques.objects.filter(pk=pk)
     if not watching:
         watchlist_item = WatchList()
         watchlist_item.auction = auction[0]
         watchlist_item.user = request.user
-        watchlist_item.antique = antique[0]
         watchlist_item.save()
     else:
         watching.delete()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
-def display_watchlist(request, user):
+def display_watch_and_bids(request, user):
     """
     Display the watchlist on watchlist.html
     """
 
     user = request.user
     watchlist = WatchList.objects.filter(user=user)
+    bids = Bid.objects.filter(user=user)
 
     context = {
-        'watchlist': watchlist
+        'watchlist': watchlist,
+        'bids': bids
     }
     return render(request, "watchlist.html", context)
 

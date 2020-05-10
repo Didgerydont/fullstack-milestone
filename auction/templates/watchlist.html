@@ -6,45 +6,101 @@
 
 {% block content %}
 
-
-<div class="row">
-    <div class="col-xs-12 text-center">
-        <div class="watch-title">
-            <h5>You are currently watching...</h5>
+<div class="container-fluid m-5">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="watch-title text-center">
+                <h5>Your Bids</h5>
+            </div>
         </div>
     </div>
-</div>
 
-{% if watchlist%}
-<div class="row">
-    <div class="col-xs-12 col-md-6">
-        <div class="watch-items">
-            {% for watch in watchlist %}
-            <dl>
-                <dt>Antique name:</dt>
-                <dd>nnn</dd>
-                <dt>Number of bids:</dt>
-                <dd>xxx</dd>
-                <dt>Current Highest Bid:</dt>
-                <dd>xxx</dd>
-                <dt>Time ending:</dt>
-                <dd>xxx</dd>
-                <dt>Email:</dt>
-                <dd>xxx</dd>
-            </dl>
-            {% endfor %}
-          
+    {% if bids.auction.auction_expired == false %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="watch-items m-5">
+                {% for bid in bids %}
+                <dl class="p-2 bg-dark">
+                    <dt>Antique name:</dt>
+                    <dd>{{ bid.auction.antiques.name}}</dd>
+                    <dt>Auction #:</dt>
+                    <dd><strong>{{ bid.auction.pk }}</strong></dd>
+                    <dt>Number of bids:</dt>
+                    <dd>{{ bid.auction.number_of_bids }}</dd>
+                    <dt>Current Highest Bid:</dt>
+                    <dd>{{ bid.auction.current_leader }}</dd>
+                    <dt>Time ending:</dt>
+                    <dd>{{ bid.auction.time_ending }}</dd>
+                    <a href="{% url 'auction:get_specific_auction' bid.auction.pk %}">Go to this auction</a>
+                </dl>
+                <div class=" bg-dark">
+                    <img src="{{ MEDIA_URL }}{{ bid.auction.antiques.image }}" alt="Product Image" height="100%" width="100%">
+                </div>
+
                 
+                <br>
+                {% endfor %}
+            
+                    
+            </div>
         </div>
     </div>
+    {% else %}
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <h2>You have not yet bid on any items</h2>
+        </div>
+
+    </div>
+    {% endif %}
 </div>
-{% else %}
-<div class="row">
-    <div class="col-xs-12 col-md-6">
-        <h2>You are currently not watching any items</h2>
+<div class="container-fluid m-5">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="watch-title text-center">
+                <h5>Watchlist</h5>
+            </div>
+        </div>
     </div>
 
+    {% if watchlist.auction.auction_expired == false %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="watch-items m-5">
+                {% for watch in watchlist %}
+                <dl class="p-4 bg-dark col-xs-12 col-md-6">
+                    <dt>Antique name:</dt>
+                    <dd>{{ watch.auction.antiques.name}}</dd>
+                    <dt>Number of bids:</dt>
+                    <dd>{{ watch.auction.number_of_bids }}</dd>
+                    <dt>Current Highest Bid:</dt>
+                    <dd>{{ watch.auction.current_leader }}</dd>
+                    <dt>Time ending:</dt>
+                    <dd>{{ watch.auction.time_ending }}</dd>
+                    <dt>Email:</dt>
+                    <dd>xxx</dd>
+                    <a href="{% url 'auction:get_specific_auction' watch.auction.pk %}">Go to this auction</a>
+                </dl>
+                <div class=" bg-dark col-xs-12 col-md-6">
+                    <img src="{{ MEDIA_URL }}{{ watch.auction.antiques.image }}" alt="Product Image" height="100%" width="100%">
+                </div>
+                <br>
+                {% endfor %}
+            
+                    
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <h2>You are currently not watching any items</h2>
+        </div>
+
+    </div>
+    {% endif %}
 </div>
-{% endif %}
+
+
 
 {% endblock %}

@@ -26,8 +26,8 @@ class WatchList(models.Model):
 
 
 class Bid(models.Model):
-    user_id = models.OneToOneField(User, on_delete=models.CASCADE)
-    auction_id = models.ForeignKey(Auction, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    auction = models.ForeignKey(Auction, on_delete=models.CASCADE)
     bid_time = models.DateTimeField()
     new_bid = models.DecimalField(max_digits=15, decimal_places=2, default=0.01)
 
