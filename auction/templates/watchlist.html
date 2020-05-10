@@ -22,6 +22,46 @@
 </div>
 
 
+
+{% if bid.auction.winning_bidder == user %}
+    {% if bid.auction.auction_expired == True %}
+    <div class="row">
+        <div class="col-xs-12">
+            <h3><strong style="color:red">Congratulations!</strong></h3>
+            <p>You have successfully one the following auction/s</p>
+        </div>
+    </div>
+    <div class="row">
+        {% for bid in bids %}
+        <dl class="p-2 limiter bg-dark col-xs-12 col-md-6">
+            <dt>Antique name:</dt>
+            <dd>{{ bid.auction.antiques.name}}</dd>
+            <dt>Auction #:</dt>
+            <dd><strong>{{ bid.auction.pk }}</strong></dd>
+            <dt>Number of bids:</dt>
+            <dd>{{ bid.auction.number_of_bids }}</dd>
+            <dt>Current Highest Bid:</dt>
+            <dd>{{ bid.auction.current_leader }}</dd>
+            <dt>Time ending:</dt>
+            <dd>{{ bid.auction.time_ending }}</dd>
+            <a href="{% url 'auction:get_specific_auction' bid.auction.pk %}">Go to this auction</a>
+        </dl>
+        <div class=" col-xs-12 col-md-6">
+            <img src="{{ MEDIA_URL }}{{ bid.auction.antiques.image }}" alt="Product Image" height="50%" width="50%">
+        </div>
+        <br>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <a href="{% url 'checkout:checkout_auction' bid.auction.antiques.pk %}"><strong style="color:red">Please pay for your item here</strong></a>
+            <p>You have successfully one the following auction/s</p>
+        </div>
+    </div>
+
+    {% endif %}
+{% endif %}
+
 <div class="container-fluid m-5">
     <div class="row">
         <div class="col-xs-12">
@@ -50,6 +90,7 @@
         <div class=" col-xs-12 col-md-6">
             <img src="{{ MEDIA_URL }}{{ bid.auction.antiques.image }}" alt="Product Image" height="50%" width="50%">
         </div>
+
 
                 
         <br>
