@@ -95,7 +95,10 @@ dl > dd {
     word-wrap: break-word;
 }
 
-/* Bif & Watching within Profile page */
+/* Bid & Watching */
+.limiter{
+    max-height: 75vh;
+}
 
 
 /* Footer */

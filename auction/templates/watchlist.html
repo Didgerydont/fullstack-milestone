@@ -6,44 +6,55 @@
 
 {% block content %}
 
+<div class="container-fluid profile-intro">
+	<div class="row">
+        <div class="col-sm-12">
+            <h2 class="text-center profile-header">Welcome to your item management page {{ user }}</h2>
+        </div>        
+        <div class="col-sm-12 p-5">
+            <h5 class="text-center">Below you will see the items that you have showed interest in via actively bidding or placing on your watchlist.</h5>
+            <br>
+            <h5 class="text-center">This includes your current active bids and watch list</h5>
+            <br>
+            <h5 class="text-center">You can also pay for auctions that have won on this page. Once you are the winning the bidder and the auction has expired, you will see this option appear on this page</h5>
+        </div>        
+    </div>
+</div>
+
+
 <div class="container-fluid m-5">
     <div class="row">
         <div class="col-xs-12">
-            <div class="watch-title text-center">
-                <h5>Your Bids</h5>
+            <div class="watch-title">
+                <h5 class="m-5 text-center">Your Bids</h5>
             </div>
         </div>
     </div>
 
     {% if bids.auction.auction_expired == false %}
     <div class="row">
-        <div class="col-xs-12">
-            <div class="watch-items m-5">
-                {% for bid in bids %}
-                <dl class="p-2 bg-dark">
-                    <dt>Antique name:</dt>
-                    <dd>{{ bid.auction.antiques.name}}</dd>
-                    <dt>Auction #:</dt>
-                    <dd><strong>{{ bid.auction.pk }}</strong></dd>
-                    <dt>Number of bids:</dt>
-                    <dd>{{ bid.auction.number_of_bids }}</dd>
-                    <dt>Current Highest Bid:</dt>
-                    <dd>{{ bid.auction.current_leader }}</dd>
-                    <dt>Time ending:</dt>
-                    <dd>{{ bid.auction.time_ending }}</dd>
-                    <a href="{% url 'auction:get_specific_auction' bid.auction.pk %}">Go to this auction</a>
-                </dl>
-                <div class=" bg-dark">
-                    <img src="{{ MEDIA_URL }}{{ bid.auction.antiques.image }}" alt="Product Image" height="100%" width="100%">
-                </div>
+        {% for bid in bids %}
+        <dl class="p-2 limiter bg-dark col-xs-12 col-md-6">
+            <dt>Antique name:</dt>
+            <dd>{{ bid.auction.antiques.name}}</dd>
+            <dt>Auction #:</dt>
+            <dd><strong>{{ bid.auction.pk }}</strong></dd>
+            <dt>Number of bids:</dt>
+            <dd>{{ bid.auction.number_of_bids }}</dd>
+            <dt>Current Highest Bid:</dt>
+            <dd>{{ bid.auction.current_leader }}</dd>
+            <dt>Time ending:</dt>
+            <dd>{{ bid.auction.time_ending }}</dd>
+            <a href="{% url 'auction:get_specific_auction' bid.auction.pk %}">Go to this auction</a>
+        </dl>
+        <div class=" col-xs-12 col-md-6">
+            <img src="{{ MEDIA_URL }}{{ bid.auction.antiques.image }}" alt="Product Image" height="50%" width="50%">
+        </div>
 
                 
-                <br>
-                {% endfor %}
+        <br>
+        {% endfor %}
             
-                    
-            </div>
-        </div>
     </div>
     {% else %}
     <div class="row">
@@ -57,40 +68,36 @@
 <div class="container-fluid m-5">
     <div class="row">
         <div class="col-xs-12">
-            <div class="watch-title text-center">
-                <h5>Watchlist</h5>
+            <div class="watch-title">
+                <h5 class="m-5 text-center">Watchlist</h5>
             </div>
         </div>
     </div>
 
     {% if watchlist.auction.auction_expired == false %}
     <div class="row">
-        <div class="col-xs-12">
-            <div class="watch-items m-5">
-                {% for watch in watchlist %}
-                <dl class="p-4 bg-dark col-xs-12 col-md-6">
-                    <dt>Antique name:</dt>
-                    <dd>{{ watch.auction.antiques.name}}</dd>
-                    <dt>Number of bids:</dt>
-                    <dd>{{ watch.auction.number_of_bids }}</dd>
-                    <dt>Current Highest Bid:</dt>
-                    <dd>{{ watch.auction.current_leader }}</dd>
-                    <dt>Time ending:</dt>
-                    <dd>{{ watch.auction.time_ending }}</dd>
-                    <dt>Email:</dt>
-                    <dd>xxx</dd>
-                    <a href="{% url 'auction:get_specific_auction' watch.auction.pk %}">Go to this auction</a>
-                </dl>
-                <div class=" bg-dark col-xs-12 col-md-6">
-                    <img src="{{ MEDIA_URL }}{{ watch.auction.antiques.image }}" alt="Product Image" height="100%" width="100%">
-                </div>
-                <br>
-                {% endfor %}
+        {% for watch in watchlist %}
+        <dl class="p-4 limiter bg-dark col-xs-12 col-md-6">
+            <dt>Antique name:</dt>
+            <dd>{{ watch.auction.antiques.name}}</dd>
+            <dt>Number of bids:</dt>
+            <dd>{{ watch.auction.number_of_bids }}</dd>
+            <dt>Current Highest Bid:</dt>
+            <dd>{{ watch.auction.current_leader }}</dd>
+            <dt>Time ending:</dt>
+            <dd>{{ watch.auction.time_ending }}</dd>
+            <a href="{% url 'auction:get_specific_auction' watch.auction.pk %}">Go to this auction</a>
+        </dl>
+        <div class=" col-xs-12 col-md-6">
+            <img src="{{ MEDIA_URL }}{{ watch.auction.antiques.image }}" alt="Product Image" height="50%" width="50%">
+        </div>
+        <br>
+        {% endfor %}
             
                     
-            </div>
-        </div>
     </div>
+        
+
     {% else %}
     <div class="row">
         <div class="col-xs-12 col-md-6">
@@ -98,8 +105,9 @@
         </div>
 
     </div>
-    {% endif %}
 </div>
+{% endif %}
+
 
 
 
