@@ -52,7 +52,8 @@ def checkout_auction(request, pk):
                 auction.antiques.bought = True
                 auction.auction_expired = True
                 auction.save()
-                return redirect(reverse('auction:display_watch_and_bids'))
+                user = request.user
+                return redirect(reverse('auction:display_watch_and_bids', kwargs={user.id}))
             else:
                 messages.success(request, "Unable to take payment")
         else:
