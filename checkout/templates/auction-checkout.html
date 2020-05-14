@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 {% block checkout-form %}
 
-<form role="form" method="POST" id="payment-form" action="{% url 'checkout:checkout_auction' %}">
+<form role="form" method="POST" id="payment-form" action="{% url 'checkout:checkout_auction' auction.pk %}">
     {% csrf_token %}
     <legend>Payment Details</legend>
     <div id="credit-card-errors" style="display:none">

@@ -197,3 +197,8 @@ caption p {
 .total{
     margin: 30px auto;
 }
+
+.winners-box{
+    margin-top: 10vh;
+    word-wrap: break-word;
+}

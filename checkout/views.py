@@ -19,7 +19,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 @login_required()
 def checkout_auction(request, pk):
     auction = get_object_or_404(Auction, pk=pk)
-    total = auction.winning_bid
+    total = auction.current_leader
     if request.method == "POST":
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
@@ -29,7 +29,7 @@ def checkout_auction(request, pk):
             order.date = timezone.now()
             order.save()
 
-            total = auction.winning_bid
+            total = auction.current_leader
             order_line_item = OrderLineItem(
                 order=order,
                 auction=auction,
@@ -52,7 +52,7 @@ def checkout_auction(request, pk):
                 auction.antiques.bought = True
                 auction.auction_expired = True
                 auction.save()
-                return redirect(reverse('auction:auction'))
+                return redirect(reverse('auction:display_watch_and_bids'))
             else:
                 messages.success(request, "Unable to take payment")
         else:
