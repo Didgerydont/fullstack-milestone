@@ -2,9 +2,11 @@
 {% block title %}All Current Auctions{% endblock %}
 
 {% block content %}
-<div class="container mb-5 mt-5">
-    <div class="col-xs-12 text-center">
-        <h2>Currently Active Auctions</h2>
+<div class="container-fluid profile-intro">
+	<div class="row">
+        <div class="col-sm-12">
+            <h2 class="text-center profile-header">Currently Active Auctions</h2>
+        </div>               
     </div>
 </div>
 <!-- Search bar-->
@@ -72,7 +74,10 @@
                             <h5 class="purchase-header">Secure this item now for <strong style="color: green">€{{  auction.antiques.buy_now_price }}</strong></h5>
                             <br>
                             <a class="btn btn-success" href="{% url 'checkout:buy_now_checkout' auction.antiques.pk %}">Buy Now</a>
-                            <a class="btn btn-info" href="{% url 'auction:add_to_watch_list' auction.pk %}">Watch</a>
+                            {% if watching %}
+                                <a class="btn btn-success" href="{% url 'auction:add_to_watch_list' auction.pk %}">Watching</a>
+                            {% else %}
+                                <a class="btn btn-info" href="{% url 'auction:add_to_watch_list' auction.pk %}">Watch</a>
                         </div>   
                     </div>
                         

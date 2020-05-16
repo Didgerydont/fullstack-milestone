@@ -11,7 +11,7 @@
         <div class="col-sm-12">
             <h2 class="text-center profile-header">Welcome to your item management page {{ user }}</h2>
         </div>        
-        <div class="col-sm-12 p-5">
+        <div class="col-sm-12">
             <h5 class="text-center">Below you will see the items that you have showed interest in via actively bidding or placing on your watchlist.</h5>
             <br>
             <h5 class="text-center">This includes your current active bids and watch list</h5>
@@ -22,35 +22,37 @@
 </div>
 
 {% for bid in bids %}
-    {% if bid.auction.winning_bidder == request.user and bid.auction.auction_expired %}
+    {% if bid.auction.money_collected == False %}
+        {% if bid.auction.winning_bidder == request.user and bid.auction.auction_expired %}
 
-    <div class="container-fluid m-5">
-        <div class="row">
-            <div class="col-xs-12">
-                <h3><strong style="color:red">Congratulations!</strong></h3>
-                <p>You have successfully won the following auction/s</p>
+        <div class="container-fluid m-5">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3><strong style="color:red">Congratulations!</strong></h3>
+                    <p>You have successfully won the following auction/s</p>
+                </div>
+            </div>
+            <div class="row">
+                <dl class="p-2 limiter bg-dark col-xs-12 col-md-6">
+                    <dt>Antique name:</dt>
+                    <dd>{{ bid.auction.antiques.name}}</dd>
+                    <dt>Auction #:</dt>
+                    <dd><strong>{{ bid.auction.pk }}</strong></dd>
+                    <dt>Total bids:</dt>
+                    <dd>{{ bid.auction.number_of_bids }}</dd>
+                    <dt>Your winning bid:</dt>
+                    <dd>{{ bid.auction.current_leader }}</dd>
+                    <dt>Auction ended:</dt>
+                    <dd>{{ bid.auction.time_ending }}</dd>
+                    <a class="winners-box btn-success" href="{% url 'checkout:checkout_auction' bid.auction.pk %}"><strong>Pay</strong></a>
+                </dl>
+                <br>
+                <div class=" col-xs-12 col-md-6">
+                    <img src="{{ MEDIA_URL }}{{ bid.auction.antiques.image }}" alt="Product Image" height="50%" width="50%">
+                </div>
             </div>
         </div>
-        <div class="row">
-            <dl class="p-2 limiter bg-dark col-xs-12 col-md-6">
-                <dt>Antique name:</dt>
-                <dd>{{ bid.auction.antiques.name}}</dd>
-                <dt>Auction #:</dt>
-                <dd><strong>{{ bid.auction.pk }}</strong></dd>
-                <dt>Total bids:</dt>
-                <dd>{{ bid.auction.number_of_bids }}</dd>
-                <dt>Your winning bid:</dt>
-                <dd>{{ bid.auction.current_leader }}</dd>
-                <dt>Auction ended:</dt>
-                <dd>{{ bid.auction.time_ending }}</dd>
-                <a class="winners-box btn-success" href="{% url 'checkout:checkout_auction' bid.auction.pk %}"><strong>Pay</strong></a>
-            </dl>
-            <br>
-            <div class=" col-xs-12 col-md-6">
-                <img src="{{ MEDIA_URL }}{{ bid.auction.antiques.image }}" alt="Product Image" height="50%" width="50%">
-            </div>
-        </div>
-    </div>
+        {% endif %}
     {% endif %}
 
     {% if bid.auction.winning_bidder == request.user and bid.auction.money_collected %}
@@ -91,7 +93,7 @@
         </div>
     </div>
 
-    {% if bids.auction.auction_expired == false %}
+    {% if bids.auction.auction_expired == false and bids.auction.money_collected == False %}
     <div class="row">
         {% for bid in bids %}
         <dl class="p-2 limiter bg-dark col-xs-12 col-md-6">
@@ -121,6 +123,7 @@
     <div class="row">
         <div class="col-xs-12 col-md-6">
             <h2>You have not yet bid on any items</h2>
+            <a href="{% url 'auction:get_all_auctions' %}">Start bidding</a>
         </div>
 
     </div>
@@ -162,7 +165,7 @@
     {% else %}
     <div class="row">
         <div class="col-xs-12 col-md-6">
-            <h2>You are currently not watching any items</h2>
+            <h2>You are not currently watching any items</h2>
         </div>
 
     </div>

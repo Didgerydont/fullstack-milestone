@@ -3,22 +3,24 @@
 {% block page_heading %}{{ user }} Payment Successful{% endblock %}
 {% block content %}
 
-<div class="success-content">
-	<div class="modal-body">
-        <p class="text-center">Thank you {{user}}</p>
-		<p class="text-center">Your payment has been confirmed!</p>
-	</div>
-    <br>
+
+<div class="container-fluid profile-intro">
+	<div class="row">
+        <div class="col-sm-12">
+            <h2 class="text-center profile-header">Thank you {{user}}</h2>
+            <h2 class="text-center profile-header">Your payment has been confirmed!</h2>
+        </div>               
+    </div>
     <div class="confirmation">
         <p class="text-center">We will be in touch in the coming days via the email you signed up with.</p>
         <p class="text-center">This email will contain your payment reciept and the exact dimensions of your item.</p>
         <p class="text-center">As per company policy, we dont provide logistic services or insurance services on the delivery of our goods as many are uninsurable.</p>
     </div>
-	<div class="success-footer text-center">
+    <div class="success-footer text-center">
         <a href="/">Back to Main Menu</a>
-	</div>
+    </div>
+    
 </div>
-   
 
 
 {% endblock %}
