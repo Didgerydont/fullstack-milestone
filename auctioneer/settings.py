@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import dj_database_url
 from os import path
 if path.exists("env.py"):
     import env
@@ -87,11 +88,15 @@ WSGI_APPLICATION = 'auctioneer.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.parse("postgres://suzzdbgzgktpqb:a3059a880e1d4671325c8d8b78d1886b2f34382d596f1b6fd84a0846f5ed2223@ec2-54-75-231-215.eu-west-1.compute.amazonaws.com:5432/dchrpnoqomggle")
 }
 
 
