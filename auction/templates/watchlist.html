@@ -43,7 +43,36 @@
                 <dd>{{ bid.auction.current_leader }}</dd>
                 <dt>Auction ended:</dt>
                 <dd>{{ bid.auction.time_ending }}</dd>
-                <a class="winners-box" href="{% url 'checkout:checkout_auction' bid.auction.pk %}"><strong style="color:red">Please use this link to pay for your item here at your nearest convenience</strong></a>
+                <a class="winners-box btn-success" href="{% url 'checkout:checkout_auction' bid.auction.pk %}"><strong>Pay</strong></a>
+            </dl>
+            <br>
+            <div class=" col-xs-12 col-md-6">
+                <img src="{{ MEDIA_URL }}{{ bid.auction.antiques.image }}" alt="Product Image" height="50%" width="50%">
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if bid.auction.winning_bidder == request.user and bid.auction.money_collected %}
+
+    <div class="container-fluid m-5">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3><strong style="color:green">Your Previous Purchases</strong></h3>
+            </div>
+        </div>
+        <div class="row">
+            <dl class="p-2 limiter bg-dark col-xs-12 col-md-6">
+                <dt>Antique name:</dt>
+                <dd>{{ bid.auction.antiques.name}}</dd>
+                <dt>Auction #:</dt>
+                <dd><strong>{{ bid.auction.pk }}</strong></dd>
+                <dt>Total bids:</dt>
+                <dd>{{ bid.auction.number_of_bids }}</dd>
+                <dt>Your winning bid:</dt>
+                <dd>{{ bid.auction.current_leader }}</dd>
+                <dt>Auction ended:</dt>
+                <dd>{{ bid.auction.time_ending }}</dd>
             </dl>
             <br>
             <div class=" col-xs-12 col-md-6">

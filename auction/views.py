@@ -26,6 +26,7 @@ def get_all_auctions(request):
     }
     return render(request, "showallauctions.html", context)
 
+
 def get_specific_auction(request, pk):
     auction = get_object_or_404(Auction, pk=pk)
     context = {
@@ -103,15 +104,3 @@ def display_watch_and_bids(request, user):
         'bids': bids
     }
     return render(request, "watchlist.html", context)
-
-
-
-def set_expiration(request):
-    auction = Auction.objects.all()
-    if timezone.now > auction.time_ending:
-        auction.auction_expired == True
-    elif auction.money_collected == True:
-        auction.auction_expired == True
-    else:
-        auction.auction_expired == False
-    return set_expiration

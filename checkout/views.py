@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages, auth
+from django.contrib.auth.models import User
 from django.db.models import Q
 from .forms import MakePaymentForm, OrderForm
 from .models import OrderLineItem
@@ -16,8 +17,24 @@ import stripe
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
+def success(request):
+    """
+    Render the success page after payment
+    """
+    user = request.user
+    context = {
+        'user': user
+    }
+    return render(request, "success.html", context)
+
+
+
 @login_required()
 def checkout_auction(request, pk):
+    """
+    Allow the user to make a payment after successfully winning an auction
+    """
+    user = get_object_or_404(User, pk=pk)
     auction = get_object_or_404(Auction, pk=pk)
     total = auction.current_leader
     if request.method == "POST":
@@ -52,8 +69,8 @@ def checkout_auction(request, pk):
                 auction.antiques.bought = True
                 auction.auction_expired = True
                 auction.save()
-                user = request.user
-                return redirect(reverse('auction:display_watch_and_bids', kwargs={user.id}))
+                print("Are you working?")
+                return redirect('checkout:success')
             else:
                 messages.success(request, "Unable to take payment")
         else:
@@ -75,6 +92,9 @@ def checkout_auction(request, pk):
 
 @login_required()
 def buy_now_checkout(request, pk):
+    """
+    Allow the user to "buy-now"
+    """
     auction = get_object_or_404(Auction, pk=pk)
     total = auction.antiques.buy_now_price
     print('why arent you working1')
