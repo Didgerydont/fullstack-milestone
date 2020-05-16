@@ -55,7 +55,7 @@
                 <div class="card card-body">
                     <p class="date-posted">First appeared on site: <strong>  {{ auction.antiques.date_posted }}</strong></p>
                 </div>
-                
+                    
                 <div class="card card-body">
                     <div class="to-the-auction">
                         <div class="direct-box">
@@ -74,13 +74,14 @@
                             <h5 class="purchase-header">Secure this item now for <strong style="color: green">€{{  auction.antiques.buy_now_price }}</strong></h5>
                             <br>
                             <a class="btn btn-success" href="{% url 'checkout:buy_now_checkout' auction.antiques.pk %}">Buy Now</a>
-                            {% if watching %}
+                            {% if request.user == watchlist %}
                                 <a class="btn btn-success" href="{% url 'auction:add_to_watch_list' auction.pk %}">Watching</a>
                             {% else %}
                                 <a class="btn btn-info" href="{% url 'auction:add_to_watch_list' auction.pk %}">Watch</a>
+                            {% endif %}
                         </div>   
                     </div>
-                        
+                            
                 </div>   
             </div>
         </div>

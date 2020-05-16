@@ -16,13 +16,16 @@ def get_all_auctions(request):
     """
     Show all current auctions
     """
+    user = request.user
     auction = Auction.objects.all()
     pages = pagination(request, auction, 4)
+    watchlist = WatchList.objects.filter(user=user)
 
     context = {
         'items': pages[0],
         'page_range': pages[1],
-        'auction': auction
+        'auction': auction,
+        'watchlist': watchlist
     }
     return render(request, "showallauctions.html", context)
 
