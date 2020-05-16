@@ -1,1 +1,1 @@
-web: gunicorn time-gavel.wsgi:application
+web: gunicorn auctioneer.wsgi:application

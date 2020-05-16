@@ -74,11 +74,7 @@
                             <h5 class="purchase-header">Secure this item now for <strong style="color: green">€{{  auction.antiques.buy_now_price }}</strong></h5>
                             <br>
                             <a class="btn btn-success" href="{% url 'checkout:buy_now_checkout' auction.antiques.pk %}">Buy Now</a>
-                            {% if request.user == watchlist %}
-                                <a class="btn btn-success" href="{% url 'auction:add_to_watch_list' auction.pk %}">Watching</a>
-                            {% else %}
-                                <a class="btn btn-info" href="{% url 'auction:add_to_watch_list' auction.pk %}">Watch</a>
-                            {% endif %}
+                            <a class="btn btn-info" href="{% url 'auction:add_to_watch_list' auction.pk %}">Watch</a>
                         </div>   
                     </div>
                             
