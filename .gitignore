@@ -4,3 +4,5 @@ __pycach__/
 .gitpod.yml
 db.sqlite3
 db.sqlite3-journal
+static/
+media/
