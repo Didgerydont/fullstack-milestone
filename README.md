@@ -1,6 +1,9 @@
 # Time Gavel
 ### Final Full Stack Project for Code Institute using Django
 
+### Travis CI
+[![Build Status](https://travis-ci.org/Didgerydont/fullstack-milestone.svg?branch=master)](https://travis-ci.org/Didgerydont/fullstack-milestone)
+
 #### Requirements
 Project Example Idea 2
 Build an auction place to sell historical artifacts
