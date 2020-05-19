@@ -17,7 +17,7 @@ Find, learn about and acquire artifacts they are interested in
 Earn money on selling the artifacts (the site owner is the seller)
 
 #### User Stories
-
+##### Consumer
 >As a consumer, I would like to be able to see the product I am buying with the price being immediately obvious.
 >I should be be able to click on the item to get more information about it. 
 >I should be able to create an account in order to have my details saved.
@@ -25,7 +25,7 @@ Earn money on selling the artifacts (the site owner is the seller)
 >Automatic bid raising up to a preset amount if someone bids on my item.
 >Allow me to write reviews about the artifacts, only on products that I have purchased.
 
-
+##### Owner
 >As the site owner, I should have a profile page where I can manage all of the items that I currently have for sale
 >I should be able to chop and change the starting price of items as well as upload multiple pictures of the item. 
 >I should be able to recieve messages from my buyers if they are looking for details. I should only be doing this with customers
@@ -40,8 +40,13 @@ Earn money on selling the artifacts (the site owner is the seller)
 
 
 #### Overview of the features of the site. 
+Here I will fo trough the main features of the site that been implement to best fit the needs of the owner and the end-user
 
 ##### The user profile
+
+The user profile attaches itself to Django's built in User object and allows extra fields to be added to the object. Here I have allowed the user to keep an address stored on file 
+that they are able to keep updated themselves
+
 
 ##### Requests for Specific Items (Enquiries)
 
@@ -57,13 +62,6 @@ Earn money on selling the artifacts (the site owner is the seller)
 
 ##### 
 
-
-
-#####External user’s goal:
-Find, learn about and acquire artifacts they are interested in
-
-#####Site owner's goal:
-Earn money on selling the artifacts (the site owner is the seller)
 
 #####Potential features to include:
 Create an online store focused on selling unique historical artifacts, such as The Holy Grail to the highest bidder.
