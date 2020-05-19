@@ -16,9 +16,9 @@ from os import path
 if path.exists("env.py"):
     import env
 
-#if os.environ.get('DEVELOPMENT'):
-    #development = True
-#else:
+if os.environ.get('DEVELOPMENT'):
+    development = True
+else:
     development = False
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
