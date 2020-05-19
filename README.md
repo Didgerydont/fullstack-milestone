@@ -23,7 +23,7 @@ As a consumer, I would like to be able to see the product I am buying with the p
 I should be be able to click on the item to get more information about it. 
 I should be able to create an account in order to have my details saved.
 I should be notified if someone out bids me
-Automatic bid raising up to a preset amount if someone bids on my item. (https://davidwalsh.name/javascript-polling)
+Automatic bid raising up to a preset amount if someone bids on my item.
 Allow me to write reviews about the artifacts, only on products that I have purchased.
 
 '''
