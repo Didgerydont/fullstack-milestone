@@ -13,15 +13,23 @@
 ---
 For my project I have decided to build Project Example Idea 2. Build an auction place to sell historical artifacts.
 The goal of this project is to create an auction website for selling valuable historic items. The site owner should
-be able to make money from this as well as providing potential customers with a UX friendly website thatallows them to easily
+be able to make money from this as well as providing potential customers with a UX friendly website that allows them to easily
 engage with the site, learn about the items and spend their money. 
 
+#### UX
+---
+
+The user interface for this project will remain as clear and simple as possible as the focus of the project is to 
+make it easy for the website to sell objects and for the end user to be able to spend their money in as straightforward a way as possible.
+The UX will utilise HTML, CSS, Django Templates and JQuery. The Bootstrap framework provided by the good people over at Twitter is also
+used on the project for their excellent ability for responsiveness across different devices. The colour scheme for the website is probided by the talented people over at [Bootswatch](https://www.bootstrapcdn.com/bootswatch/).
+This project colour scheme is primarily Bootswatch's [Darkly](https://bootswatch.com/darkly/) styling. The style has been
+downloaded as a static file in this project in order to remove possible issues reading from the CDN that Bootswatch uses.
 
 
 ##### External user’s goal:
 ---
 Find, learn about and acquire artifacts they are interested in
-
 
 
 ##### Site owner's goal:
@@ -167,8 +175,10 @@ This is a feature that I really would have liked to implemented but with the tim
 
 ####
 	
-	
-	
+#### Testing the Project	
+
+
+
 ==========
 Test -- JShint passed, w3 html passed, css passed one error that I cant find
 ========== 
@@ -176,35 +186,3 @@ Test -- JShint passed, w3 html passed, css passed one error that I cant find
 Requirements
 ==========================================================================================
 
-Project Example Idea 2
-Build an auction place to sell historical artifacts
-
-External user’s goal:
-Find, learn about and acquire artifacts they are interested in
-
-Site owner's goal:
-Earn money on selling the artifacts (the site owner is the seller)
-
-Potential features to include:
-Create an online store focused on selling unique historical artifacts, such as The Holy Grail to the highest bidder.
-
-Allow users to search for artifacts based on various fields.
-
-Allow users to see the price, image and other basic details about an artifact.
-
-Users would be able to learn about the historical details of each artifact, the culture it came from, the way it was created and its journey across different owners in the past.
-
-For example, you might want to include information about "events" that took place in the past and that one or more artifacts took place in, or originated from.
-
-Allow users to bid on items, or pay a higher price to purchase them immediately. Users have to be registered for this.
-
-Advanced potential feature (nice-to-have)
-Allow registered users to write reviews about the artifacts, only if they purchased them.
-
-Expand the search functionality to allow users to sort results based on price, age and other parameters in both ascending and descending order.
-
-Include pagination and/or other dynamic display actions using javascript.
-
-Use javascript polling to update the page whenever there's a new bid.
-
-==========================================================================================
