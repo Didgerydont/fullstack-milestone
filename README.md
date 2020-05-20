@@ -1,9 +1,13 @@
 # Time Gavel
 ### Final Full Stack Project for Code Institute using Django
 ---
+
+
 ### Travis CI
 ---
 [![Build Status](https://travis-ci.org/Didgerydont/fullstack-milestone.svg?branch=master)](https://travis-ci.org/Didgerydont/fullstack-milestone)
+
+
 
 #### Requirements
 ---
@@ -12,16 +16,23 @@ The goal of this project is to create an auction website for selling valuable hi
 be able to make money from this as well as providing potential customers with a UX friendly website thatallows them to easily
 engage with the site, learn about the items and spend their money. 
 
+
+
 ##### External user’s goal:
 ---
 Find, learn about and acquire artifacts they are interested in
+
+
 
 ##### Site owner's goal:
 ---
 Earn money on selling the artifacts (the site owner is the seller)
 
+
+
 #### User Stories
 ---
+
 ##### As a Consumer
 >I would like to be able to see the product I am buying with the price being immediately obvious.
 >I should be be able to click on the item to get more information about it. 
@@ -62,9 +73,12 @@ in future verisons of the project.
 	>Products --> History, pictures, set buy immediately price, time left for bids, questions on items become available after bid. Inbox within admin page see bidder by user_id
 
 
+
+
 #### Overview of the features that made it onto the site. 
 ---
 Here I will fo trough the main features of the site that been implement to best fit the needs of the owner and the end-user
+
 
 ##### The user profile
 
@@ -99,6 +113,7 @@ The current auctions page (showallauctions.html) shows all currently running auc
 for iterating through the Auction model. There is an if statement wrapped around instance of the object that prevents expired
 auctions from being shown on the page. This page also utilises pagination which I have will explain further down the features.
 
+
 ##### All items
 
 The all items page shows all items currently on file within model. This includes items that are in stock but not
@@ -107,11 +122,15 @@ if an when the item will be up for grabs.
 
 
 ##### Pagination
+
 The pagination on this project was inspired by [Master Code Online](https://www.youtube.com/channel/UCbhm6TbMBTWn_GxrIbPFapA)
 They offer a really good tutorial on pagination// search bars which was easily altered to fit my needs. The pagination also uses its owne
 config.py file which makes creates an infinitely reusable function that can be called into the views that they are being used in
 
+
 ##### Checkout
+
+
 
 
 #### Future Features
@@ -123,15 +142,18 @@ from the course tutors always kept me on track. This project has taught me so mu
 had left me defeated on a couple features that will need to added to the project in future in order to bring it
 to a point where I can put it to bed and call it 100% completed.  
 
+
 ##### Automaticly Expiring Models
 
 I would have really liked to be able to figure out how to get my auctions to expire automaticly once the 
 time had been reached but I was unable to figure this out before having to hand the project in
 
+
 ##### Antiques Automaticly move to PastSold
 
 Similar to above, I would have liked to have the item to move from the Antiques model to the more appropriate one after
 it had been sold.
+
 
 ##### Javascript Polling
 
