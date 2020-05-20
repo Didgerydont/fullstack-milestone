@@ -73,6 +73,9 @@ in future verisons of the project.
 	>Products --> History, pictures, set buy immediately price, time left for bids, questions on items become available after bid. Inbox within admin page see bidder by user_id
 
 
+#### Wireframes
+
+![alt wireframe one][logo]
 
 
 #### Overview of the features that made it onto the site. 
@@ -128,7 +131,7 @@ They offer a really good tutorial on pagination// search bars which was easily a
 config.py file which makes creates an infinitely reusable function that can be called into the views that they are being used in
 
 
-##### Checkout
+##### Checkout && Stripe
 
 
 
