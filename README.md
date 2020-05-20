@@ -4,7 +4,7 @@
 ### Travis CI
 [![Build Status](https://travis-ci.org/Didgerydont/fullstack-milestone.svg?branch=master)](https://travis-ci.org/Didgerydont/fullstack-milestone)
 
-<div align=”center”>#### Requirements</div>
+#### Requirements
 For my project I have decided to build Project Example Idea 2. Build an auction place to sell historical artifacts.
 The goal of this project is to create an auction website for selling valuable historic items. The site owner should
 be able to make money from this as well as providing potential customers with a UX friendly website thatallows them to easily
