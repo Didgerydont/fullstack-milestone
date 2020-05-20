@@ -4,7 +4,7 @@
 ### Travis CI
 [![Build Status](https://travis-ci.org/Didgerydont/fullstack-milestone.svg?branch=master)](https://travis-ci.org/Didgerydont/fullstack-milestone)
 
-#### Requirements
+<div align=”center”>#### Requirements</div>
 For my project I have decided to build Project Example Idea 2. Build an auction place to sell historical artifacts.
 The goal of this project is to create an auction website for selling valuable historic items. The site owner should
 be able to make money from this as well as providing potential customers with a UX friendly website thatallows them to easily
@@ -116,7 +116,7 @@ from the course tutors always kept me on track. This project has taught me so mu
 had left me defeated on a couple features that will need to added to the project in future in order to bring it
 to a point where I can put it to bed and call it 100% completed.  
 
-##### Automitcly Expiring Models
+##### Automaticly Expiring Models
 
 I would have really liked to be able to figure out how to get my auctions to expire automaticly once the 
 time had been reached but I was unable to figure this out before having to hand the project in
