@@ -17,16 +17,16 @@ Find, learn about and acquire artifacts they are interested in
 Earn money on selling the artifacts (the site owner is the seller)
 
 #### User Stories
-##### Consumer
->As a consumer, I would like to be able to see the product I am buying with the price being immediately obvious.
+##### As a Consumer
+>I would like to be able to see the product I am buying with the price being immediately obvious.
 >I should be be able to click on the item to get more information about it. 
 >I should be able to create an account in order to have my details saved.
 >I should be notified if someone out bids me
 >Automatic bid raising up to a preset amount if someone bids on my item.
 >Allow me to write reviews about the artifacts, only on products that I have purchased.
 
-##### Owner
->As the site owner, I should have a profile page where I can manage all of the items that I currently have for sale
+##### As the Owner
+>I should have a profile page where I can manage all of the items that I currently have for sale
 >I should be able to chop and change the starting price of items as well as upload multiple pictures of the item. 
 >I should be able to recieve messages from my buyers if they are looking for details. I should only be doing this with customers
 >after they have made a bid or purchased items in order to remove time wasters. 
@@ -45,20 +45,47 @@ Here I will fo trough the main features of the site that been implement to best 
 ##### The user profile
 
 The user profile attaches itself to Django's built in User object and allows extra fields to be added to the object. Here I have allowed the user to keep an address stored on file 
-that they are able to keep updated themselves
+that they are able to keep updated themselves. The user here can enter their address to be kept on record and update it themselves as necessary
 
 
 ##### Requests for Specific Items (Enquiries)
 
+The Enquiries section of the site allows existing or new customers to request the auctioneers keep an eye out for specific items for a user
+which can be expanded into a business for the contracted locating of items. 
+
+
 ##### Search Bars
+
+The search bar is a central feature of the site and exists on all pages where more than one item is shown at a time. 
+The search bar utilises Django's built in Q query function to check if the users quieried term exists within the desription or title
+fields of the relevant model. 
+
 
 ##### Previuosly Sold Items
 
+As the name suggests, the index page currently contains information of items previously sold on the website. At present
+this has its own dedicated part of the database that the site owner can items too as he pleases. I did want to set this
+model up where the item would automaticly be moved to the past sold items model but couldnt quite wrap around my head around
+it. I will be returning to add this in a future version of the project. 
+
+
 ##### Current auctions
+
+The current auctions page (showallauctions.html) shows all currently running auctions. This utilizes a for loop
+for iterating through the Auction model. There is an if statement wrapped around instance of the object that prevents expired
+auctions from being shown on the page. This page also utilises pagination which I have will explain further down the features.
 
 ##### All items
 
+The all items page shows all items currently on file within model. This includes items that are in stock but not
+up for auction yet. On each item there is a link to the current auctions page where the user can have a look to see
+if an when the item will be up for grabs.
+
+
 ##### Pagination
+The pagination on this project was inspired by [Master Code Online](https://www.youtube.com/channel/UCbhm6TbMBTWn_GxrIbPFapA)
+They offer a really good tutorial on pagination// search bars which was easily altered to fit my needs. The pagination also uses its owne
+config.py file which makes creates an infinitely reusable function that can be called into the views that they are being used in
 
 ##### 
 
@@ -145,9 +172,9 @@ Owner Profile -->
 	
 	
 	
-
-
-
+==========
+Test -- JShint passed, w3 html passed, css passed one error that I cant find
+========== 
 
 Requirements
 ==========================================================================================
