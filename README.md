@@ -1,22 +1,27 @@
 # Time Gavel
 ### Final Full Stack Project for Code Institute using Django
-
+---
 ### Travis CI
+---
 [![Build Status](https://travis-ci.org/Didgerydont/fullstack-milestone.svg?branch=master)](https://travis-ci.org/Didgerydont/fullstack-milestone)
 
 #### Requirements
+---
 For my project I have decided to build Project Example Idea 2. Build an auction place to sell historical artifacts.
 The goal of this project is to create an auction website for selling valuable historic items. The site owner should
 be able to make money from this as well as providing potential customers with a UX friendly website thatallows them to easily
 engage with the site, learn about the items and spend their money. 
 
 ##### External user’s goal:
+---
 Find, learn about and acquire artifacts they are interested in
 
 ##### Site owner's goal:
+---
 Earn money on selling the artifacts (the site owner is the seller)
 
 #### User Stories
+---
 ##### As a Consumer
 >I would like to be able to see the product I am buying with the price being immediately obvious.
 >I should be be able to click on the item to get more information about it. 
@@ -37,7 +42,7 @@ Earn money on selling the artifacts (the site owner is the seller)
 >Expand the search functionality to allow users to sort results based on price, age and other parameters in both ascending and descending order.
 
 #### Brainstorm based on User Stories
-
+---
 
 Not all features from the original brainstorming session made it to the site in the end. Most of these will be implemented
 in future verisons of the project.
@@ -58,6 +63,7 @@ in future verisons of the project.
 
 
 #### Overview of the features that made it onto the site. 
+---
 Here I will fo trough the main features of the site that been implement to best fit the needs of the owner and the end-user
 
 ##### The user profile
@@ -109,6 +115,7 @@ config.py file which makes creates an infinitely reusable function that can be c
 
 
 #### Future Features
+---
 
 This has been my most challenging undertaking to date. The hours that have been poured into this project were tough 
 at times and there was often times where I had taught I was completely defeated but perseverence and a little help
