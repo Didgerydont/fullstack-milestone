@@ -134,7 +134,9 @@ footer {
 .antique {
     max-width: 350px;
     max-height: 350px;
-    margin: 0 auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 caption p {
