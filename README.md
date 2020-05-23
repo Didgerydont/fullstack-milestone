@@ -85,7 +85,24 @@ in future verisons of the project.
 
 ### Wireframes
 
-![alt wireframe one](https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/wireframes/all-auctions-view.JPG "Logo Title Text 1")
+##### All Auctions view
+![alt wireframe one](https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/wireframes/all-auctions-view.JPG "Wireframe 1")  
+
+##### Auction Singular
+![alt wireframe two](https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/wireframes/auction-singular.JPG?raw=true "Wireframe 2")  
+
+
+##### All Auctions view
+![alt wireframe three](https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/wireframes/base-html.JPG?raw=true "Wireframe 3")  
+
+##### Auction Singular
+![alt wireframe four](https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/wireframes/index-html.JPG?raw=true "Wireframe 4")  
+
+##### All Auctions view
+![alt wireframe five](https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/wireframes/mobile-view.JPG?raw=true "Wireframe 5")  
+
+##### Auction Singular
+![alt wireframe six](https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/wireframes/all-auctions-view.JPG "Wireframe 6")  
 
 ## Overview of the features that made it onto the site. 
 ---
