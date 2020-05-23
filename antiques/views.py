@@ -27,7 +27,7 @@ def all_antiques(request):
 
     return render(request, 'antiques.html', context)
 
-
+@login_required(login_url='/accounts/login')
 def enquiry(request, pk):
     """
     Allows the user to make an enquiry on any of the items listed on the antiques page
