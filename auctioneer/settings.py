@@ -18,6 +18,7 @@ if path.exists("env.py"):
 
 if os.environ.get('DEVELOPMENT'):
     development = True
+
 else:
     development = False
 
@@ -101,6 +102,8 @@ if development:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
+    MEDIA_URL = '/media/'
+
 else:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
@@ -180,5 +183,5 @@ STATICFILES_DIRS = (
 MEDIAFILES_LOCATION = 'media'
 DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
-MEDIA_URL = '/media/'
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
