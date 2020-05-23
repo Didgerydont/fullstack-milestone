@@ -31,24 +31,24 @@ downloaded as a static file in this project in order to remove possible issues r
 ### User Stories
 ---
 
-##### As a Consumer
->I would like to be able to see the product I am buying with the price being immediately obvious.
->I should be be able to click on the item to get more information about it. 
->I should be able to create an account in order to have my details saved.
->I should be notified if someone out bids me
->Automatic bid raising up to a preset amount if someone bids on my item.
->Allow me to write reviews about the artifacts, only on products that I have purchased.
+>As a Consumer
+I would like to be able to see the product I am buying with the price being immediately obvious.  
+I should be be able to click on the item to get more information about it.  
+I should be able to create an account in order to have my details saved.  
+I should be notified if someone out bids me  
+Automatic bid raising up to a preset amount if someone bids on my item.  
+Allow me to write reviews about the artifacts, only on products that I have purchased.  
 
-##### As the Owner
->I should have a profile page where I can manage all of the items that I currently have for sale
->I should be able to chop and change the starting price of items as well as upload multiple pictures of the item. 
->I should be able to recieve messages from my buyers if they are looking for details. I should only be doing this with customers
->after they have made a bid or purchased items in order to remove time wasters. 
->I should be able to self manage my own account as well as manage users accounts via an admin panel. 
->I need to be able to take payments. 
->Allow users to bid on items, or pay a higher price to purchase them immediately. Users have to be registered for this.
->Include pagination and/or other dynamic display actions using javascript.
->Expand the search functionality to allow users to sort results based on price, age and other parameters in both ascending and descending order.
+>As the Owner  
+I should have a profile page where I can manage all of the items that I currently have for sale  
+I should be able to chop and change the starting price of items as well as upload multiple pictures of the item.   
+I should be able to recieve messages from my buyers if they are looking for details. I should only be doing this with customers  
+after they have made a bid or purchased items in order to remove time wasters.  
+I should be able to self manage my own account as well as manage users accounts via an admin panel.  
+I need to be able to take payments.  
+Allow users to bid on items, or pay a higher price to purchase them immediately. Users have to be registered for this.  
+Include pagination and/or other dynamic display actions using javascript.  
+Expand the search functionality to allow users to sort results based on price, age and other parameters in both ascending and descending order.  
 
 ### External user’s goal:
 ---
@@ -70,15 +70,15 @@ in future verisons of the project.
 
 
 >User Profile -->  
-	>Products --> Previously purchased, reviews  
-	>Accounts --> Delivery address, personal information, password reset, user_id, the user should have to enter some card details before being allowed to bid in order to prevent time wasters  
-	>Cart --> Remember cart on next login  
-	>Bid system --> create bids, notification on bids, watch item function  
+	Products --> Previously purchased, reviews  
+	Accounts --> Delivery address, personal information, password reset, user_id, the user should have to enter some card details before being allowed to bid in order to prevent time wasters  
+	Cart --> Remember cart on next login  
+	Bid system --> create bids, notification on bids, watch item function  
 	
 
 >Owner Profile -->  
-	>Admin --> Password reset, user management, respond to queries, notification of purchases, pass information to warehouse?  
-	>Products --> History, pictures, set buy immediately price, time left for bids, questions on items become available after bid. Inbox within admin page see bidder by user_id  
+	Admin --> Password reset, user management, respond to queries, notification of purchases, pass information to warehouse?  
+	Products --> History, pictures, set buy immediately price, time left for bids, questions on items become available after bid. Inbox within admin page see bidder by user_id  
 
 
 ## Wireframes & Schema
