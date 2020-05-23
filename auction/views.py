@@ -12,7 +12,7 @@ from auctioneer.config import pagination
 from .forms import BidForm
 
 
-@login_required
+@login_required(login_url='/accounts/login')
 def get_all_auctions(request):
     """
     Show all current auctions
