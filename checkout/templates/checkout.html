@@ -15,7 +15,10 @@
 <div class="row row-flex">
     <div class="col-xs-12 offset-md-2 col-md-8 display panel panel-default">
         <div class="panel-body">
-            <img class="antique" src="{{ MEDIA_URL }}{{ auction.antiques.image }}" alt="Product Image" height="100%" width="100%">
+            <div class="image-container">
+                <img class="antique" src="{{ MEDIA_URL }}{{ auction.antiques.image }}" alt="Product Image" height="100%" width="100%">
+            </div>
+            
             
             <div class="caption">
                 <h3 class="m-4">{{ auction.antiques.name }}</h3>
