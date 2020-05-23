@@ -31,7 +31,7 @@ downloaded as a static file in this project in order to remove possible issues r
 ### User Stories
 ---
 
->As a Consumer
+>As a Consumer  
 I would like to be able to see the product I am buying with the price being immediately obvious.  
 I should be be able to click on the item to get more information about it.  
 I should be able to create an account in order to have my details saved.  
@@ -85,7 +85,7 @@ in future verisons of the project.
 
 ### Wireframes
 
-![alt wireframe one][logo]
+![alt wireframe one][https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/wireframes/all-auctions-view.JPG]
 
 
 ## Overview of the features that made it onto the site. 
