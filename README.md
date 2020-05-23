@@ -3,10 +3,6 @@
 ---
 
 
-## Travis CI
----
-[![Build Status](https://travis-ci.org/Didgerydont/fullstack-milestone.svg?branch=master)](https://travis-ci.org/Didgerydont/fullstack-milestone)
-
 
 
 ## Requirements
@@ -212,34 +208,39 @@ This is a feature that I really would have liked to implemented but with the tim
 
 	
 ## Testing the Project	
-The UX was designed using Bootstrap4 which provides an extremely responsive layout to the page. 
-The page has been tested on all of the following devices and is displaying/functioning correctly.
 
-### Large Viewports
--Lenovo Think Pad T490
--Macbook Pro
--IMac
--HP 250
+### UX
+The code has been used on the following devices with no issue due to Bootstraps responsiveness
+
+#### Large Viewports
+* Lenovo Think Pad T490
+* Macbook Pro
+* IMac
+* HP 250
+
+#### Small Viewports
+* Huawei Y30
+* Samsung a70
+* Samsung s7
+* Iphone SE
+* Samsung s9
+* Samsung s5
+* Pixel 2 / XL
+* Iphone 6/7/8
+* Iphone 6/7/8 Plus
+* Iphone X
+* Ipad Pro
+
+## Code Validators
+The code is currently been tested by Travis CI and is passing all tests. The jquery has passed [JSHINT](https://www.code-institute.net). 
+The base.html has passed [HTML W3](https://validator.w3.org/) validation except
+for the django template lines. CSS is also passing on [CSS Jigsaw](https://jigsaw.w3.org/css-validator/) validator as well. 
 
 
+### Travis CI
+---
+[![Build Status](https://travis-ci.org/Didgerydont/fullstack-milestone.svg?branch=master)](https://travis-ci.org/Didgerydont/fullstack-milestone)
 
-### Small Viewports
--Huawei Y30
--Samsung a70
--Samsung s7
--Iphone SE
--Samsung s9
--Samsung s5
--Pixel 2 / XL
--Iphone 6/7/8
--Iphone 6/7/8 Plus
--Iphone X
--Ipad Pro
 
-==========
-Test -- JShint passed, w3 html passed, css passed one error that I cant find
-========== 
-
-Requirements
-==========================================================================================
+## Delpoyment
 
