@@ -30,7 +30,7 @@ def get_all_auctions(request):
     }
     return render(request, "showallauctions.html", context)
 
-@login_required
+@login_required(login_url='/accounts/login')
 def get_specific_auction(request, pk):
     auction = get_object_or_404(Auction, pk=pk)
     context = {
@@ -39,7 +39,7 @@ def get_specific_auction(request, pk):
 
     return render(request, 'auction.html', context)
 
-@login_required
+@login_required(login_url='/accounts/login')
 def bid(request, pk):
     """
     Allow the user to join the Auction
@@ -77,7 +77,7 @@ def bid(request, pk):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
-@login_required
+@login_required(login_url='/accounts/login')
 def add_to_watch_list(request, pk):
     """
     Adds an auction to the users watchlist, not working currently
@@ -93,7 +93,7 @@ def add_to_watch_list(request, pk):
         watching.delete()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-
+@login_required(login_url='/accounts/login')
 def display_watch_and_bids(request, user):
     """
     Display the watchlist on watchlist.html
