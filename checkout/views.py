@@ -29,7 +29,7 @@ def success(request):
 
 
 
-@login_required()
+@login_required(login_url='/accounts/login')
 def checkout_auction(request, pk):
     """
     Allow the user to make a payment after successfully winning an auction
@@ -90,7 +90,7 @@ def checkout_auction(request, pk):
     return render(request, "auction-checkout.html", context)
 
 
-@login_required()
+@login_required(login_url='/accounts/login')
 def buy_now_checkout(request, pk):
     """
     Allow the user to "buy-now"

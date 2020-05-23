@@ -77,7 +77,7 @@ def registration(request):
     }
     return render(request, 'registration.html', context)
 
-
+@login_required(login_url='/accounts/login')
 def user_profile(request):
     """ The users profile page """
     user = request.user
