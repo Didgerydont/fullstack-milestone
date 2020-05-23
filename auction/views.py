@@ -12,6 +12,7 @@ from auctioneer.config import pagination
 from .forms import BidForm
 
 
+@login_required
 def get_all_auctions(request):
     """
     Show all current auctions
@@ -29,7 +30,7 @@ def get_all_auctions(request):
     }
     return render(request, "showallauctions.html", context)
 
-
+@login_required
 def get_specific_auction(request, pk):
     auction = get_object_or_404(Auction, pk=pk)
     context = {
@@ -38,7 +39,7 @@ def get_specific_auction(request, pk):
 
     return render(request, 'auction.html', context)
 
-
+@login_required
 def bid(request, pk):
     """
     Allow the user to join the Auction
