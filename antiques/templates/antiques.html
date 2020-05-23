@@ -38,8 +38,7 @@
         <div class="col-xs-12 offset-md-1 col-md-5 display panel panel-default mb-3">
             <div class="panel-body p-3">
                 <div class="image-container m-1">
-                    <div class="antique" style="background-image: url('{{ MEDIA_URL }}{{ item.image }}');"></div>
-                    
+                    <img class="antique" src="{{ MEDIA_URL }}{{  item.image }}" alt="Product Image">
                 </div>
                 <h3 class="p-3">{{item.name}}</h3>
                 <button class="btn btn-primary m-3 hide-description" type="button" data-toggle="collapse"  aria-expanded="false">
