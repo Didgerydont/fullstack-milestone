@@ -85,8 +85,7 @@ in future verisons of the project.
 
 ### Wireframes
 
-![alt wireframe one][https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/wireframes/all-auctions-view.JPG]
-
+![alt wireframe one](https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/wireframes/all-auctions-view.JPG "Logo Title Text 1")
 
 ## Overview of the features that made it onto the site. 
 ---
