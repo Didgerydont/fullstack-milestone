@@ -113,7 +113,7 @@ in future verisons of the project.
 
 ![alt model two](https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/wireframes/models2.JPG?raw=true "Model two")  
 
-##### Auction Singular
+##### Schema
 ![alt schema](https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/wireframes/el-schema.jpeg?raw=true "Schema")  
 
 
@@ -128,20 +128,22 @@ Here I will fo trough the main features of the site that been implement to best 
 ### The user profile
 
 The user profile attaches itself to Django's built in User object and allows extra fields to be added to the object. Here I have allowed the user to keep an address stored on file 
-that they are able to keep updated themselves. The user here can enter their address to be kept on record and update it themselves as necessary
+that they are able to keep updated themselves. The user here can enter their address to be kept on record and update it themselves as necessary  
+![alt profile](https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/screenshots/profile-page.png?raw=true "Profile") 
 
-
-### Requests for Specific Items (Enquiries)
+### Requests for Specific Items
 
 The Enquiries section of the site allows existing or new customers to request the auctioneers keep an eye out for specific items for a user
-which can be expanded into a business for the contracted locating of items. 
-
+which can be expanded into a business for the contracted locating of items.  
+![alt form](https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/screenshots/Item-request-form.png "Form") 
 
 ### Search Bars
 
 The search bar is a central feature of the site and exists on all pages where more than one item is shown at a time. 
 The search bar utilises Django's built in Q query function to check if the users quieried term exists within the desription or title
 fields of the relevant model. 
+
+## IMAGE HERE
 
 
 ### Previuosly Sold Items
@@ -159,11 +161,11 @@ for iterating through the Auction model. There is an if statement wrapped around
 auctions from being shown on the page. This page also utilises pagination which I have will explain further down the features.
 
 
-### All items
+### All items & Enquiry
 
 The all items page shows all items currently on file within model. This includes items that are in stock but not
 up for auction yet. On each item there is a link to the current auctions page where the user can have a look to see
-if an when the item will be up for grabs.
+if an when the item will be up for grabs or alternatively if this hasnt been decidied by the site owner they can make an Enquiry
 
 
 ### Pagination
@@ -175,7 +177,9 @@ config.py file which makes creates an infinitely reusable function that can be c
 
 ## Checkout & Stripe
 
-
+The checkout app and stripe set up are an adaptation of [Code Institute's](https://www.code-institute.net) checkout and stripe lesson taught in
+the final module of their fullstack web development course. To make this work I had to remove a cart from the code and also had to change the views
+in order to interact with models correctly. 
 
 
 ## Future Features
@@ -206,12 +210,31 @@ One of the suggestions the advanced features section of the website was to creat
 that would automaticly refresh the bid information every ten seconds or so and reveal if their had been a new bid within that time.
 This is a feature that I really would have liked to implemented but with the time given I will need to revert to it. 
 
-
-####
 	
-#### Testing the Project	
+## Testing the Project	
+The UX was designed using Bootstrap4 which provides an extremely responsive layout to the page. 
+The page has been tested on all of the following devices and is displaying/functioning correctly.
+
+### Large Viewports
+-Lenovo Think Pad T490
+-Macbook Pro
+-IMac
+-HP 250
 
 
+
+### Small Viewports
+-Huawei Y30
+-Samsung a70
+-Samsung s7
+-Iphone SE
+-Samsung s9
+-Samsung s5
+-Pixel 2 / XL
+-Iphone 6/7/8
+-Iphone 6/7/8 Plus
+-Iphone X
+-Ipad Pro
 
 ==========
 Test -- JShint passed, w3 html passed, css passed one error that I cant find
