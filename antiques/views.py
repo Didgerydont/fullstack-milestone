@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.utils import timezone
 from django.contrib import auth, messages
