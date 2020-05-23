@@ -69,16 +69,16 @@ in future verisons of the project.
 ### FUNCTIONS BASED ON USER STORIES
 
 
->User Profile --> 
-	>Products --> Previously purchased, reviews
-	>Accounts --> Delivery address, personal information, password reset, user_id, the user should have to enter some card details before being allowed to bid in order to prevent time wasters
-	>Cart --> Remember cart on next login
-	>Bid system --> create bids, notification on bids, watch item function 
+>User Profile -->  
+	>Products --> Previously purchased, reviews  
+	>Accounts --> Delivery address, personal information, password reset, user_id, the user should have to enter some card details before being allowed to bid in order to prevent time wasters  
+	>Cart --> Remember cart on next login  
+	>Bid system --> create bids, notification on bids, watch item function  
 	
 
->Owner Profile --> 
-	>Admin --> Password reset, user management, respond to queries, notification of purchases, pass information to warehouse?
-	>Products --> History, pictures, set buy immediately price, time left for bids, questions on items become available after bid. Inbox within admin page see bidder by user_id
+>Owner Profile -->  
+	>Admin --> Password reset, user management, respond to queries, notification of purchases, pass information to warehouse?  
+	>Products --> History, pictures, set buy immediately price, time left for bids, questions on items become available after bid. Inbox within admin page see bidder by user_id  
 
 
 ## Wireframes & Schema
