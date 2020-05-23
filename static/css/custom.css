@@ -129,19 +129,14 @@ footer {
     border-radius: 9px;
 
 }
-
-.label-warning[href],
-.badge-warning[href]{
-    background-color: #c67605;
-
-}
+/* antiques // items*/
 
 .antique {
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
-    width: 300px;
-    height: 300px;
+    max-width: 300px;
+    max-height: 300px;
     margin: 0 auto;
 }
 
