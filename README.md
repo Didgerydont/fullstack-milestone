@@ -139,7 +139,7 @@ The search bar is a central feature of the site and exists on all pages where mo
 The search bar utilises Django's built in Q query function to check if the users quieried term exists within the desription or title
 fields of the relevant model. 
 
-## IMAGE HERE
+![alt form](https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/screenshots/Annotation%20Search%202020-05-23%20155833.png?raw=true "Search") 
 
 
 ### Previuosly Sold Items
@@ -161,15 +161,18 @@ auctions from being shown on the page. This page also utilises pagination which 
 
 The all items page shows all items currently on file within model. This includes items that are in stock but not
 up for auction yet. On each item there is a link to the current auctions page where the user can have a look to see
-if an when the item will be up for grabs or alternatively if this hasnt been decidied by the site owner they can make an Enquiry
+if an when the item will be up for grabs or alternatively if this hasnt been decided by the site owner they can make an enquiry
+about the item. This does require login as it will take the users email address from their profile for correspondance
 
+![alt form](https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/screenshots/Annotation%20Search%202020-05-23%20155833.png?raw=true "Search") 
 
 ### Pagination
 
 The pagination on this project was inspired by [Master Code Online](https://www.youtube.com/channel/UCbhm6TbMBTWn_GxrIbPFapA)
-They offer a really good tutorial on pagination// search bars which was easily altered to fit my needs. The pagination also uses its owne
+They offer a really good tutorial on pagination// search bars which was easily altered to fit my needs. The pagination also uses its own
 config.py file which makes creates an infinitely reusable function that can be called into the views that they are being used in
 
+![alt form](https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/screenshots/Annotation%20Search%202020-05-23%20155833.png?raw=true "Search") 
 
 ## Checkout & Stripe
 
