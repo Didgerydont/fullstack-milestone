@@ -104,6 +104,22 @@ in future verisons of the project.
 ##### Auction Singular
 ![alt wireframe six](https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/wireframes/all-auctions-view.JPG "Wireframe 6")  
 
+
+### Schema and models
+
+##### Models
+![alt model one](https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/wireframes/models.JPG?raw=true "Model One")  
+
+
+![alt model two](https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/wireframes/models2.JPG?raw=true "Model two")  
+
+##### Auction Singular
+![alt schema](https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/wireframes/el-schema.jpeg?raw=true "Schema")  
+
+
+
+
+
 ## Overview of the features that made it onto the site. 
 ---
 Here I will fo trough the main features of the site that been implement to best fit the needs of the owner and the end-user
