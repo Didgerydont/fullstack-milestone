@@ -187,8 +187,7 @@ caption p {
 /* checkout */
 .checkout-antique{
     
-    max-width:800px;
-    max-height: 800px;
+    max-width: inherit;
     display: block;
     margin-left: auto;
     margin-right: auto;
