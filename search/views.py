@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.db.models import Q
 from antiques.models import Antiques
 from auction.models import Auction
@@ -51,8 +51,9 @@ def search_current_auctions(request):
     Search through current items up for auction, includes pagination
     """
     query = request.GET.get('q')
+    auction = Auction.objects.all()
 
-    results = Auction.antiques.filter(Q(name__icontains=query) | Q(description__icontains=query))
+    results = auction.antiques.filter(Q(name__icontains=query) | Q(description__icontains=query))
 
     pages = pagination(request, results, num=4)
 
