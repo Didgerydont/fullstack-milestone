@@ -346,12 +346,6 @@ I have done mine like so...
 The local site will use its own sqlite3 DB and the production one hosted by Heroku will have its own separate one as well which makes life easier on version control
  whiles working on a live
 
-* DONT FORGET TO USE COLLECTSTATIC IN ORDER TO PUSH CHANGES TO S3.  
-Like so....
-```sh
-    python3 manage.py collectstatic
-```
-
 
 * You will also need to set up an account with [S3](https://console.aws.amazon.com/s3/) for handling our static files. 
 
@@ -390,17 +384,38 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 ```
 
+* DONT FORGET TO USE COLLECTSTATIC IN ORDER TO PUSH CHANGES TO S3.  
+Like so....
+```sh
+    python3 manage.py collectstatic
+```
+
 * Once this has been completed. We can the run the project two ways:
+
+    * Locally
     ```
         python3 manage.py runserver 
     ```
 
-### Linking Github and Heroku pushes 
-1. Log on to Heroku and locate the project. 
-2. When you are on the main dashboard of the project, locate the deploy tab.
-3. Once you have clicked this and have been redirected, scroll down to the option that allows you to connect your Github repo to Heroku. 
-4. Once connected you will then be able to enable automatic deploys. 
+    * Deployed version can be accessed at the link provided by Heroku https://time-gavel.herokuapp.com/
 
-* Now pushing to Github will also push changes to Heroku. 
+## Credits
+This project would have never come together if it werent for Code Institute and the Irish Springboard system. A big thnaks has to go out to all the tutors
+ who helped with me with countless questions at all hours of the day and night. My own mentor Anthony also deserves a special mention for always being on hand
+ and available to point me in the right direction when needed. Thanks Tony! 
+
+### Images
+All images have been checked for copyright via Google. If any accidental breaches have occured please do inform me and this can be rectified. 
+
+### Code
+#### Checkout & Accounts
+The checkout and accounts apps within this project are adapations of apps previously used in the Django 'e-commerce' project.
+
+#### Search and Pagination
+The search and pagination on this page were based on tutorial videos supplied by [Master Code Online](https://www.youtube.com/channel/UCbhm6TbMBTWn_GxrIbPFapA)
+
+#### Styling
+The styling on this page is based on Boostrap but uses Bootswatch's [Darkly](https://bootswatch.com/darkly/) color and styling scheme to get the website as pretty
+as it ended up.
 
 
