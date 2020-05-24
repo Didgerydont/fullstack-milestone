@@ -52,7 +52,7 @@ def search_current_auctions(request):
     """
     query = request.GET.get('q')
 
-    results = Auction.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
+    results = Auction.antiques.filter(Q(name__icontains=query) | Q(description__icontains=query))
 
     pages = pagination(request, results, num=4)
 
