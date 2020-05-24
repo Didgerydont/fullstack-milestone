@@ -56,7 +56,7 @@ def search_current_auctions(request):
     auction = Auction.objects.all()
 
     if query:
-        results = auction.antiques.filter(Q(name__icontains=query) | Q(description__icontains=query))
+        results = auction.filter(Q(antiques__name__icontains=query) | Q(antiques__description__icontains=query))
 
     else:
         results = Auction.objects.all()
