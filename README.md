@@ -164,7 +164,7 @@ up for auction yet. On each item there is a link to the current auctions page wh
 if an when the item will be up for grabs or alternatively if this hasnt been decided by the site owner they can make an enquiry
 about the item. This does require login as it will take the users email address from their profile for correspondance
 
-![alt form](https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/screenshots/Annotation%20Search%202020-05-23%20155833.png?raw=true "Search") 
+![alt form](https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/screenshots/Annotation%20Enquire%202020-05-24%20001036.png?raw=true "Search") 
 
 ### Pagination
 
@@ -172,7 +172,7 @@ The pagination on this project was inspired by [Master Code Online](https://www.
 They offer a really good tutorial on pagination// search bars which was easily altered to fit my needs. The pagination also uses its own
 config.py file which makes creates an infinitely reusable function that can be called into the views that they are being used in
 
-![alt form](https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/screenshots/Annotation%20Search%202020-05-23%20155833.png?raw=true "Search") 
+![alt form](https://github.com/Didgerydont/fullstack-milestone/blob/master/screenshots_and_wireframes/screenshots/Annotation%20Enquire%202020-05-24%20000942.png?raw=true "Search") 
 
 ## Checkout & Stripe
 
@@ -245,5 +245,162 @@ for the django template lines. CSS is also passing on [CSS Jigsaw](https://jigsa
 [![Build Status](https://travis-ci.org/Didgerydont/fullstack-milestone.svg?branch=master)](https://travis-ci.org/Didgerydont/fullstack-milestone)
 
 
-## Delpoyment
+## Tech Used
+In order to get this project to where it is at currently. I used the following technologies
+* HTML
+* CSS
+* Bootstrap
+* Django
+* Python
+* JQuery
+* Stripe
+
+
+
+## Deployment
+Github, Heroku and AWS S3 were used for the deployment of this project.
+
+You can view the production version of this project below: 
+https://time-gavel.herokuapp.com/
+
+
+If you would like to download the project and deploy it yourself. Then you will need to follow the following steps...  
+
+* Create a Heroku account if you don’t already have one: 
+https://www.heroku.com
+* Install Heroku CLI on your local machine: 
+https://devcenter.heroku.com/articles/heroku-cli
+* Check that Heroku has successfully been installed by typing this in your terminal:
+
+
+```sh
+heroku --version 
+```
+
+* Now login to your Heroku account from your terminal. This will prompt a browser login via the CLI and all you will have to do is
+ click 'login'
+
+```sh
+heroku login 
+```
+
+### Loading my Heroku App within the Project 
+
+* Download this project as either a zip file or you can clone the project 
+
+* Install all project requirements via requirments.txt
+    ```sh
+        pip3 install -r requirements.txt 
+    ```
+* Set the config variables:
+    * I recommend setting these up in an env.py file that has been gitignored in order to keep these secret.  
+    * This file will contain all relevent variables for all sites that we will be deloying on.   
+    This project will need variables for Stripe, AWS S3 and Heroku. These will all also need to be entered
+    on the corresponding websites.  
+    I have set my env.py file like so...  
+    ```python
+        import os
+
+        os.environ.setdefault("DATABASE_URL", "keepThisASecret")
+        os.environ.setdefault("SECRET_KEY", "keepThisASecret")
+        os.environ.setdefault("STRIPE_PUBLISHABLE_KEY", "keepThisASecret")
+        os.environ.setdefault("STRIPE_SECRET_KEY", "keepThisASecret")
+        os.environ.setdefault("AWS_ACCESS_KEY_ID","keepThisASecret")
+        os.environ.setdefault("AWS_SECRET_ACCESS_KEY", "keepThisASecret")
+    ```
+
+* Once this has been done. You should do ahead an download dj_database_url and activiate a free tiered Postgress database to use on your site.  
+You can then use a simple if statment in the project to have the code determine whether you are on a development or production server.  
+
+I have done mine like so...
+
+```python
+
+    if os.environ.get('DEVELOPMENT'):
+    development = True
+
+    else:
+        development = False
+
+
+    DEBUG = development
+
+    if development:
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+            }
+        }
+        MEDIA_URL = '/media/'
+
+    else:
+        DATABASES = {
+            'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+        }
+
+
+```
+
+* It is worth nothing that once we have successfully moved the project onto Heroku and S3 that we will have two instances of the same site.
+The local site will use its own sqlite3 DB and the production one hosted by Heroku will have its own separate one as well which makes life easier on version control
+ whiles working on a live
+
+* DONT FORGET TO USE COLLECTSTATIC IN ORDER TO PUSH CHANGES TO S3.  
+Like so....
+```sh
+    python3 manage.py collectstatic
+```
+
+
+* You will also need to set up an account with [S3](https://console.aws.amazon.com/s3/) for handling our static files. 
+
+* We will then need to set up our media and static routes within settings.py to match our S3 account. My example using secret files has been 
+included below  
+
+
+```python
+    AWS_S3_OBJECT_PARAMETERS = {
+    'Expires': 'Thu, Dec 2099 20:00:00 GMT',
+    'CacheControl': 'max-age=94608000'
+}
+
+AWS_STORAGE_BUCKET_NAME = 'fullstack-django'
+AWS_S3_REGION_NAME = 'eu-west-1'
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS")
+
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
+MEDIAFILES_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+```
+
+* Once this has been completed. We can the run the project two ways:
+    ```
+        python3 manage.py runserver 
+    ```
+
+### Linking Github and Heroku pushes 
+1. Log on to Heroku and locate the project. 
+2. When you are on the main dashboard of the project, locate the deploy tab.
+3. Once you have clicked this and have been redirected, scroll down to the option that allows you to connect your Github repo to Heroku. 
+4. Once connected you will then be able to enable automatic deploys. 
+
+* Now pushing to Github will also push changes to Heroku. 
+
 
