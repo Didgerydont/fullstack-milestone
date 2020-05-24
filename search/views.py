@@ -53,13 +53,14 @@ def search_current_auctions(request):
     Search through current items up for auction, includes pagination
     """
     query = request.GET.get('q')
-    
+    auction = Auction.objects.all()
+
     if query:
-        results = Auction.antiques.filter(Q(name__icontains=query) | Q(description__icontains=query))
+        results = auction.antiques.filter(Q(name__icontains=query) | Q(description__icontains=query))
 
     else:
         results = Auction.objects.all()
-    
+
     pages = pagination(request, results, num=4)
     context = {
         'items': pages[0],
