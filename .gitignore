@@ -1,8 +1,9 @@
 env.py
 .gitpod.dockerfile
-__pycach__/
+__pycache__/
 .gitpod.yml
 db.sqlite3
 db.sqlite3-journal
 static/
 media/
+.theia/
