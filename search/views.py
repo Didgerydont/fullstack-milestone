@@ -34,8 +34,10 @@ def search_past_items(request):
     """
     query = request.GET.get('q')
 
-    results = PastSold.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
-
+    if query:
+        results = PastSold.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
+    else:
+        results = PastSold.objects.all()
     pages = pagination(request, results, num=4)
 
     context = {
@@ -51,12 +53,14 @@ def search_current_auctions(request):
     Search through current items up for auction, includes pagination
     """
     query = request.GET.get('q')
-    auction = Auction.objects.all()
+    
+    if query:
+        results = Auction.antiques.filter(Q(name__icontains=query) | Q(description__icontains=query))
 
-    results = auction.antiques.filter(Q(name__icontains=query) | Q(description__icontains=query))
-
+    else:
+        results = Auction.objects.all()
+    
     pages = pagination(request, results, num=4)
-
     context = {
         'items': pages[0],
         'page_range': pages[1]
