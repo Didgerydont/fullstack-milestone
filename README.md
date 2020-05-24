@@ -244,6 +244,9 @@ for the django template lines. CSS is also passing on [CSS Jigsaw](https://jigsa
 ---
 [![Build Status](https://travis-ci.org/Didgerydont/fullstack-milestone.svg?branch=master)](https://travis-ci.org/Didgerydont/fullstack-milestone)
 
+>>> Disclaimer, Travis CI is having an issue at the moment where my status bar here is showing a fail when the site is actually passing this test.  
+Please press on the Travis indicator and it will show the correct result. I have no work around for this at the moment. 
+
 
 ## Tech Used
 In order to get this project to where it is at currently. I used the following technologies
